@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time/>
+        <name>34d4459b2f1c5010f37fd0e62799b678</name>
+        <run_as display_value="Phil Swann">48d671b22f181010f37fd0e62799b622</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek/>
+        <run_period/>
+        <run_start>2020-04-26 00:56:39</run_start>
+        <run_time/>
+        <run_type>once</run_type>
+        <script><![CDATA[new global.MLUpdater().update("ml_x_349606_x_349606_vsvirus_global_symptoms");]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>wrangu.phil</sys_created_by>
+        <sys_created_on>2020-04-26 00:56:39</sys_created_on>
+        <sys_id>8937491f2f1c5010f37fd0e62799b68e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>34d4459b2f1c5010f37fd0e62799b678</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sysauto_script_8937491f2f1c5010f37fd0e62799b68e</sys_update_name>
+        <sys_updated_by>wrangu.phil</sys_updated_by>
+        <sys_updated_on>2020-04-26 00:56:39</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

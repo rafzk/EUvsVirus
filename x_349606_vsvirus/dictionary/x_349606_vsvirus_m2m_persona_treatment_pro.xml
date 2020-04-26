@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Vsvirus M2m Persona Treatment Pro" max_length="40" name="x_349606_vsvirus_m2m_persona_treatment_pro" type="collection">
+        <element attributes="encode_utf8=false" label="Persona" max_length="32" name="persona" reference="x_349606_vsvirus_persona" type="reference"/>
+        <element attributes="encode_utf8=false" label="Treatment protocol" max_length="32" name="treatment_protocol" reference="x_349606_vsvirus_treatment_protocol" type="reference"/>
+        <index name="index">
+            <element name="persona"/>
+        </index>
+        <index name="index2">
+            <element name="treatment_protocol"/>
+        </index>
+    </element>
+</database>

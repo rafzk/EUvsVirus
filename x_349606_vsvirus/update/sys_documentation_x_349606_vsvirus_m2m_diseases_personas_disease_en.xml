@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="disease" label="Disease" language="en" table="x_349606_vsvirus_m2m_diseases_personas">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>disease</element>
+            <help/>
+            <hint/>
+            <label>Disease</label>
+            <language>en</language>
+            <name>x_349606_vsvirus_m2m_diseases_personas</name>
+            <plural>Diseases</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>wrangu.phil</sys_created_by>
+            <sys_created_on>2020-04-25 21:06:32</sys_created_on>
+            <sys_id>86821c172f585010f37fd0e62799b684</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Disease</sys_name>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_documentation_x_349606_vsvirus_m2m_diseases_personas_disease_en</sys_update_name>
+            <sys_updated_by>wrangu.phil</sys_updated_by>
+            <sys_updated_on>2020-04-25 21:06:32</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

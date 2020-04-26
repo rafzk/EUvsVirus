@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="DELETE">
+        <category display_value="" name="x_349606_vsvirus_treatment_protocol">x_349606_vsvirus_treatment_protocol</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>TRE</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 21:00:43</sys_created_on>
+        <sys_id>c931dc932f585010f37fd0e62799b629</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TRE</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_number_c931dc932f585010f37fd0e62799b629</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:00:43</sys_updated_on>
+    </sys_number>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_number_c931dc932f585010f37fd0e62799b629</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number"><sys_number action="INSERT_OR_UPDATE"><category display_value="" name="x_349606_vsvirus_treatment_protocol">x_349606_vsvirus_treatment_protocol</category><maximum_digits>7</maximum_digits><number>1000</number><prefix>TRE</prefix><sys_class_name>sys_number</sys_class_name><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-25 21:00:43</sys_created_on><sys_id>c931dc932f585010f37fd0e62799b629</sys_id><sys_mod_count>0</sys_mod_count><sys_name>TRE</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_number_c931dc932f585010f37fd0e62799b629</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-25 21:00:43</sys_updated_on></sys_number></record_update>]]></payload>
+        <payload_hash>-984627305</payload_hash>
+        <record_name>TRE</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 21:00:44</sys_created_on>
+        <sys_id>013154d32f585010f37fd0e62799b6da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b32479300000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:00:44</sys_updated_on>
+        <type>Number</type>
+        <update_guid>493154d3355850100d54c6c505e4a9d9</update_guid>
+        <update_guid_history>493154d3355850100d54c6c505e4a9d9:-984627305</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 21:22:13</sys_created_on>
+        <sys_db_object display_value="" name="sys_number">sys_number</sys_db_object>
+        <sys_id>53c6e7fbbe804496bd0339f9c7981dc9</sys_id>
+        <sys_metadata>c931dc932f585010f37fd0e62799b629</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TRE</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent display_value="">6a2e8c132f585010f37fd0e62799b62c</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_number_c931dc932f585010f37fd0e62799b629</sys_update_name>
+        <sys_update_version display_value="sys_number_c931dc932f585010f37fd0e62799b629">013154d32f585010f37fd0e62799b6da</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:22:13</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

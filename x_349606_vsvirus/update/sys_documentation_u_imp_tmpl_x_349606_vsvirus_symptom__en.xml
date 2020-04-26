@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="Imp Tmpl X 349606 Vsvirus Symptom" language="en" table="u_imp_tmpl_x_349606_vsvirus_symptom">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Imp Tmpl X 349606 Vsvirus Symptom</label>
+            <language>en</language>
+            <name>u_imp_tmpl_x_349606_vsvirus_symptom</name>
+            <plural>Imp Tmpl X 349606 Vsvirus Symptoms</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>wrangu.phil</sys_created_by>
+            <sys_created_on>2020-04-25 22:35:22</sys_created_on>
+            <sys_id>a7d6acdb2f985010f37fd0e62799b656</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Imp Tmpl X 349606 Vsvirus Symptom</sys_name>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_documentation_u_imp_tmpl_x_349606_vsvirus_symptom__en</sys_update_name>
+            <sys_updated_by>wrangu.phil</sys_updated_by>
+            <sys_updated_on>2020-04-25 22:35:22</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

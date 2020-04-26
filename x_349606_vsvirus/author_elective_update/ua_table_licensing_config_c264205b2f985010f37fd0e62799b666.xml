@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ua_table_licensing_config">
+    <ua_table_licensing_config action="DELETE">
+        <is_fulfillment>false</is_fulfillment>
+        <license_condition/>
+        <license_model>none</license_model>
+        <license_roles/>
+        <name>x_349606_vsvirus_m2m_treatment_persona</name>
+        <op_delete>true</op_delete>
+        <op_insert>true</op_insert>
+        <op_update>true</op_update>
+        <owner_condition/>
+        <sys_class_name>ua_table_licensing_config</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 22:24:38</sys_created_on>
+        <sys_id>c264205b2f985010f37fd0e62799b666</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_m2m_treatment_persona</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>ua_table_licensing_config_c264205b2f985010f37fd0e62799b666</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:24:38</sys_updated_on>
+    </ua_table_licensing_config>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>ua_table_licensing_config_c264205b2f985010f37fd0e62799b666</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="ua_table_licensing_config"><ua_table_licensing_config action="INSERT_OR_UPDATE"><is_fulfillment>false</is_fulfillment><license_condition/><license_model>none</license_model><license_roles/><name>x_349606_vsvirus_m2m_treatment_persona</name><op_delete>true</op_delete><op_insert>true</op_insert><op_update>true</op_update><owner_condition/><sys_class_name>ua_table_licensing_config</sys_class_name><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-25 22:24:38</sys_created_on><sys_id>c264205b2f985010f37fd0e62799b666</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_349606_vsvirus_m2m_treatment_persona</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>ua_table_licensing_config_c264205b2f985010f37fd0e62799b666</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-25 22:24:38</sys_updated_on></ua_table_licensing_config></record_update>]]></payload>
+        <payload_hash>398494441</payload_hash>
+        <record_name>x_349606_vsvirus_m2m_treatment_persona</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 22:24:38</sys_created_on>
+        <sys_id>c664205b2f985010f37fd0e62799b668</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b37148b30000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:24:38</sys_updated_on>
+        <type>Table Subscription Configuration</type>
+        <update_guid>0264205bd19850108b5e2dbcaa4feb68</update_guid>
+        <update_guid_history>0264205bd19850108b5e2dbcaa4feb68:398494441</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 22:26:32</sys_created_on>
+        <sys_db_object display_value="" name="ua_table_licensing_config">ua_table_licensing_config</sys_db_object>
+        <sys_id>1fbb9426f3d6497383bb66af692a3a51</sys_id>
+        <sys_metadata>c264205b2f985010f37fd0e62799b666</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_m2m_treatment_persona</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>ua_table_licensing_config_c264205b2f985010f37fd0e62799b666</sys_update_name>
+        <sys_update_version display_value="ua_table_licensing_config_c264205b2f985010f37fd0e62799b666">c664205b2f985010f37fd0e62799b668</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:26:32</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

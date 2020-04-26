@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_m2m">
+    <sys_m2m action="INSERT_OR_UPDATE">
+        <from_table>x_349606_vsvirus_treatment_protocol</from_table>
+        <m2m_from_field>treatment_protocol</m2m_from_field>
+        <m2m_from_label>Treatments</m2m_from_label>
+        <m2m_table>x_349606_vsvirus_m2m_treatment_treatment_pro</m2m_table>
+        <m2m_to_field>treatment</m2m_to_field>
+        <m2m_to_label>Treatment protocols</m2m_to_label>
+        <sys_class_name>sys_m2m</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 22:02:36</sys_created_on>
+        <sys_id>2e1f1c932f985010f37fd0e62799b649</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_m2m_treatment_treatment_pro</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_m2m_2e1f1c932f985010f37fd0e62799b649</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:02:36</sys_updated_on>
+        <to_table>x_349606_vsvirus_treatment</to_table>
+    </sys_m2m>
+</record_update>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Knowledge Management Core" source="com.glideapp.knowledge">95361dbe2fd01010f37fd0e62799b6d4</dependency>
+        <min_version>1.0.0</min_version>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-25 21:28:48</sys_created_on>
+        <sys_id>54a7d85b2f585010f37fd0e62799b63f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:28:48</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>
