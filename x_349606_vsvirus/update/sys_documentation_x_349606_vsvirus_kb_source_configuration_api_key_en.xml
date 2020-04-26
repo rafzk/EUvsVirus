@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="api_key" label="API key" language="en" table="x_349606_vsvirus_kb_source_configuration">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>api_key</element>
+            <help/>
+            <hint/>
+            <label>API key</label>
+            <language>en</language>
+            <name>x_349606_vsvirus_kb_source_configuration</name>
+            <plural>API keys</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>wrangu.raf</sys_created_by>
+            <sys_created_on>2020-04-26 08:39:35</sys_created_on>
+            <sys_id>16217a9f2f109010f37fd0e62799b6a0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>API key</sys_name>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_documentation_x_349606_vsvirus_kb_source_configuration_api_key_en</sys_update_name>
+            <sys_updated_by>wrangu.raf</sys_updated_by>
+            <sys_updated_on>2020-04-26 08:39:35</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

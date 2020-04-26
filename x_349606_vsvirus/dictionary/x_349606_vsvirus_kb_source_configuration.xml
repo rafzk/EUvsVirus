@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="KB Source Configuration" max_length="40" name="x_349606_vsvirus_kb_source_configuration" sizeclass="2" type="collection">
+        <element label="API key" max_length="40" name="api_key" type="string"/>
+        <element choice="1" label="Authentication Type" max_length="40" name="authentication_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="API key" sequence="0" value="API key"/>
+                <element inactive_on_update="false" label="Oath" sequence="1" value="Oauth"/>
+            </choice>
+        </element>
+        <element label="BaseURL" max_length="1000" name="baseurl" type="string"/>
+        <element label="Description" max_length="5000" name="description" type="string"/>
+        <element label="Name" max_length="40" name="name" type="string"/>
+        <element choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="RSS" sequence="0" value="RSS"/>
+            </choice>
+        </element>
+    </element>
+</database>

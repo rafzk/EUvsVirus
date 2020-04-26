@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="MediCast">6952081b2f185010f37fd0e62799b6a0</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>SEPARATOR</link_type>
+        <map_page/>
+        <mobile_title>Professional groups</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_349606_vsvirus_professional_codes</name>
+        <order>1000</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_349606_vsvirus.user</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 08:30:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d83fee1f2f109010f37fd0e62799b637</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Administration</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_app_module_d83fee1f2f109010f37fd0e62799b637</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 08:32:34</sys_updated_on>
+        <timeline_page/>
+        <title>Administration</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

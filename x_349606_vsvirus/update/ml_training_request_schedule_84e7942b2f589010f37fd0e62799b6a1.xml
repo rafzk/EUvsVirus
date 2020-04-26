@@ -7,27 +7,27 @@
         <entered_time/>
         <ml_capability_definition display_value="Symptoms">34d4459b2f1c5010f37fd0e62799b678</ml_capability_definition>
         <name>Symptoms</name>
-        <run_as display_value="Phil Swann">48d671b22f181010f37fd0e62799b622</run_as>
+        <run_as display_value="Rafael Cardoso">f010fd722f181010f37fd0e62799b693</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek/>
         <run_period>1970-01-31 00:00:00</run_period>
-        <run_start>2020-04-26 00:55:12</run_start>
+        <run_start>2020-04-26 16:08:21</run_start>
         <run_time/>
         <run_type>periodically</run_type>
         <solution_definition/>
         <sys_class_name>ml_training_request_schedule</sys_class_name>
-        <sys_created_by>wrangu.phil</sys_created_by>
-        <sys_created_on>2020-04-26 00:55:12</sys_created_on>
-        <sys_id>fbd6011f2f1c5010f37fd0e62799b612</sys_id>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 16:08:21</sys_created_on>
+        <sys_id>84e7942b2f589010f37fd0e62799b6a1</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Symptoms</sys_name>
         <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
         <sys_policy/>
         <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
-        <sys_update_name>ml_training_request_schedule_fbd6011f2f1c5010f37fd0e62799b612</sys_update_name>
-        <sys_updated_by>wrangu.phil</sys_updated_by>
-        <sys_updated_on>2020-04-26 00:55:12</sys_updated_on>
+        <sys_update_name>ml_training_request_schedule_84e7942b2f589010f37fd0e62799b6a1</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:08:21</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </ml_training_request_schedule>

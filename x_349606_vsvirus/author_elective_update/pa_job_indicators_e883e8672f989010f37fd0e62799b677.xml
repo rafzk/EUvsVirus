@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_job_indicators">
+    <pa_job_indicators action="DELETE">
+        <active>true</active>
+        <collect>1</collect>
+        <collect_indicator>true</collect_indicator>
+        <display>[MediCast] Text Data Collection - Questions</display>
+        <indicator display_value="Questions">31b220672f989010f37fd0e62799b630</indicator>
+        <job display_value="[MediCast] Text Data Collection">763f50632f989010f37fd0e62799b6a5</job>
+        <sys_class_name>pa_job_indicators</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 16:59:11</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e883e8672f989010f37fd0e62799b677</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Questions.[MediCast] Text Data Collection</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>pa_job_indicators_e883e8672f989010f37fd0e62799b677</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:59:11</sys_updated_on>
+    </pa_job_indicators>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>pa_job_indicators_e883e8672f989010f37fd0e62799b677</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_job_indicators"><pa_job_indicators action="INSERT_OR_UPDATE"><active>true</active><collect>1</collect><collect_indicator>true</collect_indicator><display>[MediCast] Text Data Collection - Questions</display><indicator display_value="Questions">31b220672f989010f37fd0e62799b630</indicator><job display_value="[MediCast] Text Data Collection">763f50632f989010f37fd0e62799b6a5</job><sys_class_name>pa_job_indicators</sys_class_name><sys_created_by>wrangu.raf</sys_created_by><sys_created_on>2020-04-26 16:59:11</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>e883e8672f989010f37fd0e62799b677</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Questions.[MediCast] Text Data Collection</sys_name><sys_overrides/><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>pa_job_indicators_e883e8672f989010f37fd0e62799b677</sys_update_name><sys_updated_by>wrangu.raf</sys_updated_by><sys_updated_on>2020-04-26 16:59:11</sys_updated_on></pa_job_indicators></record_update>]]></payload>
+        <payload_hash>-813898122</payload_hash>
+        <record_name>[MediCast] Text Data Collection - Questions</record_name>
+        <reverted_from/>
+        <source>9c710a3a2f581010f37fd0e62799b698</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 16:59:12</sys_created_on>
+        <sys_id>bc83e8672f989010f37fd0e62799b67c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b76db3040000001</sys_recorded_at>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:59:12</sys_updated_on>
+        <type>Job Indicator</type>
+        <update_guid>f483e867f4989010f6f50c75403c0a7c</update_guid>
+        <update_guid_history>f483e867f4989010f6f50c75403c0a7c:-813898122</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="[MediCast] Text Data Collection - ">39472c6b2f989010f37fd0e62799b630</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 17:15:39</sys_created_on>
+        <sys_db_object display_value="" name="pa_job_indicators">pa_job_indicators</sys_db_object>
+        <sys_id>0035ff70b32f4a7f90b558952af97fd9</sys_id>
+        <sys_metadata>e883e8672f989010f37fd0e62799b677</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Questions.[MediCast] Text Data Collection</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent display_value="[MediCast] Text Data Collection">763f50632f989010f37fd0e62799b6a5</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>pa_job_indicators_e883e8672f989010f37fd0e62799b677</sys_update_name>
+        <sys_update_version display_value="pa_job_indicators_e883e8672f989010f37fd0e62799b677">bc83e8672f989010f37fd0e62799b67c</sys_update_version>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:15:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

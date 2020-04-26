@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_cubes">
+    <pa_cubes action="INSERT_OR_UPDATE">
+        <benchmarking>false</benchmarking>
+        <conditions/>
+        <description/>
+        <facts_table>kb_social_qa_question</facts_table>
+        <facts_table_pk/>
+        <facts_table_pktable/>
+        <facts_table_pkview/>
+        <frequency>10</frequency>
+        <name>MediCast.QA.Questions</name>
+        <report_source display_value="MediCast.QA.Questions (Social Q&amp;A Question)">b41364672f989010f37fd0e62799b6e7</report_source>
+        <report_source_updated_at>2020-04-26 16:10:58</report_source_updated_at>
+        <sys_class_name>pa_cubes</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 16:56:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1af260672f989010f37fd0e62799b6e6</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MediCast.QA.Questions</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>pa_cubes_1af260672f989010f37fd0e62799b6e6</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:11:00</sys_updated_on>
+    </pa_cubes>
+    <sys_translated_text action="delete_multiple" query="documentkey=1af260672f989010f37fd0e62799b6e6"/>
+</record_update>

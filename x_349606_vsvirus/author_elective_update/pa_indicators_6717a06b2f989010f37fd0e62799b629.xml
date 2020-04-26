@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_indicators">
+    <pa_indicators action="DELETE">
+        <aggregate>1</aggregate>
+        <allow_multi_element_aggregation>false</allow_multi_element_aggregation>
+        <benchmarking>false</benchmarking>
+        <collect_breakdown_matrix>false</collect_breakdown_matrix>
+        <collect_records>true</collect_records>
+        <conditions/>
+        <contributor/>
+        <cube display_value="MediCast.QA.Questions">1af260672f989010f37fd0e62799b6e6</cube>
+        <data_source/>
+        <default_aggregate/>
+        <default_chart_type>line</default_chart_type>
+        <description>Symptoms is measured daily as unit #.
+The goal for this indicator is not set.
+It is the count on data source MediCast.Symptom, which is using the table: 
+x_349606_vsvirus_symptom
+with the following conditions:
+</description>
+        <direction>2</direction>
+        <display>false</display>
+        <excluded_statistics/>
+        <field>sys_created_on</field>
+        <forecast_base_periods>2</forecast_base_periods>
+        <forecast_base_start>00000000</forecast_base_start>
+        <forecast_base_type>1</forecast_base_type>
+        <forecast_lower_limit/>
+        <forecast_method>1</forecast_method>
+        <forecast_periods>2</forecast_periods>
+        <forecast_upper_limit/>
+        <formula/>
+        <formula_aggregate_whole>false</formula_aggregate_whole>
+        <formula_allow_null>false</formula_allow_null>
+        <frequency>10</frequency>
+        <groups/>
+        <has_managed_indicators>false</has_managed_indicators>
+        <id>125</id>
+        <key>false</key>
+        <label/>
+        <linked_indicator/>
+        <live_group_profile/>
+        <managed_breakdown/>
+        <managed_element/>
+        <managing_indicator/>
+        <name>MediCast.Questions</name>
+        <order/>
+        <override_periods>false</override_periods>
+        <precision>0</precision>
+        <related_breakdowns>0</related_breakdowns>
+        <related_jobs>2</related_jobs>
+        <render_continuous_lines>false</render_continuous_lines>
+        <role_override>true</role_override>
+        <roles/>
+        <score_periods>-1</score_periods>
+        <scores_modified_at>2020-04-26 17:12:37</scores_modified_at>
+        <script/>
+        <scripted>false</scripted>
+        <show_delta>true</show_delta>
+        <show_realtime_score>false</show_realtime_score>
+        <snapshot_periods>-1</snapshot_periods>
+        <sql_statement/>
+        <sys_class_name>pa_indicators</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 17:14:57</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>6717a06b2f989010f37fd0e62799b629</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>MediCast.Questions</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>pa_indicators_6717a06b2f989010f37fd0e62799b629</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:15:58</sys_updated_on>
+        <type>1</type>
+        <unit display_value="#">17b365e2d7320100ba986f14ce6103ad</unit>
+        <users/>
+        <value_when_nil>0</value_when_nil>
+        <visible_to>2</visible_to>
+    </pa_indicators>
+    <sys_translated_text action="DELETE" query="documentkey=6717a06b2f989010f37fd0e62799b629"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>pa_indicators_6717a06b2f989010f37fd0e62799b629</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_indicators"><pa_indicators action="INSERT_OR_UPDATE"><aggregate>1</aggregate><allow_multi_element_aggregation>false</allow_multi_element_aggregation><benchmarking>false</benchmarking><collect_breakdown_matrix>false</collect_breakdown_matrix><collect_records>true</collect_records><conditions/><contributor/><cube display_value="MediCast.QA.Questions">1af260672f989010f37fd0e62799b6e6</cube><data_source/><default_aggregate/><default_chart_type>line</default_chart_type><description>Symptoms is measured daily as unit #.
+The goal for this indicator is not set.
+It is the count on data source MediCast.Symptom, which is using the table: 
+x_349606_vsvirus_symptom
+with the following conditions:
+</description><direction>2</direction><display>false</display><excluded_statistics/><field>sys_created_on</field><forecast_base_periods>2</forecast_base_periods><forecast_base_start>00000000</forecast_base_start><forecast_base_type>1</forecast_base_type><forecast_lower_limit/><forecast_method>1</forecast_method><forecast_periods>2</forecast_periods><forecast_upper_limit/><formula/><formula_aggregate_whole>false</formula_aggregate_whole><formula_allow_null>false</formula_allow_null><frequency>10</frequency><groups/><has_managed_indicators>false</has_managed_indicators><id>125</id><key>false</key><label/><linked_indicator/><live_group_profile/><managed_breakdown/><managed_element/><managing_indicator/><name>MediCast.Questions</name><order/><override_periods>false</override_periods><precision>0</precision><related_breakdowns>0</related_breakdowns><related_jobs>2</related_jobs><render_continuous_lines>false</render_continuous_lines><role_override>true</role_override><roles/><score_periods>-1</score_periods><scores_modified_at>2020-04-26 17:12:37</scores_modified_at><script/><scripted>false</scripted><show_delta>true</show_delta><show_realtime_score>false</show_realtime_score><snapshot_periods>-1</snapshot_periods><sql_statement/><sys_class_name>pa_indicators</sys_class_name><sys_created_by>wrangu.raf</sys_created_by><sys_created_on>2020-04-26 17:14:57</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>6717a06b2f989010f37fd0e62799b629</sys_id><sys_mod_count>3</sys_mod_count><sys_name>MediCast.Questions</sys_name><sys_overrides/><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>pa_indicators_6717a06b2f989010f37fd0e62799b629</sys_update_name><sys_updated_by>wrangu.raf</sys_updated_by><sys_updated_on>2020-04-26 17:15:58</sys_updated_on><type>1</type><unit display_value="#">17b365e2d7320100ba986f14ce6103ad</unit><users/><value_when_nil>0</value_when_nil><visible_to>2</visible_to></pa_indicators><sys_translated_text action="delete_multiple" query="documentkey=6717a06b2f989010f37fd0e62799b629"/></record_update>]]></payload>
+        <payload_hash>-1012800770</payload_hash>
+        <record_name>MediCast.Questions</record_name>
+        <reverted_from/>
+        <source>9c710a3a2f581010f37fd0e62799b698</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 17:15:58</sys_created_on>
+        <sys_id>a6576c6b2f989010f37fd0e62799b68c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b77d0e230000001</sys_recorded_at>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:15:58</sys_updated_on>
+        <type>Indicator</type>
+        <update_guid>ee576c6b9d9890104c9e445aa3d4dd8b</update_guid>
+        <update_guid_history>ee576c6b9d9890104c9e445aa3d4dd8b:-1012800770,3037686bf79890102008f0246a7f07c5:-76054403,6317686b13989010c60e7e67d4920d09:-1444085587,ab17686bc6989010a42aa712372d0904:1707202986</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="MediCast.Questions">5f1828ab2f989010f37fd0e62799b6e6</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 17:19:18</sys_created_on>
+        <sys_db_object display_value="" name="pa_indicators">pa_indicators</sys_db_object>
+        <sys_id>2c87b7febd164b3c9231c788e43cf2e4</sys_id>
+        <sys_metadata>6717a06b2f989010f37fd0e62799b629</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MediCast.Questions</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>pa_indicators_6717a06b2f989010f37fd0e62799b629</sys_update_name>
+        <sys_update_version display_value="pa_indicators_6717a06b2f989010f37fd0e62799b629">a6576c6b2f989010f37fd0e62799b68c</sys_update_version>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:19:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

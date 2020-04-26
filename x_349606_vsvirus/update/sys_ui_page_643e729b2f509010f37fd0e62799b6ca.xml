@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var myTimeout = null;
+var maxValue = 0;
+
+addLoadEvent(function() {
+	if (gel('isImporting').value == 'false')
+		$('ucf_progress_bar').hide();
+	else {
+		updateButtonAndMsgWhenImporting();
+		checkImportStatus();
+	}
+	
+	GlideDialogWindow.get().on('beforeclose', function() {
+		if (myTimeout)
+			clearTimeout(myTimeout);
+	});
+	
+	gel('ucf_import').focus();
+});
+
+function submitCancel() {
+	GlideDialogWindow.get().destroy();
+	g_form.setReadOnly('shared_list', false);
+	g_form.setReadOnly('api_key', false);
+	g_form.setReadOnly('authentication_type', false);
+	g_form.setReadOnly('oauth2_profile', false);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.client_id', false);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.client_secret', false);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.redirect_url', false);
+	return false;
+}
+
+function updateButtonAndMsgWhenImporting() {
+	$('ucf_progress_bar').show();	
+	$('cancel_import').hide();
+	$('ucf_import').update("${gs.getMessage('Run In Background')}");
+	gel('ucf_import').onclick = function() {
+		GlideDialogWindow.get().destroy();	
+		g_form.addInfoMessage("${gs.getMessage('Shared list is currently downloading from UCF CCH. Reload the form to see the progress.')}");
+	};
+	$('widget_message').update("${gs.getMessage('Downloading RSS. Closing this dialog will not disrupt the download process.')}");	
+	$('widget_message').setStyle({'color': 'black'});	
+}
+
+function importSelectedList() {
+	g_form.setReadOnly('shared_list', true);
+	g_form.setReadOnly('api_key', true);
+	g_form.setReadOnly('authentication_type', true);
+	g_form.setReadOnly('oauth2_profile', true);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.client_id', true);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.client_secret', true);
+	g_form.setReadOnly('oauth2_profile.oauth_entity.redirect_url', true);
+	updateButtonAndMsgWhenImporting();
+
+	// Import the list
+	var ajaxCall = new GlideAjax('UCFAjax');
+	ajaxCall.addParam('sysparm_name', 'importSharedList');
+	ajaxCall.addParam('sysparm_sharedListSysId', gel('sharedListId').value);
+	ajaxCall.addParam('sysparm_configurationId', gel('configurationId').value);
+	
+	ajaxCall.getXMLAnswer(function(answer) {});
+	
+	// Check the import status
+	checkImportStatus();	
+}
+
+function closeAndReload() {
+	GlideDialogWindow.get().destroy();
+	window.location.reload();
+	return false;	
+}
+
+function resetPage(msg) {
+	maxValue = 0;
+	$('progressBar').setStyle({'width': '0%'});
+	$('progressText').show();
+	$('progressText').update("${gs.getMessage('Preparing to download RSS documents, this may take a while…')}");	
+	$('ucf_progress_bar').hide();
+	$('widget_message').update(msg);
+	$('widget_message').setStyle({'color': 'red'});	
+	$('cancel_import').show();
+	$('ucf_import').update("${gs.getMessage('Import List')}");
+	gel('ucf_import').onclick  = function() {
+		importSelectedList();
+	};	
+}
+
+function checkImportStatus() {
+		var ajaxCall2 = new GlideAjax('UCFAjax');
+		ajaxCall2.addParam('sysparm_name', 'getUCFImportStatus');
+
+		ajaxCall2.getXMLAnswer(function(answer) {
+			// Show error msg
+			var msg;
+			if (answer == 'server error')
+				msg = "${gs.getMessage('Error encountered while downloading UCF content.  Please try again or contact your system administrator for further assistance.')}";
+			if (answer == 'shared list error')
+				msg = "${gs.getMessage('The selected Shared List does not match the existing Authority Document list. Select a different Shared List or update the existing Shared List.')}";
+				
+			if (answer.indexOf('error') >= 0) {
+				resetPage(msg);
+				return;
+			}				
+			
+			answer = Math.max(maxValue, answer);
+			maxValue = answer;
+			$('progressBar').setStyle({'width': answer*100 + '%'});
+			
+			var answerDisplay = (Math.round(answer * 100 * 100) / 100) + ''; //round to 2 decimals
+			$('progressBar').writeAttribute('aria-valuenow', answerDisplay);
+			$('progressBarLabel').innerHTML = answerDisplay + '%';
+			if (answer > 0)
+				$('progressText').hide();		
+
+			if(answer == 1) {
+				$('widget_message').update("${gs.getMessage('Download complete')}");
+				$('ucf_import').update("${gs.getMessage('Review Changed Records')}");
+				$('ucf_import').focus();
+				gel('ucf_import').onclick = function() {
+					$('ucf_download_container').hide();
+					var summary = new GlideAjax('UCFAjax');
+					summary.addParam('sysparm_name', 'getUCFImportSummary');
+
+					summary.getXMLAnswer(function(answer) {	
+						if (answer) {
+							var authDocInfo = answer.evalJSON(true);
+							var summaryInfo = '<fieldset class="summary-container"><ul>';
+							var hiddenSummaryInfo = '<div role="list">';
+							var numDocs = 0;
+							for (var key in authDocInfo) {
+								if (!key)
+									continue;
+								summaryInfo += '<li style="padding-bottom:3px">' + key + '&nbsp;&nbsp;' + authDocInfo[key] + '</li>';
+								hiddenSummaryInfo += '<div role="listitem" aria-setsize="SETSIZE" aria-posinset="' + (numDocs + 1) + '">' + key + '&nbsp;&nbsp;' + authDocInfo[key] + '</div>';
+								numDocs++;
+							}
+
+							summaryInfo += '</ul></fieldset><div class="bottom-button"><button id="ucf_close" class="btn btn-primary" onClick="return closeAndReload();">${gs.getMessage("Continue")}</button></div>';				
+							hiddenSummaryInfo += '</div>';
+							$('download_summary').insert(summaryInfo);
+							$('ucf_close').focus();
+							
+							$('hidden_download_summary').innerHTML = hiddenSummaryInfo.replace(/SETSIZE/g, numDocs);
+						}
+					});
+				};
+				return;
+			}
+			
+			myTimeout = setTimeout(function(){ 
+				checkImportStatus(); 
+			}, 2000);
+		});
+}]]></client_script>
+        <description>RSS documents download pop up</description>
+        <direct>true</direct>
+        <endpoint>x_349606_vsvirus_download_popup.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+		<link rel="stylesheet" type="text.css" href="/styles/css_includes_ng.css" />
+		<g:requires name="scripts/lib/jquery_includes.js" />
+		<style>
+			.ucf-download-wrapper {
+			  text-align: center;
+			  margin: 40px auto 0 auto;
+			  max-width: 500px;
+			  position: relative;
+			  padding: 40px 20px 20px 20px;
+			  border-width: 1px;
+			  border-style: solid;
+			  border-color: #e6e8ea;
+			  border-radius: 10px;
+			}
+			
+			.ucf-download-wrapper .ucf-download-icon {
+			  background-color: #278efc;
+			  color: #ffffff;
+			  display: block;
+			  height: 60px;
+			  width: 60px;
+			  font-size: 32px;
+			  position: absolute;
+			  top: -30px;
+			  left: 50%;
+			  margin-left: -30px;
+			  border-radius: 100%;
+			  padding-top: 5px;
+			}
+			
+			.summary-container {
+			  border-width: 1px;
+			  border-style: solid;
+			  border-color: #e6e8ea;
+			  border-radius: 10px;
+			  padding: 18px 18px 15px 18px;
+			  overflow-y: scroll;
+			  max-height:300px;
+
+			} 
+			
+			.bottom-button {
+			  text-align: right; 
+			  border-bottom: 0px; 
+			  padding-top: 20px; 
+			}
+			
+		</style>
+		<input type="hidden" id="sharedListId" name="sharedListId" value="${HTML:sysparm_shared_list_id}"/>
+		<input type="hidden" id="configurationId" name="configurationId" value="${HTML:sysparm_configuration_id}"/>
+		<input type="hidden" id="isImporting" name="isImporting" value="${HTML:sysparm_is_importing}"/>
+
+	
+		<div class="modal-body" style="padding-top:0px;padding-bottom:0px">	
+			<div id="ucf_download_container">
+				<div id="toggleWidgetsContainer">
+					<div class="ucf-download-wrapper">
+						<span class="ucf-download-icon">
+							<span class="icon icon-download" />
+						</span>
+						<span id="widget_message" role="alert">${gs.getMessage('Download RSS')}</span>
+					</div>				
+				</div>
+				<div id="ucf_progress_bar" style="padding-top: 13px; padding-bottom: 20px;">
+					<div class="progress" style="margin-top:6px;margin-bottom:-7px">
+						<div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100">
+							<span id="progressBarLabel" class="sr-only">0%</span>
+						</div>
+					</div>
+					<div id="progressText" style="margin-top:12px">${gs.getMessage('Preparing to download RSS documents, this may take a while…')}
+					</div>
+				</div>
+				<div class="bottom-button">
+					<button id="cancel_import" class="btn btn-default" style="margin-right: 8px;" onClick="return submitCancel();">
+						${gs.getMessage('Cancel')}
+					</button>
+					<button id="ucf_import" name="ucf_import" class="btn btn-primary" onClick="return importSelectedList();">
+						${gs.getMessage('Import List')}
+					</button>	
+				</div>
+			</div>
+			<div id="download_summary" />
+			<div id="hidden_download_summary" role="alert" class="sr-only"/>
+		</div>	
+
+</j:jelly>]]></html>
+        <name>download_popup</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 09:37:16</sys_created_on>
+        <sys_id>643e729b2f509010f37fd0e62799b6ca</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>download_popup</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_ui_page_643e729b2f509010f37fd0e62799b6ca</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:57:12</sys_updated_on>
+    </sys_ui_page>
+</record_update>

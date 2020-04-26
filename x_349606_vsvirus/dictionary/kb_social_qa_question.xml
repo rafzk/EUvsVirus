@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="all_tables.text_index_translations=true,attachment_index=true,global_search_config_handler=SocialQAQuestion,hasLabels=true" label="Social Q&amp;A Question" max_length="40" name="kb_social_qa_question" sizeclass="6" text_index="true" type="collection"/>
+</database>

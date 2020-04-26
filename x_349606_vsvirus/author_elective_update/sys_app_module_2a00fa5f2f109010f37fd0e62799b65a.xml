@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="MediCast">6952081b2f185010f37fd0e62799b6a0</application>
+        <assessment/>
+        <device_type/>
+        <filter table="kb_knowledge_base">sys_id=f6a004d72f185010f37fd0e62799b6ef^EQ<item endquery="false" field="sys_id" goto="false" newquery="false" operator="=" or="false" value="f6a004d72f185010f37fd0e62799b6ef"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>DETAIL</link_type>
+        <map_page/>
+        <mobile_title>Knowledge Base</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>kb_knowledge_base</name>
+        <order>1300</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 08:34:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2a00fa5f2f109010f37fd0e62799b65a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Knowledge Base Sources</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_app_module_2a00fa5f2f109010f37fd0e62799b65a</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 08:34:42</sys_updated_on>
+        <timeline_page/>
+        <title>Knowledge Base Sources</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_app_module_2a00fa5f2f109010f37fd0e62799b65a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="MediCast">6952081b2f185010f37fd0e62799b6a0</application><assessment/><device_type/><filter table="kb_knowledge_base">sys_id=f6a004d72f185010f37fd0e62799b6ef^EQ<item endquery="false" field="sys_id" goto="false" newquery="false" operator="=" or="false" value="f6a004d72f185010f37fd0e62799b6ef"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></filter><hint/><homepage/><image/><link_type>DETAIL</link_type><map_page/><mobile_title>Knowledge Base</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>kb_knowledge_base</name><order>1300</order><override_menu_roles>false</override_menu_roles><query/><report/><roles/><sys_class_name>sys_app_module</sys_class_name><sys_created_by>wrangu.raf</sys_created_by><sys_created_on>2020-04-26 08:34:42</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>2a00fa5f2f109010f37fd0e62799b65a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Knowledge Base Sources</sys_name><sys_overrides/><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_app_module_2a00fa5f2f109010f37fd0e62799b65a</sys_update_name><sys_updated_by>wrangu.raf</sys_updated_by><sys_updated_on>2020-04-26 08:34:42</sys_updated_on><timeline_page/><title>Knowledge Base Sources</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>-143902702</payload_hash>
+        <record_name>Knowledge Base Sources</record_name>
+        <reverted_from/>
+        <source>9c710a3a2f581010f37fd0e62799b698</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 08:34:42</sys_created_on>
+        <sys_id>a600fa5f2f109010f37fd0e62799b65c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b59fd1530000001</sys_recorded_at>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 08:34:42</sys_updated_on>
+        <type>Module</type>
+        <update_guid>ee00fa5f241090104101fbbcfe4ece5b</update_guid>
+        <update_guid_history>ee00fa5f241090104101fbbcfe4ece5b:-143902702</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Knowledge Base Sources">2aa0f29f2f109010f37fd0e62799b6ea</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 08:37:25</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>0e44278daa7042abb36dc7429b824501</sys_id>
+        <sys_metadata>2a00fa5f2f109010f37fd0e62799b65a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Knowledge Base Sources</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_app_module_2a00fa5f2f109010f37fd0e62799b65a</sys_update_name>
+        <sys_update_version display_value="sys_app_module_2a00fa5f2f109010f37fd0e62799b65a">a600fa5f2f109010f37fd0e62799b65c</sys_update_version>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 08:37:25</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="Load Articles CSV" max_length="40" name="x_349606_vsvirus_load_articles_csv" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Authors" label="Authors" max_length="957" name="u_authors" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Citation" label="Citation" max_length="140" name="u_citation" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Create Date" label="Create Date" max_length="40" name="u_create_date" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=DOI" label="DOI" max_length="44" name="u_doi" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=First Author" label="First Author" max_length="233" name="u_first_author" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Journal/Book" label="Journal/Book" max_length="46" name="u_journal_book" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=NIHMS ID" label="NIHMS ID" max_length="40" name="u_nihms_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=PMCID" label="PMCID" max_length="40" name="u_pmcid" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=PMID" label="PMID" max_length="40" name="u_pmid" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Publication Year" label="Publication Year" max_length="40" name="u_publication_year" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Title" label="Title" max_length="618" name="u_title" type="string"/>
+    </element>
+</database>

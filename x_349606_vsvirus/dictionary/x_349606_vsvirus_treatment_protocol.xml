@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="kb_knowledge" label="Treatment protocol" max_length="40" name="x_349606_vsvirus_treatment_protocol" type="collection">
+    <element extends="kb_knowledge" label="Treatment protocol" max_length="40" name="x_349606_vsvirus_treatment_protocol" sizeclass="2" type="collection">
         <element label="Success rate" max_length="15" name="success_rate" type="percent_complete"/>
     </element>
 </database>

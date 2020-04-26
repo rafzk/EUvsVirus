@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_349606_vsvirus.PubMedRestAPI</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>UMLS Terminology Services REST API</description>
+        <name>PubMedRestAPI</name>
+        <script><![CDATA[var PubMedRestAPI = Class.create();
+PubMedRestAPI.prototype = {
+    initialize: function() {
+    },
+
+    eUtilities: function() {
+        // doc https://www.ncbi.nlm.nih.gov/books/NBK25498/#chapter3.ELink__ESearch
+
+    },
+
+    searchPubMed: function() {
+
+        // auth
+        var init = this._auth('API-KEY-GOES-HERE',10); //here goes the key
+        // connect api
+
+        /**
+         * Need to complete later - waiting for key
+         */
+
+
+        // search get_def_umls
+        var baseURL = 'https://uts-ws.nlm.nih.gov/rest?ticket=';
+        var search_type = ["exact","words","leftTruncation", "rightTruncation", "approximate", "normalizedString", "normalizedWords"];
+
+        /**
+         * Need to complete later - waiting for key
+         */
+        
+    },
+
+    _auth: function (apiKey,inTimeout) { //  TGT = Ticket Granting Ticket (API requires one ticket per request.)
+
+        // UMLS query params: https://documentation.uts.nlm.nih.gov/rest/search/index.html#query-parameters
+        var authURL = 'https://utslogin.nlm.nih.gov'; // Root URL of the auth api
+ 
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(authURL + '/cas/v1/api-key');
+        request.setHttpTimeout(inTimeout);
+        request.waitForResponse(inTimeout);
+        request.setHttpMethod('POST');
+        request.setQueryParameter('service','http://umlsks.nlm.nih.gov'); //required param to run, should we use this setStringParameter?
+        try {
+            var response = rest.execute();
+            var tgt = response.getRequestHeaders();
+        } catch (ex) {
+            responseBody = ex.getMessage();
+            status = '500'; //needs to be passed back into the objResult
+        } 
+
+        return tgt; // return the initial Ticket Granting Ticket using the API key
+
+    },
+    _get: function (apiUrl, apiKey, apiParms) {
+        var objResult = {};
+
+        if (!apiUrl || ( !apiKey && !apiParms))
+            return objResult;
+            
+        var apiEndpoint = apiUrl;     
+        var responseBody, status, requestBody;
+        var restMessage = new sn_ws.RESTMessageV2();
+        restMessage.setHttpMethod("get");
+        restMessage.setEndpoint(apiEndpoint);
+        for(var header in apiParms) {
+            restMessage.setRequestHeader(header,apiParms[header]);
+        }
+
+        try {
+            var response = restMessage.execute();
+            responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+            status = response.getStatusCode();
+        } catch (ex) {
+            responseBody = ex.getMessage();
+            status = '500'; //needs to be passed back into the objResult
+        } finally {
+            requestBody = restMessage ? restMessage.getRequestBody() : null;
+        }
+
+        objResult.response = JSON.parse(responseBody) || responseBody || {}; //not pretty if response is not JSON
+		objResult.status = status;
+        return objResult;
+    },
+
+    type: 'PubMedRestAPI'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-25 21:55:41</sys_created_on>
+        <sys_id>99091cdb2f585010f37fd0e62799b67b</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>PubMedRestAPI</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_script_include_99091cdb2f585010f37fd0e62799b67b</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 00:19:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

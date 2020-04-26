@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_cubes">
+    <pa_cubes action="INSERT_OR_UPDATE">
+        <benchmarking>false</benchmarking>
+        <conditions/>
+        <description/>
+        <facts_table>x_349606_vsvirus_symptom</facts_table>
+        <facts_table_pk/>
+        <facts_table_pktable/>
+        <facts_table_pkview/>
+        <frequency>10</frequency>
+        <name>MediCast.Symptom</name>
+        <report_source display_value="MediCast.Symptoms (Symptom)">defb546f2f589010f37fd0e62799b63f</report_source>
+        <report_source_updated_at>2020-04-26 15:26:46</report_source_updated_at>
+        <sys_class_name>pa_cubes</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 16:15:26</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d859dc2b2f589010f37fd0e62799b627</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MediCast.Symptom</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>pa_cubes_d859dc2b2f589010f37fd0e62799b627</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:26:54</sys_updated_on>
+    </pa_cubes>
+    <sys_translated_text action="delete_multiple" query="documentkey=d859dc2b2f589010f37fd0e62799b627"/>
+</record_update>

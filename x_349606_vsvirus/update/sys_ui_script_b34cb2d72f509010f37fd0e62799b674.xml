@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_349606_vsvirus.DisplayRSSPopup</name>
+        <script><![CDATA[var x_349606_vsvirus = x_349606_vsvirus || {};
+
+x_349606_vsvirus.DisplayRSSPopup = (function() {
+	"use strict";
+
+/* set your private variables and functions here. For example: 
+	var privateVar = 0; 
+	function private_function() {
+		return ++privateVar;
+	}
+*/
+
+/* Share variables between multiple UI scripts by adding them to your scope object. For example: 
+	x_349606_vsvirus.sharedVar = 0; 
+
+ Then access them in your scripts the same way. For example: 
+	function get_shared() {
+		return x_349606_vsvirus.sharedVar;
+	}
+*/
+
+	return {
+
+		displayPopup: function(isImporting) {
+			//var sharedListId = g_form.getValue('shared_list');
+			//var configurationId = g_form.getUniqueValue();
+			
+			var dialog = new GlideModal('x_349606_vsvirus_download_popup');
+			dialog.setWidth("450");
+			dialog.setTitle(new GwtMessage().getMessage("RSS downloader"));
+			dialog.setBackdropStatic(true);
+			//dialog.setPreference('sysparm_shared_list_id', sharedListId);	
+			//dialog.setPreference('sysparm_configuration_id', configurationId);
+			//dialog.setPreference('sysparm_is_importing', isImporting + '');	
+			dialog.render();			
+		},
+
+		type:  "DisplayRSSPopup"
+	};
+})();
+]]></script>
+        <script_name>DisplayRSSPopup</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>wrangu.raf</sys_created_by>
+        <sys_created_on>2020-04-26 09:34:19</sys_created_on>
+        <sys_id>b34cb2d72f509010f37fd0e62799b674</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_349606_vsvirus.DisplayRSSPopup</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_ui_script_b34cb2d72f509010f37fd0e62799b674</sys_update_name>
+        <sys_updated_by>wrangu.raf</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:37:49</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>true</use_scoped_format>
+    </sys_ui_script>
+</record_update>

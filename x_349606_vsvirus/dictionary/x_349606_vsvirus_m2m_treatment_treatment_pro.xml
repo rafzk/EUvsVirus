@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Vsvirus M2m Treatment Treatment Pro" max_length="40" name="x_349606_vsvirus_m2m_treatment_treatment_pro" type="collection">
+    <element label="Vsvirus M2m Treatment Treatment Pro" max_length="40" name="x_349606_vsvirus_m2m_treatment_treatment_pro" sizeclass="2" type="collection">
         <element attributes="encode_utf8=false" label="Treatment" max_length="32" name="treatment" reference="x_349606_vsvirus_treatment" type="reference"/>
         <element attributes="encode_utf8=false" label="Treatment protocol" max_length="32" name="treatment_protocol" reference="x_349606_vsvirus_treatment_protocol" type="reference"/>
         <index name="index">

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Social Knowledge" source="sn_kb_social_qa">11722b01473231007f47563dbb9a7154</dependency>
+        <min_version>2.8.0</min_version>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:46</sys_created_on>
+        <sys_id>2819b75f2fd49010f37fd0e62799b633</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:46</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

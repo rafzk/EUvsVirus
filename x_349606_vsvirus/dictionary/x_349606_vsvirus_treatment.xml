@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Treatment" max_length="40" name="x_349606_vsvirus_treatment" type="collection">
+    <element label="Treatment" max_length="40" name="x_349606_vsvirus_treatment" sizeclass="2" type="collection">
         <element label="Description" max_length="8000" name="description" type="html"/>
         <element label="Name" max_length="40" name="name" type="string"/>
         <element label="Order" max_length="40" name="order" type="integer"/>
