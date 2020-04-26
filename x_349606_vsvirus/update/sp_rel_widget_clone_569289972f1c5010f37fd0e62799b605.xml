@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="MediCast Article Widget">4a92c9572f1c5010f37fd0e62799b6cd</child>
+        <cloned>2020-04-26 00:36:32</cloned>
+        <last_validated>2020-04-26 00:36:32</last_validated>
+        <parent display_value="SQANDA Question">ca923d81d720120023c84f80de610387</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;other&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($http, $scope, $window, spUtil, $rootScope, $timeout, spAriaUtil) {
+	var c = this;
+	$rootScope.$broadcast('sp.update.breadcrumbs', [
+		{label: $scope.data.communityBreadcrumb, url: '?id=sqa_tagged_questions'},
+		{label: $scope.page.title, url: '#'}
+	]);
+
+	// switch forms
+	var unregister = $scope.$on('$sp.list.click', onListClick);
+	$scope.$on("$destroy", function() {
+		unregister();
+	});
+
+	function onListClick(evt, arg) {
+		c.data.sys_id = arg.sys_id;
+		c.server.update();
+	}
+
+	c.optionalMessage = "";
+	c.recipientList = "";
+	c.link = $window.location.href.replace("&amp;", "%26");
+
+	c.questionVotingDisabled = function() {
+		return (c.data.userIsGuest || c.data.question.profile.sys_id == c.data.liveProfileID);
+	}
+
+	c.shareConnect = function($event) {
+		var recipientArr = [];
+		c.recipientList.split(",").forEach(function(id) {
+			recipientArr.push("sys_user." + id);
+		});
+
+		var payload = {
+			attachments: [],
+			has_attachments: false,
+			message: c.optionalMessage + "\n\n" + c.link,
+			recipients: recipientArr
+		}
+
+		$http.post("/api/now/connect/messages", payload).then(function(response) {
+			c.optionalMessage = "";
+			c.recipientList = "";
+			$scope.$broadcast("sp-recipient-list.clear");
+			if (response.status === 201) {
+				$('#shareModal').modal('hide');
+			} else {
+
+			}
+		});
+
+	}
+
+	c.isSubscribedClass = function() {
+		return (c.data.question.subscription !== "") ? 'qa-star-on' : 'qa-star-off';
+	};
+
+	function addTimestamp(comment) {
+		comment.timestamp = new Date(comment.sys_created_on).getTime();
+		return comment;
+	}
+
+	for (var id in c.data.comments) {
+    c.data.comments[id].map(addTimestamp);
+	}
+
+	c.createAnswerDraft = "";
+
+	c.createAnswer = function() {
+		if (c.data.userIsGuest) return;
+
+		if (c.createAnswerDraft.length &lt;= 0) return;
+		
+		$http.post("/api/now/table/kb_social_qa_answer", {
+			question: c.data.questionID,
+			answer: c.createAnswerDraft,
+			accepted: false,
+			sys_id: c.data._attachmentGUID
+		}).then(function(response) {
+			if (response.status === 201) {//created
+				var newAnswer = response.data.result;
+				newAnswer.accepted = (newAnswer.accepted === "true");
+				newAnswer.has_comment = (newAnswer.has_comment === "true");
+				newAnswer.addCommentState = false;
+				spAriaUtil.sendLiveMessage(c.data.answerSubmitted);
+
+				$http.get(newAnswer.profile.link).then(function(response) {
+					if (response.status == 200) {
+						newAnswer.profile = response.data.result;
+						$http.get(response.data.result.document.link).then(function(response) {
+							if (response.status == 200)
+								newAnswer.profile.document = response.data.result;
+						});
+					}
+				});
+
+				c.data.votes[newAnswer.sys_id] = [];
+				c.data.comments[newAnswer.sys_id] = [];
+				c.data.answers.push(newAnswer);
+				c.createAnswerDraft = "";
+		
+				c.server.get({method:'generate_guid'}).then(function(response) {
+					c.data._attachmentGUID = response.data._attachmentGUID;
+				});
+			}
+		});
+	};
+
+	c.toggleEdit = function($event, editObj, editFieldName) {
+		if (editObj.editState)
+			editObj.editState = false;
+		else {
+			editObj.draft = editObj[editFieldName];
+			editObj.editState = true;
+		}
+	};
+
+	c.edit = function(refObj, refField, table) {
+		var reqParameters = {};
+		reqParameters[refField] = refObj.draft;
+		$http.put("/api/now/table/" + table + "/" + refObj.sys_id + "?sysparm_input_display_value=true", reqParameters)
+			.then(function(response) {
+				if (response.status === 200) {
+					refObj[refField] = response.data.result[refField];
+					refObj.editState = false;
+					spAriaUtil.sendLiveMessage($scope.data.editMsg);
+				}
+			});
+	};
+
+	c.postComment = function($event, referenceObj, referenceTable) {
+		if (c.data.userIsGuest) return;
+
+		if (referenceObj.commentDraft.length &lt;= 0) return;
+		
+		$http.post("/api/now/table/kb_social_qa_comment", {
+			comment: referenceObj.commentDraft,
+			reference_id: referenceObj.sys_id,
+			reference_name: referenceTable
+		}).then(function(response) {
+			if (response.status === 201) {
+				var newComment = response.data.result;
+				newComment.timestamp = new Date(newComment.sys_created_on).getTime();
+				$http.get(newComment.profile.link).then(function(response) {
+					if (response.status === 200) {
+						newComment.profile = response.data.result;
+						$http.get(response.data.result.document.link).then(function(response) {
+							if (response.status == 200)
+								newComment.profile.document = response.data.result;
+						});
+					}
+				});
+				c.data.comments[referenceObj.sys_id].push(newComment);
+				referenceObj.addCommentState = false;
+				referenceObj.commentDraft = "";
+				spAriaUtil.sendLiveMessage($scope.data.commentPostedMsg);
+			}
+		});
+	};
+
+	c.cancelComment = function($event, referenceObj) {
+		referenceObj.addCommentState = false;
+		referenceObj.commentDraft = "";
+		spAriaUtil.sendLiveMessage($scope.data.cancelCommentMessage);
+	};
+
+	c.handleCommentSubmitEvent = function($event, referenceObj, referenceTable) {
+		if ($event.keyCode === 13) {
+			c.postComment($event, referenceObj, referenceTable);
+		}
+	};
+
+	c.getVoteCount = function(voteArray) {
+		var upvotes = voteArray.filter(function(vote) {return vote.type === "upvote";});
+		var downvotes = voteArray.filter(function(vote) {return vote.type === "downvote";});
+		return upvotes.length - downvotes.length;
+	};
+
+	c.showActiveArrow = function(id, isUpvote) {
+		var votes = $.grep(c.data.votes[id], function(vote) {return vote.profile === c.data.liveProfileID;});
+		if (votes.length &lt;= 0) return false;
+		var vote = votes[0];
+		return isUpvote === (vote.type === "upvote");
+	};
+
+	c.goToUser = function(userID) {
+		window.location.href = "?id=user_profile&amp;sys_id=" + userID;
+	};
+
+	c.vote = function($event, table, id, isUpvote) {
+		if (c.data.userIsGuest)
+			return;
+
+		if (table === "kb_social_qa_question" &amp;&amp; c.questionVotingDisabled())
+			return;
+
+		if (c.data.votes[id].some(function(vote) {return vote.profile === c.data.liveProfileID;})) {
+			var vote = $.grep(c.data.votes[id], function(vote) {return vote.profile === c.data.liveProfileID;})[0];
+			$http({
+				method: "DELETE",
+				url: "/api/now/table/kb_social_qa_vote/" + vote.sys_id
+			}).then(function(response){
+				c.data.votes[id] = c.data.votes[id].filter(function(v) {return v.sys_id !== vote.sys_id;});
+			});
+		} else {
+			$http.post("/api/now/table/kb_social_qa_vote", {
+				reference_id: id,
+				reference_name: table,
+				up_vote: isUpvote
+			}).then(function(response) {
+				if (response.status === 201) {
+					var result = response.data.result;
+					result.profile = result.profile.value || "";
+					result.type = (result.up_vote === "true") ? "upvote" : "downvote";
+					c.data.votes[result.reference_id.value].push(result);
+				}
+			});
+		}
+	};
+
+	c.toggleAccept = function($event, answerID, acceptValue) {
+		if (c.data.userIsGuest) return;
+
+		$http.put("/api/now/table/kb_social_qa_answer/" + answerID, {
+			accepted: acceptValue
+		}).then(function(response) {
+			if (response.status === 200) {
+				for (var i = 0; i &lt; c.data.answers.length; i++) {
+					if (c.data.answers[i].sys_id === answerID)
+						c.data.answers[i].accepted = (response.data.result.accepted === "true");
+					 else 
+						c.data.answers[i].accepted = false;
+				}
+				if(response.data.result.accepted === "true")
+					spAriaUtil.sendLiveMessage($scope.data.acceptedMsg);
+				else
+					spAriaUtil.sendLiveMessage($scope.data.unAcceptedMsg);
+			}
+		});
+	};
+
+	c.toggleSubscribe = function($event) {
+		if (c.data.userIsGuest) return;
+
+		if (c.data.question.subscription) { //unsubscribe
+			$http({
+				method: "DELETE",
+				url: "/api/now/table/kb_social_qa_subscribe/" + c.data.question.subscription
+			}).then(function(response) {
+				if (response.status === 204) {
+					c.data.question.subscription = "";
+					spAriaUtil.sendLiveMessage($scope.data.unsubscribeMessage);
+				}
+			});
+		} else { //subscribe
+			$http.post("/api/now/table/kb_social_qa_subscribe", {
+				profile: c.data.liveProfileID,
+				question: c.data.questionID
+			}).then(function(response) {
+				if (response.status === 201) {
+					c.data.question.subscription = response.data.result.sys_id;
+					spAriaUtil.sendLiveMessage($scope.data.subscribeMessage);
+				}
+			});
+		}
+	};
+	
+	c.toggleCommentState = function() {
+		c.data.question.addCommentState = !c.data.question.addCommentState;
+		if (c.data.question.addCommentState)
+			$scope.setQuestionCommentBoxFocus();
+	};
+	
+	c.toggleAnswerCommentState = function(index) {
+		c.data.answers[index].addCommentState = !c.data.answers[index].addCommentState;
+		$scope.setAnswerCommentBoxFocus();
+	};
+	
+	c.getEmailSubject = function() {
+		return c.data.question.question ? window.encodeURIComponent(c.data.question.question) : "";
+	};
+}
+]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;$tag: darken(adjust-hue($primary, -5%), 10);
+
+.qa-text {
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.vote-block {
+  	text-align: center;
+	position: relative;
+  	right: 10px;
+  	font-size: 20px;
+  	margin-bottom: 20px;
+  
+  	.fa {
+      font-size: 20px;
+    }
+  	
+ 	.fa-sort-asc, .fa-sort-desc{
+      font-size: 38px;
+    }
+  
+  i {
+    display: block;
+  }
+}
+.fa.fa-circle.btn-divider {
+  margin-right: 5px;
+  margin-left: 0;
+  vertical-align: inherit;
+  color: $text-muted;
+}
+
+.fa.fa-circle {
+  font-size: 5px;
+  color: $text-color;
+  vertical-align: middle;
+  margin: 0 3px;
+}
+
+.question {
+	h3 {
+      padding: 10px 0;
+    }
+}
+
+//wrappers for the voting arrow icons, they are not normalized sizes like the other icons
+.vote-up-button {
+	height: 19px;
+}
+
+.vote-down-button {
+	margin-top: -18px; 
+}
+
+//align the vote count with the answer if the controls are hidden
+.hidden-voting-controls {
+  margin-top: -4px;
+}
+
+.vote {
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.option {
+  padding: 0;
+  padding-right: 5px;
+  color: $text-muted;
+}
+
+.create-answer {
+  width: 100%;
+}
+
+a.question-tag {
+    color: $qa-thread-tag-color;
+    background-color: $qa-thread-tag-bg;
+    border: $qa-thread-tag-border;
+    display: inline-block;
+    margin: 4px 4px 0;
+    border-radius: 0;
+    text-align: center;
+    line-height: 1;
+    padding: .4em .5em;
+  
+  &amp;amp;:first-child {
+  	margin: 4px 4px 4px 0;
+  }
+  
+  &amp;amp;:hover {
+  	color: $qa-thread-tag-hover-color;
+    background-color: $qa-thread-tag-hover-bg;
+    border: $qa-thread-tag-hover-border;
+  }
+}
+
+.vote-icon-size {
+  font-size: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .vote-icon-size {
+  	font-size: 2em;
+  }
+}
+
+.share-icon {
+  padding-right: 15px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 480px;
+}
+
+.disabled {
+  color: darken($gray-light, 15%);
+  cursor: default;
+}
+
+.mobile-timeago {
+	line-height: 2;
+}
+
+.answer {
+  position: relative;
+}
+
+.answer.ng-enter {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  top: 15px;
+  opacity: 0;
+}
+
+.answer.ng-enter-active {
+  top: 0;
+  opacity: 1
+}
+
+.comment {
+  position: relative;
+  z-index: 2;
+  background-color: inherit;
+  margin-top: 5px;
+  padding: 8px 0 4px !important;
+  border-top: 1px dashed rgba($gray-dark, 0.25);
+  
+  a {
+  	white-space: nowrap;
+  }
+  
+}
+
+.comment.ng-enter {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  bottom: 15px;
+  opacity: 0;
+  z-index: 1;
+}
+
+.comment.ng-enter-active {
+  bottom: 0;
+  opacity: 1;
+}
+
+.input-item {
+  margin-bottom: 10px;
+}
+
+.comment-entry.ng-enter {
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  opacity: 0;
+}
+
+.comment-entry.ng-enter-active {
+  opacity: 1;
+}
+
+.comment-entry.ng-leave {
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  opacity: 1;
+}
+
+.comment-entry.ng-leave-active {
+  opacity: 0;
+}
+
+.unstyled-list {
+	list-style: none;
+}
+.qa-star-on {
+  color: $qa-star-color-on;
+  text-shadow: $fav-star-outline;
+}
+.qa-star-off {
+  color: $qa-star-color-off;
+  text-shadow: $fav-star-outline;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;sqanda-question&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function(scope, elem, attr) {
+	scope.setQuestionCommentBoxFocus = function () {
+		setTimeout(function () {
+			elem.find("input.comment-question-textarea").attr('tabIndex', '-1').focus();
+		}, 0);
+	};
+	scope.setAnswerCommentBoxFocus = function () {
+		setTimeout(function () {
+			var inboxArray = elem.find("input.comment-answer-textarea");
+			inboxArray.attr('tabIndex', '-1').focus();
+		}, 0);
+	};
+}]]&gt;&lt;/link&gt;&lt;name&gt;SQANDA Question&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;true&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function () {
+	data.subscribeMsg = gs.getMessage("Subscribe");
+	data.unsubscribeMsg = gs.getMessage("Unsubscribe");
+	data.recipientsMsg = gs.getMessage("Recipients");
+	data.commentMsg = gs.getMessage("Add a comment");
+	data.optionalMsg = gs.getMessage("Optional Message");
+	data.communityBreadcrumb = gs.getMessage("Community");
+	data.subscribeMessage = gs.getMessage("You subscribed to this question");
+	data.unsubscribeMessage = gs.getMessage("You unsubscribed from this question");
+	data.answerSubmitted = gs.getMessage("Your answer has been posted");
+	data.commentPostedMsg = gs.getMessage("Your comment has been posted");
+	data.cancelCommentMessage = gs.getMessage("Your comment was canceled");
+	data.acceptedMsg = gs.getMessage("You accepted this answer");
+	data.unAcceptedMsg = gs.getMessage("You unaccepted this answer");
+	data.editMsg = gs.getMessage("You have edited successfully");
+	data.questionID = $sp.getParameter("question_id") || $sp.getParameter("sys_id");
+	
+	if (input == null)
+		data._attachmentGUID = gs.generateGUID();
+	
+	if (input &amp;&amp; input.method == 'generate_guid') {
+		data._attachmentGUID = gs.generateGUID();
+		return;
+	}
+	
+	if (input)
+		data.questionID = input.sys_id;
+	
+	if (input &amp;&amp; input.method === 'save') {
+		data.result = createAnswer(input);
+	}
+
+	if (!data.questionID){
+		var answerId = $sp.getParameter("answer_id");
+		if (answerId) {
+			var answer = new GlideRecord("kb_social_qa_answer");
+			answer.get(answerId);
+			data.questionID = answer.getValue('question');
+		} else
+			return;
+	}
+
+	data.sysUserID = gs.getUser().getID();
+	data.userIsGuest = (gs.getUserName() === "guest");
+	var liveProfileGR = new GlideRecord("live_profile");
+	liveProfileGR.addQuery("document", data.sysUserID);
+	liveProfileGR.query();
+	data.liveProfileID = (liveProfileGR.next()) ? liveProfileGR.getValue("sys_id") : "";
+
+	var questionGR = new GlideRecord("kb_social_qa_question");
+	if (questionGR.get(data.questionID)) {
+		incrementViewCounter(data.questionID)
+
+		//get question
+		data.question = new Question(questionGR);
+		data.answers = [];
+		data.comments = {};
+		data.votes = {};
+
+		//get question votes
+		var questionVotes = [];
+		var questionVoteGR = new GlideRecord("kb_social_qa_vote");
+		questionVoteGR.addActiveQuery();
+		questionVoteGR.addQuery("reference_name", "kb_social_qa_question");
+		questionVoteGR.addQuery("reference_id", data.questionID);
+		questionVoteGR.query();
+		while(questionVoteGR.next())
+			questionVotes.push(new Vote(questionVoteGR));
+
+		data.votes[data.questionID] = questionVotes;
+
+		//get comments on the question
+		var questionComments = [];
+		var commentGR = new GlideRecord("kb_social_qa_comment");
+		commentGR.addActiveQuery();
+		commentGR.addQuery("reference_name", "kb_social_qa_question");
+		commentGR.addQuery("reference_id", data.questionID);
+		commentGR.query();
+		while(commentGR.next())
+			questionComments.push(new Comment(commentGR));
+
+		data.comments[data.questionID] = questionComments;
+
+		//get answers
+		var answerGR = new GlideRecord("kb_social_qa_answer");
+		answerGR.addActiveQuery();
+		answerGR.orderByDesc("accepted");
+		answerGR.orderByDesc("votes");
+		answerGR.addQuery("question", data.questionID);
+		answerGR.query();
+
+		var answerIDs = [];
+		while (answerGR.next()) {
+			var answer = new Answer(answerGR);
+			data.answers.push(answer);
+			answerIDs.push(answer.sys_id);
+			data.comments[answer.sys_id] = [];
+			data.votes[answer.sys_id] = [];
+		}
+
+		//get comments on the answers
+		var answerCommentGR = new GlideRecord("kb_social_qa_comment");
+		answerCommentGR.addActiveQuery();
+		answerCommentGR.addQuery("reference_name", "kb_social_qa_answer");
+		answerCommentGR.addQuery("reference_id", "IN", answerIDs.toString());
+		answerCommentGR.query();
+		while(answerCommentGR.next()) {
+			var comment = new Comment(answerCommentGR);
+			data.comments[comment.reference_id].push(comment);
+		}
+
+		//get answer votes
+		var answerVoteGR = new GlideRecord("kb_social_qa_vote");
+		answerVoteGR.addActiveQuery();
+		answerVoteGR.addQuery("reference_name", "kb_social_qa_answer");
+		answerVoteGR.addQuery("reference_id", "IN", answerIDs.toString());
+		answerVoteGR.query();
+		while(answerVoteGR.next()) {
+			var vote = new Vote(answerVoteGR);
+			data.votes[vote.reference_id].push(vote);
+		}
+	}
+
+	function Question(gr) {
+		this.addCommentState = false;
+		this.sys_created_on = gr.getValue("sys_created_on");
+		this.question = gr.getValue("question");
+		this.question_details = gr.getValue("question_details");
+		this.sys_id = gr.getValue("sys_id");
+		this.views = gr.getValue("views");
+		this.tableName = gr.getTableName();
+		this.profile = new Profile(gr.getElement("profile").getRefRecord());
+
+		this.tags = [];
+		var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+		labelEntryGR.addQuery('reference_id', this.sys_id);
+		labelEntryGR.query();
+		while(labelEntryGR.next())
+			this.tags.push(new Tag(labelEntryGR.getElement('tag').getRefRecord()))
+
+			this.subscription = "";
+		var subscriptionGR = new GlideRecord("kb_social_qa_subscribe");
+		subscriptionGR.addQuery("question", data.questionID);
+		subscriptionGR.addQuery("profile", data.liveProfileID);
+		subscriptionGR.query();
+		if (subscriptionGR.next())
+			this.subscription = subscriptionGR.getValue("sys_id");
+	}
+
+	function Profile(gr) {
+		this.name = gr.getValue("name");
+		this.sys_id = gr.getValue("sys_id");
+		this.document = {
+			sys_id: gr.getValue("document")
+		};
+	}
+
+	function Vote(gr) {
+		this.sys_id = gr.getValue("sys_id");
+		this.profile = gr.getValue("profile");
+		this.reference_id = gr.getValue("reference_id");
+		this.up_vote = gr.getValue("up_vote");
+		this.type = (gr.getValue("up_vote") === "1") ? "upvote" : "downvote";
+	}
+
+	function Answer(gr) {
+		this.sys_id = gr.getValue("sys_id");
+		this.votes = gr.getValue("votes");
+		this.profile = new Profile(gr.getElement("profile").getRefRecord());
+		this.accepted = (gr.getValue("accepted") === "1");
+		this.sys_created_on = gr.getValue("sys_created_on");
+		this.answer = gr.getValue("answer");
+		this.tableName = gr.getTableName();
+		this.addCommentState = false;
+	}
+
+	function Comment(gr) {
+		this.sys_id = gr.getValue("sys_id");
+		this.comment = gr.getValue("comment");
+		this.reference_id = gr.getValue("reference_id");
+		this.sys_created_on = gr.getValue("sys_created_on");
+		this.profile = new Profile(gr.getElement("profile").getRefRecord());
+	}
+
+	function Tag(gr) {
+		this.sys_id = gr.getUniqueValue();
+		this.name = gr.getValue('name');
+	}
+
+	function incrementViewCounter(questionID) {
+		//Increment the view counter
+		var viewGR = new GlideRecord("kb_social_qa_view");
+		viewGR.addActiveQuery();
+		viewGR.addQuery("question", questionID);
+		viewGR.addQuery("session_id", gs.getSessionID());
+		viewGR.query();
+
+		if (!viewGR.hasNext()) {
+			var newViewGR = new GlideRecord("kb_social_qa_view");
+			newViewGR.initialize();
+			newViewGR.setWorkflow(true);
+			newViewGR.setValue("question", questionID);
+			newViewGR.insert();
+		}
+	}
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2015-12-23 21:07:13&lt;/sys_created_on&gt;&lt;sys_id&gt;ca923d81d720120023c84f80de610387&lt;/sys_id&gt;&lt;sys_mod_count&gt;1015&lt;/sys_mod_count&gt;&lt;sys_name&gt;SQANDA Question&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal Social QA" source="com.glide.service-portal.sqanda"&gt;8f88dd7e2f141010f37fd0e62799b657&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_ca923d81d720120023c84f80de610387&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2019-11-17 08:12:53&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+  &lt;div ng-if="c.data.question" &gt;
+    &lt;!-- BEGIN Question --&gt;
+    &lt;div class="panel panel-default question"&gt;
+      &lt;div class="panel-heading"&gt;
+      	&lt;h3 class="m-n"&gt;{{c.data.question.question}}&lt;/h3&gt;
+   	  &lt;/div&gt;
+      &lt;div class="panel-body"&gt;
+        &lt;div class="row m-b m-t m-r-none m-l-none"&gt;
+          &lt;div class="col-md-1 col-sm-2 hidden-xs vote-block"&gt;
+            &lt;div class="vote-up-button"&gt;
+            &lt;i class="vote fa fa-sort-asc" aria-label="${Vote up}"
+               ng-click="c.vote($event, 'kb_social_qa_question', c.data.question.sys_id, true)"
+               ng-class="{'active': c.showActiveArrow(c.data.question.sys_id, true), 'disabled': c.questionVotingDisabled()}"
+               ng-disabled='c.questionVotingDisabled()' tabindex="0"
+               &gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div&gt;{{c.getVoteCount(c.data.votes[c.data.question.sys_id])}}&lt;/div&gt;
+            &lt;div class="vote-down-button"&gt;
+            &lt;i class="vote fa fa-sort-desc" aria-label="${Vote down}"
+               ng-click="c.vote($event, 'kb_social_qa_question', c.data.question.sys_id, false)"
+               ng-class="{'active': c.showActiveArrow(c.data.question.sys_id, false), 'disabled': c.questionVotingDisabled()}"
+               ng-disabled='c.questionVotingDisabled()' tabindex="0"
+               &gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;i ng-if="!data.userIsGuest" aria-label="{{c.data.question.subscription !== '' ? c.data.unsubscribeMsg : c.data.subscribeMsg}}"
+               class="fa fa-star m-t-xs vote"
+               ng-click="c.toggleSubscribe($event)"
+               ng-class="c.isSubscribedClass()" tabindex="0"
+               &gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class="col-md-11 col-sm-10 col-xs-11"&gt;
+            &lt;div class="col-xs-2 visible-xs-inline-block vote-block"&gt;
+              &lt;div class="vote-up-button"&gt;
+            &lt;i class="vote fa fa-sort-asc" aria-label="${Vote up}"
+               ng-click="c.vote($event, 'kb_social_qa_question', c.data.question.sys_id, true)"
+               ng-class="{'active': c.showActiveArrow(c.data.question.sys_id, true), 'disabled': c.questionVotingDisabled()}"
+               ng-disabled='c.questionVotingDisabled()' tabindex="0"
+               &gt;&lt;/i&gt;
+              &lt;/div&gt;
+            &lt;div&gt;{{c.getVoteCount(c.data.votes[c.data.question.sys_id])}}&lt;/div&gt;
+              &lt;div class="vote-down-button"&gt;
+            &lt;i class="vote fa fa-sort-desc" aria-label="${Vote down}"
+               ng-click="c.vote($event, 'kb_social_qa_question', c.data.question.sys_id, false)"
+               ng-class="{'active': c.showActiveArrow(c.data.question.sys_id, false), 'disabled': c.questionVotingDisabled()}"
+               ng-disabled='c.questionVotingDisabled()' tabindex="0"
+               &gt;&lt;/i&gt;
+              &lt;/div&gt;
+            &lt;i ng-if="!data.userIsGuest" aria-label="{{c.data.question.subscription !== '' ? c.data.unsubscribeMsg : c.data.subscribeMsg}}"
+               class="fa fa-star m-t-xs vote"
+               ng-click="c.toggleSubscribe($event)"
+               ng-class="c.isSubscribedClass()" tabindex="0"
+               &gt;&lt;/i&gt;
+          &lt;/div&gt;
+            &lt;div class="row m-b break-word"&gt;
+              &lt;div class="qa-text"&gt;
+                &lt;sp-html-content ng-if="!c.data.question.editState" model="c.data.question.question_details"&gt;&lt;/sp-html-content&gt;
+                &lt;div ng-if="c.data.question.editState"&gt;
+                  &lt;sp-tinymce-editor ng-model="c.data.question.draft" ng-model-options="{}" class="create-answer" attachment-guid="c.data.question.sys_id" record-table-name="c.data.question.tableName"&gt;&lt;/sp-tinymce-editor&gt;
+                  &lt;button name="save" type="submit" ng-click="c.edit(c.data.question, 'question_details', 'kb_social_qa_question')" class="btn btn-primary m-t pull-right"&gt;${Save}&lt;/button&gt;
+                  &lt;button name="cancel" type="submit" ng-click="c.toggleEdit($event, c.data.question, 'question_details')" class="btn btn-default m-t m-r-sm pull-right"&gt;${Cancel}&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="visible-xs-inline-block" role="list"&gt;
+              &lt;a ng-repeat="tag in c.data.question.tags" ng-href="?id=sqa_tagged_questions&amp;sys_id={{tag.sys_id}}" class="question-tag" role="listitem"&gt;{{tag.name}}&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="row hidden-xs" role="list" ng-if="::(c.data.question.tags &amp;&amp; c.data.question.tags.length &gt; 0)"&gt;
+              &lt;a ng-repeat="tag in c.data.question.tags" ng-href="?id=sqa_tagged_questions&amp;sys_id={{tag.sys_id}}" class="question-tag" role="listitem"&gt;{{tag.name}}&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="row m-b m-t"&gt;
+              &lt;div class="btn-group"&gt;
+                &lt;button ng-if="!data.userIsGuest" type="button" class="btn btn-link dropdown-toggle option" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
+                  ${Share}
+                &lt;/button&gt;
+                &lt;ul class="dropdown-menu"&gt;
+                  &lt;li&gt;&lt;a href="javascript:void(0)" data-toggle="modal" data-target="#shareModal"&gt;&lt;span class="fa fa-comments share-icon"&gt;&lt;/span&gt;${Share via Connect}&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a ng-href="mailto:?to=&amp;body={{c.link}},&amp;subject={{::c.getEmailSubject()}}"&gt;&lt;span class="fa fa-envelope share-icon"&gt;&lt;/span&gt;${Share via Email}&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;i class="fa fa-circle btn-divider" ng-if="!data.userIsGuest" aria-hidden="true"&gt;&lt;/i&gt;
+              &lt;button class="btn btn-link option" ng-click="c.toggleCommentState()" ng-if="!data.userIsGuest"&gt;${Comment}&lt;/button&gt;
+              &lt;i class="fa fa-circle btn-divider" ng-if="c.data.question.profile.sys_id === c.data.liveProfileID" aria-hidden="true"&gt;&lt;/i&gt;
+              &lt;button class="btn btn-link option" ng-click="c.toggleEdit($event, c.data.question, 'question_details')" ng-if="c.data.question.profile.sys_id === c.data.liveProfileID"&gt;${Edit}&lt;/button&gt;
+              &lt;div class="hidden-xs pull-right"&gt;
+                &lt;sn-time-ago timestamp="c.data.question.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+                &lt;i aria-hidden="true" class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt;
+                ${Asked by} &lt;a href="javascript:void(0)" ng-click="c.goToUser(c.data.question.profile.document.sys_id)"&gt;{{c.data.question.profile.name}}&lt;/a&gt;
+                &lt;sn-avatar class="m-l-xs" primary="c.data.question.profile.document.sys_id"&gt;&lt;/sn-avatar&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="row visible-xs-block m-b mobile-timeago"&gt;
+              &lt;sn-avatar primary="c.data.question.profile.document.sys_id"&gt;&lt;/sn-avatar&gt;
+              &lt;a href="javascript:void(0)" ng-click="c.goToUser(c.data.question.profile.document.sys_id)"&gt;{{c.data.question.profile.name}}&lt;/a&gt;
+              &lt;sn-time-ago class="pull-right" timestamp="c.data.question.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+            &lt;/div&gt;
+            &lt;div ng-if="c.data.question.addCommentState" class="row m-r-none m-b comment-entry"&gt;
+              &lt;input ng-keydown="c.handleCommentSubmitEvent($event, c.data.question, 'kb_social_qa_question')" class="comment-question-textarea form-control" placeholder="{{c.data.commentMsg}}" ng-model="c.data.question.commentDraft"/&gt;
+              &lt;button name="comment" type="button" ng-click="c.postComment($event, c.data.question, 'kb_social_qa_question')" class="btn btn-primary m-l-sm pull-right m-t-sm"&gt;${Post comment}&lt;/button&gt;
+              &lt;button name="cancel" type="button" ng-click="c.cancelComment($event, c.data.question)" class="btn btn-default pull-right m-t-sm"&gt;${Cancel}&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;ul class="unstyled-list"&gt;
+              &lt;li ng-repeat="comment in c.data.comments[data.question.sys_id] | orderBy:'timestamp'" class="row wrapper-sm comment break-word"&gt;
+                &lt;div ng-if="!comment.editState"&gt;
+                  {{comment.comment}} -
+                  &lt;a href="javascript:void(0)" ng-click="c.goToUser(comment.profile.document.sys_id)"&gt;{{comment.profile.name}}&lt;/a&gt;
+                  &lt;i class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt;
+                  &lt;sn-time-ago timestamp="comment.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+                  &lt;span ng-if="comment.profile.sys_id === c.data.liveProfileID"&gt; &lt;i class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt; &lt;a href="javascript:void(0)" ng-click="c.toggleEdit($event, comment, 'comment')"&gt;${Edit}&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div ng-if="comment.editState"&gt;
+                  &lt;input class="form-control" placeholder="{{c.data.commentMsg}}" ng-model="comment.draft"/&gt;
+                  &lt;button name="save" type="button" ng-click="c.edit(comment, 'comment', 'kb_social_qa_comment')" class="btn btn-primary m-l-sm pull-right m-t-sm"&gt;${Save}&lt;/button&gt;
+                  &lt;button name="cancel" type="button" ng-click="c.toggleEdit($event, comment, 'comment')" class="btn btn-default pull-right m-t-sm"&gt;${Cancel}&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- END Question --&gt;
+    &lt;!-- BEGIN Answers --&gt;
+    &lt;div class="panel panel-default"&gt;
+      &lt;div class="panel-heading"&gt;
+        &lt;h4 ng-if="c.data.answers.length === 1" class="panel-title"&gt;{{c.data.answers.length}} ${Answer}&lt;/h4&gt;
+        &lt;h4 ng-if="c.data.answers.length !== 1" class="panel-title"&gt;{{c.data.answers.length}} ${Answers}&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;ul class="unstyled-list panel-body"&gt;
+        &lt;li ng-repeat="answer in c.data.answers" ng-class="{'light-border-bottom': !$last}" class="answer row m-r-none m-l-none m-t padder-b"&gt;
+          &lt;div class="col-md-1 col-sm-2 col-xs-2 vote-icon-size vote-block"&gt;
+            &lt;div class="vote-up-button" ng-show="answer.profile.sys_id !== c.data.liveProfileID"&gt;
+            &lt;i class="vote fa fa-sort-asc" aria-label="${Vote up}"
+               ng-click="c.vote($event, 'kb_social_qa_answer', answer.sys_id, true)"
+               ng-class="{'active': c.showActiveArrow(answer.sys_id, true), 'disabled': data.userIsGuest}"
+               ng-disabled='data.userIsGuest' tabindex="0"
+               &gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div ng-class="{'hidden-voting-controls': answer.profile.sys_id === c.data.liveProfileID}"&gt;{{c.getVoteCount(c.data.votes[answer.sys_id])}}&lt;/div&gt;
+            &lt;div class="vote-down-button" ng-show="answer.profile.sys_id !== c.data.liveProfileID"&gt;
+            &lt;i class="vote fa fa-sort-desc" aria-label="${Vote down}"
+               ng-click="c.vote($event, 'kb_social_qa_answer', answer.sys_id, false)"
+               ng-class="{'active': c.showActiveArrow(answer.sys_id, false), 'disabled': data.userIsGuest}"
+               ng-disabled='data.userIsGuest' tabindex="0"
+               &gt;&lt;/i&gt;
+              &lt;/div&gt;
+            &lt;i aria-label="${Accepted Answer Icon}" ng-show="answer.accepted" class="fa fa-check-circle text-success m-t-xs"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class="col-md-11 col-sm-10 col-xs-10"&gt;
+            &lt;div class="row m-b break-word"&gt;
+              &lt;div class="qa-text"&gt;
+                &lt;sp-html-content ng-if="!answer.editState" model="answer.answer"&gt;&lt;/sp-html-content&gt;
+                &lt;div ng-if="answer.editState"&gt;
+                  &lt;sp-tinymce-editor ng-model="answer.draft" ng-model-options="{}" class="create-answer" record-table-name="'kb_social_qa_answer'" attachment-guid="answer.sys_id"&gt;&lt;/sp-tinymce-editor&gt;
+                  &lt;button name="save" type="submit" ng-click="c.edit(answer, 'answer', 'kb_social_qa_answer')" class="btn btn-primary m-t pull-right"&gt;${Save}&lt;/button&gt;
+                  &lt;button name="cancel" type="submit" ng-click="c.toggleEdit($event, answer, 'answer')" class="btn btn-default m-t m-r-sm pull-right"&gt;${Cancel}&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="row m-b m-t"&gt;
+              &lt;div&gt;
+                &lt;button class="btn btn-link option" ng-click="c.toggleAnswerCommentState($index)" ng-if="!data.userIsGuest"&gt;${Comment}&lt;/button&gt;
+                &lt;i class="fa fa-circle btn-divider" ng-if="answer.profile.sys_id === c.data.liveProfileID &amp;&amp; !data.userIsGuest" aria-hidden="true"&gt;&lt;/i&gt;
+                &lt;button class="btn btn-link option" ng-click="c.toggleEdit($event, answer, 'answer')" ng-if="answer.profile.sys_id === c.data.liveProfileID"&gt;${Edit}&lt;/button&gt;
+                &lt;i class="fa fa-circle btn-divider" ng-if="c.data.question.profile.sys_id === c.data.liveProfileID" aria-hidden="true"&gt;&lt;/i&gt;
+                &lt;button class="btn btn-link option" ng-if="c.data.question.profile.sys_id === c.data.liveProfileID &amp;&amp; !answer.accepted"
+                   ng-click="c.toggleAccept($event, answer.sys_id, true)"&gt;${Accept}&lt;/button&gt;
+                &lt;button class="btn btn-link option" ng-if="c.data.question.profile.sys_id === c.data.liveProfileID &amp;&amp; answer.accepted"
+                   ng-click="c.toggleAccept($event, answer.sys_id, false)"&gt;${Unaccept}&lt;/button&gt;
+                &lt;div class="hidden-xs pull-right"&gt;
+                  &lt;sn-time-ago timestamp="answer.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+                  &lt;i class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt;
+                  ${Answered by} &lt;a href="javascript:void(0)" ng-click="c.goToUser(answer.profile.document.sys_id)"&gt;{{answer.profile.name}}&lt;/a&gt;
+                  &lt;sn-avatar class="m-l-xs" primary="answer.profile.document.sys_id"&gt;&lt;/sn-avatar&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="row visible-xs-block m-b"&gt;
+              &lt;sn-avatar primary="answer.profile.document.sys_id"&gt;&lt;/sn-avatar&gt;
+              &lt;a href="javascript:void(0)" ng-click="c.goToUser(answer.profile.document.sys_id)"&gt;{{answer.profile.name}}&lt;/a&gt;
+              &lt;sn-time-ago class="pull-right" timestamp="answer.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+            &lt;/div&gt;
+
+            &lt;div ng-if="answer.addCommentState" class="row m-b comment-entry"&gt;
+              &lt;input class="form-control comment-answer-textarea" ng-keydown="c.handleCommentSubmitEvent($event, answer, 'kb_social_qa_answer')" placeholder="{{c.data.commentMsg}}" ng-model="answer.commentDraft"/&gt;
+              &lt;button name="comment" type="button" ng-click="c.postComment($event, answer, 'kb_social_qa_answer')" class="btn btn-primary pull-right m-l-sm m-t-sm"&gt;${Post comment}&lt;/button&gt;
+              &lt;button name="cancel" type="button" ng-click="c.cancelComment($event, answer)" class="btn btn-default pull-right m-t-sm"&gt;${Cancel}&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;ul class="unstyled-list"&gt;
+                &lt;li ng-repeat="comment in c.data.comments[answer.sys_id] | orderBy:'timestamp'" class="row wrapper-sm comment break-word"&gt;
+                  &lt;div class="comment-content" ng-if="!comment.editState"&gt;
+                    {{comment.comment}} -
+                    &lt;a href="javascript:void(0)" ng-click="c.goToUser(comment.profile.document.sys_id)"&gt;{{comment.profile.name}}&lt;/a&gt;
+                    &lt;i class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt;
+                    &lt;sn-time-ago timestamp="comment.sys_created_on"&gt;&lt;/sn-time-ago&gt;
+                    &lt;span ng-if="comment.profile.sys_id === c.data.liveProfileID"&gt; &lt;i class="fa fa-circle" aria-hidden="true"&gt;&lt;/i&gt; &lt;a href="javascript:void(0)" ng-click="c.toggleEdit($event, comment, 'comment')"&gt;${Edit}&lt;/a&gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div ng-if="comment.editState"&gt;
+                    &lt;input class="form-control" placeholder="{{c.data.commentMsg}}" ng-model="comment.draft"/&gt;
+                    &lt;button name="save" type="button" ng-click="c.edit(comment, 'comment', 'kb_social_qa_comment')" class="btn btn-primary m-l-sm pull-right m-t-sm"&gt;${Save}&lt;/button&gt;
+                    &lt;button name="cancel" type="button" ng-click="c.toggleEdit($event, comment, 'comment')" class="btn btn-default pull-right m-t-sm"&gt;${Cancel}&lt;/button&gt;
+                  &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- END Answers --&gt;
+    &lt;div ng-if="!data.userIsGuest" class="panel panel-default light-border-bottom "&gt;
+      &lt;div class="panel-heading"&gt;
+        &lt;h4 class="panel-title"&gt;${Your Answer}&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class="panel-body"&gt;
+        &lt;div class="row m-t"&gt;
+          &lt;div class="col-xs-12"&gt;
+            &lt;sp-tinymce-editor ng-model="c.createAnswerDraft" ng-model-options="{}" class="create-answer" attachment-guid="c.data._attachmentGUID" record-table-name="'kb_social_qa_answer'"&gt;&lt;/sp-tinymce-editor&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="panel-footer"&gt;
+        &lt;button name="postAnswer" type="submit" ng-disabled="c.createAnswerDraft.length &lt;= 0" ng-click="c.createAnswer()" class="btn btn-primary"&gt;${Post Your Answer}&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div ng-if="data.userIsGuest" class="panel panel-default light-border-bottom"&gt;
+      &lt;div class="panel-body"&gt;
+        &lt;div class="row"&gt;
+          &lt;h4 class="m-t-none padder-b light-border-bottom m-l-none m-r-none"&gt;${Your Answer}&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div class="row"&gt;
+          &lt;div class="col-sm-6 col-xs-12"&gt;
+            &lt;p&gt;&lt;strong&gt;${Have an answer?}&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;${Please log in to answer this question}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="col-sm-6 col-xs-12"&gt;
+            &lt;widget id="widget-login"&gt;&lt;/widget&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div ng-if="!c.data.question &amp;&amp; c.data.questionID"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-sm-10 col-sm-offset-1 col-xs-12"&gt;
+        &lt;div class="panel panel-default"&gt;
+          &lt;div class="panel-heading"&gt;&lt;h4 class="panel-title"&gt;${Question not found}&lt;/h4&gt;&lt;/div&gt;
+          &lt;div class="panel-body wrapper"&gt;
+            &lt;p&gt;${This question does not exist}&lt;/p&gt;
+            &lt;p&gt;${Suggestions:}&lt;/p&gt;
+            &lt;ul&gt;
+              &lt;li&gt;${To ask a new question,} &lt;a href="?id=sqanda_new_question&amp;table=kb_social_qa_question&amp;sys_id=-1&amp;spa=1"&gt;${click here}&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+    &lt;!-- Modal --&gt;
+    &lt;div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="Share Question"&gt;
+      &lt;div class="modal-dialog" role="document"&gt;
+        &lt;div class="modal-content"&gt;
+          &lt;div class="modal-header"&gt;
+            &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+            &lt;h4 class="modal-title" id="shareModalLabel"&gt;${Share Question}&lt;/h4&gt;
+          &lt;/div&gt;
+          &lt;div class="modal-body"&gt;
+            &lt;sp-recipient-list class="input-item" recipients-msg="c.data.recipientsMsg" ng-model="c.recipientList"&gt;&lt;/sp-recipient-list&gt;
+            &lt;input ng-model="c.optionalMessage" type="text" class="form-control input-item" placeholder="{{c.data.optionalMsg}}"&gt;
+          &lt;/div&gt;
+          &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;${Close}&lt;/button&gt;
+            &lt;button type="button" ng-click="c.shareConnect($event)" class="btn btn-primary"&gt;${Send}&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            ]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 00:36:32</sys_created_on>
+        <sys_id>569289972f1c5010f37fd0e62799b605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>4a92c9572f1c5010f37fd0e62799b6cd</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_569289972f1c5010f37fd0e62799b605</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 00:36:32</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

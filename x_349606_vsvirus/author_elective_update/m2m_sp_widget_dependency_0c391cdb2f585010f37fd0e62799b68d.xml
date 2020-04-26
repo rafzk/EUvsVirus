@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="angular-truncate">09e1f1416712220023c82e08f585ef1e</sp_dependency>
+        <sp_widget display_value="Copy of Header Menu">44391cdb2f585010f37fd0e62799b68a</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-25 21:35:36</sys_created_on>
+        <sys_id>0c391cdb2f585010f37fd0e62799b68d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-truncate.Copy of Header Menu</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_0c391cdb2f585010f37fd0e62799b68d</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:35:36</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>m2m_sp_widget_dependency_0c391cdb2f585010f37fd0e62799b68d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="angular-truncate">09e1f1416712220023c82e08f585ef1e</sp_dependency><sp_widget display_value="Copy of Header Menu">44391cdb2f585010f37fd0e62799b68a</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>wrangu.james</sys_created_by><sys_created_on>2020-04-25 21:35:36</sys_created_on><sys_id>0c391cdb2f585010f37fd0e62799b68d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>angular-truncate.Copy of Header Menu</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>m2m_sp_widget_dependency_0c391cdb2f585010f37fd0e62799b68d</sys_update_name><sys_updated_by>wrangu.james</sys_updated_by><sys_updated_on>2020-04-25 21:35:36</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>1796930929</payload_hash>
+        <record_name>angular-truncate.Copy of Header Menu</record_name>
+        <reverted_from/>
+        <source>d37550d72f585010f37fd0e62799b677</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-25 21:35:36</sys_created_on>
+        <sys_id>c0391cdb2f585010f37fd0e62799b690</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b34467840000001</sys_recorded_at>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:35:36</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>0c391cdb7b5850102ee96538aa72d78f</update_guid>
+        <update_guid_history>0c391cdb7b5850102ee96538aa72d78f:1796930929</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="angular-truncate.Copy of Header Menu">6f99981f2f585010f37fd0e62799b66a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-25 21:37:29</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>00c56fa64fb44274bbaeef297d0d1910</sys_id>
+        <sys_metadata>0c391cdb2f585010f37fd0e62799b68d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-truncate.Copy of Header Menu</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_0c391cdb2f585010f37fd0e62799b68d</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_0c391cdb2f585010f37fd0e62799b68d">c0391cdb2f585010f37fd0e62799b690</sys_update_version>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:37:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

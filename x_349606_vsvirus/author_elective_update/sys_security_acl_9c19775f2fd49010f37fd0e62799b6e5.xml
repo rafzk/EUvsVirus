@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="DELETE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Default access control on x_349606_vsvirus_q_a_treatment_protocal</description>
+        <name>x_349606_vsvirus_q_a_treatment_protocal</name>
+        <operation display_value="create">create</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:45</sys_created_on>
+        <sys_id>9c19775f2fd49010f37fd0e62799b6e5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_q_a_treatment_protocal</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_security_acl_9c19775f2fd49010f37fd0e62799b6e5</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:45</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_security_acl_9c19775f2fd49010f37fd0e62799b6e5</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><condition/><description>Default access control on x_349606_vsvirus_q_a_treatment_protocal</description><name>x_349606_vsvirus_q_a_treatment_protocal</name><operation display_value="create">create</operation><script/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-26 13:53:45</sys_created_on><sys_id>9c19775f2fd49010f37fd0e62799b6e5</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_349606_vsvirus_q_a_treatment_protocal</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_security_acl_9c19775f2fd49010f37fd0e62799b6e5</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-26 13:53:45</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+        <payload_hash>-1529712833</payload_hash>
+        <record_name>x_349606_vsvirus_q_a_treatment_protocal</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:45</sys_created_on>
+        <sys_id>1819775f2fd49010f37fd0e62799b6e9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b6c3ecb60000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:45</sys_updated_on>
+        <type>Access Control</type>
+        <update_guid>5019775f5cd49010b7fc8eb5baa13be9</update_guid>
+        <update_guid_history>5019775f5cd49010b7fc8eb5baa13be9:-1529712833</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 14:05:43</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl">sys_security_acl</sys_db_object>
+        <sys_id>006aae97d0f441a485cf2929295f49c4</sys_id>
+        <sys_metadata>9c19775f2fd49010f37fd0e62799b6e5</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_q_a_treatment_protocal</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent display_value="">a019b75f2fd49010f37fd0e62799b60b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_security_acl_9c19775f2fd49010f37fd0e62799b6e5</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_9c19775f2fd49010f37fd0e62799b6e5">1819775f2fd49010f37fd0e62799b6e9</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 14:05:43</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_index">
+    <sys_index action="INSERT_OR_UPDATE">
+        <col_name_string>reference</col_name_string>
+        <index_col_name element="reference" name="x_349606_vsvirus_disease">fabf18d32f985010f37fd0e62799b6f8</index_col_name>
+        <logical_table_name>x_349606_vsvirus_disease</logical_table_name>
+        <sys_class_name>sys_index</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2020-04-25 22:23:28</sys_created_on>
+        <sys_id>0524e81b2f985010f37fd0e62799b6ef</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_disease</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_index_x_349606_vsvirus_disease_reference</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:23:28</sys_updated_on>
+        <table display_value="Disease" name="x_349606_vsvirus_disease">b0b018932f585010f37fd0e62799b6a7</table>
+        <unique_index>true</unique_index>
+    </sys_index>
+</record_update>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <client_script><![CDATA[function () {
+	var c = this;
+	
+	c.capitalize = function(str) {
+		if (str.length === 0) return "";
+		
+		return str.charAt(0).toUpperCase() + str.slice(1); 
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.stats-panel .stat-row {
+  padding-bottom: 15px;
+  &amp;:last-child {
+    padding: 0;
+  }
+}
+
+.fa {
+  width: 15px;
+}
+
+.related-question {
+  padding-bottom: 15px;
+  word-wrap: break-word;
+}
+
+a.question-tag {
+    color: $qa-tag-color;
+    background-color: $qa-tag-bg;
+    border: 1px solid $qa-tag-border;
+    display: inline-block;
+    margin: 4px 4px 4px 0;
+    border-radius: 0;
+    text-align: center;
+    line-height: 1;
+    padding: .4em .5em;
+  
+    &amp;:hover {
+    	color: $qa-tag-hover-color;
+      background-color: $qa-tag-hover-bg;
+      border-color: $qa-tag-hover-bg;
+    }
+}
+
+
+.bottom-margin-small {
+  margin-bottom: 10px;
+}
+
+.mc-panel {
+  margin-bottom: 20px;
+}
+
+.mc-panel-header {
+	word-wrap: break-word;
+  margin-top:15px; 
+  padding: 10px 15px; 
+  border-bottom: 1px solid transparent; 
+  border-color: #E6E8EA; 
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px;
+}
+
+.mc-panel-body {
+  padding: 5px 15px 15px;
+}
+
+.mc-panel-padding {
+  padding: 5px 15px 15px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>mc-related-details</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>MediCast Related Details</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[// populate the 'data' object
+// e.g., data.table = $sp.getValue('table');
+(function() {
+	data.knowledgeBase = $sp.getPortalRecord().getValue("sqanda_knowledge_base") || gs.getProperty("glide.service_portal.sqanda.default_kb");
+	data.questionID = $sp.getParameter("question_id") || $sp.getParameter("sys_id");
+	if (!data.questionID){
+		var answerId = $sp.getParameter("answer_id");
+		if (answerId) {
+			var answer = new GlideRecord("kb_social_qa_answer");
+			answer.get(answerId);
+			data.questionID = answer.getValue('question');
+		} else
+			return;
+	}
+
+	var questionGR = new GlideRecord("kb_social_qa_question");
+	if (questionGR.get(data.questionID)) {
+		data.question = new Question(questionGR);
+		
+		var symptomsQ = questionGR.getValue('x_349606_vsvirus_symptom_tag');
+		var treatmentsQ = questionGR.getValue('x_349606_vsvirus_treatment_tag');
+		var diseasesQ = questionGR.getValue('x_349606_vsvirus_disease_tag');
+		
+		
+		data.symptoms = getTags('x_349606_vsvirus_symptom',symptomsQ);
+		data.treatments = getTags('x_349606_vsvirus_treatment',symptomsQ);
+		data.diseases = getTags('x_349606_vsvirus_disease',symptomsQ);
+		
+		
+		
+		
+		
+		
+		
+		
+
+		//to make sure we dont return duplicate questions
+		var foundQuestionIDs = [];
+
+		foundQuestionIDs.push(data.question.sys_id);
+
+		//just grab three of the tags... dont want this to go on for ages
+		//if someone is an overzelous tagger
+		data.tags = data.question.tags.slice(0, 3);
+
+		data.tags.forEach(function(tag) {
+			tag.questions = [];
+
+			var tagEntryGR = new GlideRecord("sqanda_tag_entry");
+			tagEntryGR.addQuery("tag", tag.sys_id);
+			tagEntryGR.addQuery("reference_name", "kb_social_qa_question");
+			tagEntryGR.query();
+
+			var taggedQuestionIDs = [];
+			while(tagEntryGR.next()) {
+				taggedQuestionIDs.push(tagEntryGR.getValue('reference_id'));
+			}
+			
+			var taggedQuestionGR = new GlideRecord("kb_social_qa_question");
+			taggedQuestionGR.addQuery("kb_knowledge_base", data.knowledgeBase);
+			taggedQuestionGR.addActiveQuery();
+			taggedQuestionGR.addQuery("sys_id", "IN", taggedQuestionIDs.toString());
+			taggedQuestionGR.query();
+
+			var count = 0;
+			while(taggedQuestionGR.next() && count < 5) {
+				if (!contains(foundQuestionIDs, taggedQuestionGR.getUniqueValue())) {
+					tag.questions.push(new Question(taggedQuestionGR));
+					foundQuestionIDs.push(taggedQuestionGR.getUniqueValue());
+					count++;
+				}
+			}
+		});
+		
+		data.recentQuestions = [];
+		var recentQuestionGR = new GlideRecord("kb_social_qa_question");
+		recentQuestionGR.addQuery("kb_knowledge_base", data.knowledgeBase);
+		recentQuestionGR.addActiveQuery();
+		recentQuestionGR.orderByDesc('sys_created_on');
+		recentQuestionGR.query();
+		
+		var count = 0;
+		while(recentQuestionGR.next() && count < 10) {
+			if (!contains(foundQuestionIDs, recentQuestionGR.getUniqueValue())) {
+				data.recentQuestions.push(new Question(recentQuestionGR));
+				foundQuestionIDs.push(recentQuestionGR.getUniqueValue());
+				count++;
+			}
+		}
+
+	}
+
+	function Question(gr) {
+		this.sys_created_on = gr.getValue("sys_created_on");
+		this.question = gr.getValue("question");
+		this.question_details = gr.getValue("question_details");
+		this.sys_id = gr.getValue("sys_id");
+		this.profile = new Profile(gr.getElement("profile").getRefRecord());
+
+		this.subscribers = 0;
+		var subscriberGR = new GlideAggregate("kb_social_qa_subscribe");
+		subscriberGR.addQuery("question", this.sys_id);
+		subscriberGR.query();
+		this.subscribers = subscriberGR.getCount();
+		
+		var viewGR = new GlideRecord("kb_social_qa_view");
+		viewGR.addQuery("question", this.sys_id);
+		viewGR.query();
+		this.views = viewGR.getRowCount();
+		
+		this.tags = [];
+		var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+		labelEntryGR.addQuery('reference_id', this.sys_id);
+		labelEntryGR.query();
+		while(labelEntryGR.next())
+			this.tags.push(new Tag(labelEntryGR.getElement('tag').getRefRecord()))
+	}
+
+	function Tag(gr) {
+		this.sys_id = gr.getUniqueValue();
+		this.name = gr.getValue('name');
+	}
+
+	function Profile(gr) {
+		this.name = gr.getValue("name");
+		this.sys_id = gr.getValue("sys_id");
+		this.document = {
+			sys_id: gr.getValue("document")
+		};
+	}
+	
+	function contains(arr, value) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i].equals(value)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	function getTags(table,sysIDs) {
+		var arr = [];
+		var grTag = new GlideRecord(table);
+		grTag.addQuery('sys_id','IN',sysIDs);
+		grTag.query();
+		while(grTag.next()) {
+			var obj = {
+				name: grTag.getValue('short_description'),
+				sys_id: grTag.getUniqueValue()
+			}
+			
+			arr.push(obj);
+		}
+		return arr;
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 11:58:47</sys_created_on>
+        <sys_id>1cce939b2fd09010f37fd0e62799b648</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>MediCast Related Details</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_1cce939b2fd09010f37fd0e62799b648</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 19:56:56</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="mc-panel">
+    <div class="mc-panel-header">
+      <h3 class="m-n">${Tags}</h3>
+    </div>
+    <div class="mc-panel-body">
+      <h4 ng-if="data.diseases.length > 0">Symptoms</h4>
+      <span role="listitem" ng-repeat="disease in data.diseases" >
+      	<a ng-href="?id=mc_all_discussions&sys_id={{disease.sys_id}}" class="question-tag">{{disease.name}}</a>
+      </span>
+      <h4 ng-if="data.symptoms.length > 0">Diseases</h4>
+      <span role="listitem" ng-repeat="symptom in data.symptoms" >
+      	<a ng-href="?id=mc_all_discussions&sys_id={{symptom.sys_id}}" class="question-tag">{{symptom.name}}</a>
+      </span>
+      <h4 ng-if="data.treatments.length > 0">Treatments</h4>
+      <span role="listitem" ng-repeat="treatment in data.treatments" >
+      	<a ng-href="?id=mc_all_discussions&sys_id={{treatment.sys_id}}" class="question-tag">{{treatment.name}}</a>
+      </span>
+      
+    </div>
+  </div>
+  
+  <div class="mc-panel m-t-xl">
+    <div class="mc-panel-header">
+      <h3 class="m-n">${Stats}</h3>
+    </div>
+    <div class="mc-panel-body">
+       <div class="stat-row m-b">
+        <div class="fa fa-clock-o" aria-hidden="true"></div>
+        <span class="stat-description">${Asked} <sn-time-ago timestamp="data.question.sys_created_on"></sn-time-ago></span>
+      </div>
+      <div class="stat-row m-b">
+        <div class="fa fa-star" aria-hidden="true"></div>
+        <span ng-if="data.question.subscribers != 1" class="stat-description">${{{data.question.subscribers}} Subscribers}</span>
+        <span ng-if="data.question.subscribers == 1" class="stat-description">${{{data.question.subscribers}} Subscriber}</span>
+      </div>
+      <div class="stat-row m-b">
+        <div class="fa fa-eye" aria-hidden="true"></div>
+        <span ng-if="data.question.views == 1" class="stat-description">${{{data.question.views}} View}</span>
+        <span ng-if="data.question.views != 1" class="stat-description">${{{data.question.views}} Views}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mc-panel m-t-xl">
+    <div class="mc-panel-header">
+      <h3 class="m-n">${Recent Discussions}</h3>
+    </div>
+    <div class="mc-panel-body">
+      <div class="related-question" ng-repeat="question in data.recentQuestions">
+        <a ng-href="?id=kb_article_mc&sys_id={{question.sys_id}}">{{question.question}}</a>
+      </div>
+      <a class="text-muted" ng-href="?id=mc_all_discussions">${See more recent questions}</a>
+    </div>
+  </div> 
+</div>]]></template>
+    </sp_widget>
+</record_update>

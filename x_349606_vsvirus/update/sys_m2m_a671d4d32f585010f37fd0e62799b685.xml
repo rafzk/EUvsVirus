@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_m2m">
+    <sys_m2m action="INSERT_OR_UPDATE">
+        <from_table>x_349606_vsvirus_persona</from_table>
+        <m2m_from_field>persona</m2m_from_field>
+        <m2m_from_label>Diseases</m2m_from_label>
+        <m2m_table>x_349606_vsvirus_m2m_diseases_personas</m2m_table>
+        <m2m_to_field>disease</m2m_to_field>
+        <m2m_to_label>Personas</m2m_to_label>
+        <sys_class_name>sys_m2m</sys_class_name>
+        <sys_created_by>wrangu.phil</sys_created_by>
+        <sys_created_on>2020-04-25 21:06:31</sys_created_on>
+        <sys_id>a671d4d32f585010f37fd0e62799b685</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_349606_vsvirus_m2m_diseases_personas</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_m2m_a671d4d32f585010f37fd0e62799b685</sys_update_name>
+        <sys_updated_by>wrangu.phil</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:06:31</sys_updated_on>
+        <to_table>x_349606_vsvirus_disease</to_table>
+    </sys_m2m>
+</record_update>

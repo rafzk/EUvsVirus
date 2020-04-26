@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_349606_vsvirus_choice">
+    <x_349606_vsvirus_choice action="INSERT_OR_UPDATE">
+        <choice_category>type</choice_category>
+        <name>Age</name>
+        <order>100</order>
+        <set>x_349606_vsvirus_attribute</set>
+        <sys_class_name>x_349606_vsvirus_choice</sys_class_name>
+        <sys_created_by>wrangu.phil</sys_created_by>
+        <sys_created_on>2020-04-25 21:30:51</sys_created_on>
+        <sys_id>d308d09b2f585010f37fd0e62799b64e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Age</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>x_349606_vsvirus_choice_d308d09b2f585010f37fd0e62799b64e</sys_update_name>
+        <sys_updated_by>wrangu.phil</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:30:51</sys_updated_on>
+        <value>age</value>
+    </x_349606_vsvirus_choice>
+</record_update>

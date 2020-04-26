@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css>.input-group {
+  margin-bottom: 25px;
+}
+
+input, button {
+  background-color: rgba(138, 143, 160, 0.6);
+  color:#fff !important;
+  font-weight: 300;
+  border-color:rgba(255, 255, 255, 0.3);
+}
+
+input::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+  color: #fff !important;  
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+  color: #fff !important;  
+}
+
+input:-ms-input-placeholder {  
+  color: #fff !important;  
+}</css>
+        <glyph>search</glyph>
+        <id/>
+        <order>0</order>
+        <roles/>
+        <short_description/>
+        <size>lg</size>
+        <sp_column display_value="2">4aa97e172f509010f37fd0e62799b6b4</sp_column>
+        <sp_widget display_value="Typeahead Search">fa20ec02cb31020000f8d856634c9ce9</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 09:16:42</sys_created_on>
+        <sys_id>46a97e172f509010f37fd0e62799b6cf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Search the knowledge base</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_instance_46a97e172f509010f37fd0e62799b6cf</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:16:42</sys_updated_on>
+        <title>Search the knowledge base</title>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=46a97e172f509010f37fd0e62799b6cf"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sp_instance_46a97e172f509010f37fd0e62799b6cf</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css>.input-group {
+  margin-bottom: 25px;
+}
+
+input, button {
+  background-color: rgba(138, 143, 160, 0.6);
+  color:#fff !important;
+  font-weight: 300;
+  border-color:rgba(255, 255, 255, 0.3);
+}
+
+input::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+  color: #fff !important;  
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+  color: #fff !important;  
+}
+
+input:-ms-input-placeholder {  
+  color: #fff !important;  
+}</css><glyph>search</glyph><id/><order>0</order><roles/><short_description/><size>lg</size><sp_column display_value="2">4aa97e172f509010f37fd0e62799b6b4</sp_column><sp_widget display_value="Typeahead Search">fa20ec02cb31020000f8d856634c9ce9</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>wrangu.pier</sys_created_by><sys_created_on>2020-04-26 09:16:42</sys_created_on><sys_id>46a97e172f509010f37fd0e62799b6cf</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Search the knowledge base</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sp_instance_46a97e172f509010f37fd0e62799b6cf</sys_update_name><sys_updated_by>wrangu.pier</sys_updated_by><sys_updated_on>2020-04-26 09:16:42</sys_updated_on><title>Search the knowledge base</title><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=46a97e172f509010f37fd0e62799b6cf"/></record_update>]]></payload>
+        <payload_hash>-1925380161</payload_hash>
+        <record_name>Search the knowledge base</record_name>
+        <reverted_from/>
+        <source>3d261cd72f585010f37fd0e62799b622</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 09:16:42</sys_created_on>
+        <sys_id>82a97e172f509010f37fd0e62799b6d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b5c646db0000001</sys_recorded_at>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:16:42</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>caa97e1727509010a562001e33301fd0</update_guid>
+        <update_guid_history>caa97e1727509010a562001e33301fd0:-1925380161</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Search the knowledge base">d06ab6572f509010f37fd0e62799b628</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 09:19:51</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>04419ebdcf8f449880b06b8cff167110</sys_id>
+        <sys_metadata>46a97e172f509010f37fd0e62799b6cf</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Search the knowledge base</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sp_instance_46a97e172f509010f37fd0e62799b6cf</sys_update_name>
+        <sys_update_version display_value="sp_instance_46a97e172f509010f37fd0e62799b6cf">82a97e172f509010f37fd0e62799b6d1</sys_update_version>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:19:51</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

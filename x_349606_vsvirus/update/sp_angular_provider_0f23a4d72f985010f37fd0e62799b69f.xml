@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_angular_provider">
+    <sp_angular_provider action="INSERT_OR_UPDATE">
+        <name>mcHeader</name>
+        <script><![CDATA[function() {
+	var templete = '<div>';
+	templete += '<div style="margin-top:15px; padding: 10px 15px; border-bottom: 1px solid transparent; border-color: #E6E8EA; border-top-right-radius: 3px; border-top-left-radius: 3px;">';
+	templete += '<h2 style="color: #34495e; font-weight: normal; font-size: 20px; margin-top: 0; margin-bottom: 0;">';
+	templete += '<i class="fa {{icon}}"></i> {{title}}';
+	templete += '</h2>';
+	templete += '</div>';
+	templete += '<div ng-transclude>';
+	templete += '</div>';
+	templete += '</div>';
+	
+	
+	
+    return {
+        restrict: 'E', 
+        replace: 'true',
+		transclude: true,
+        template: templete,
+		scope: {
+			title: '@',
+			icon: '@',
+		}
+    };
+}]]></script>
+        <sys_class_name>sp_angular_provider</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-25 22:20:51</sys_created_on>
+        <sys_id>0f23a4d72f985010f37fd0e62799b69f</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>mcHeader</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_angular_provider_0f23a4d72f985010f37fd0e62799b69f</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-25 23:44:05</sys_updated_on>
+        <type>directive</type>
+    </sp_angular_provider>
+</record_update>

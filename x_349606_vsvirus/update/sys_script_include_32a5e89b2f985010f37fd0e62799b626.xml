@@ -8,6 +8,10 @@
         <description/>
         <name>TreatmentProtocol</name>
         <script><![CDATA[var TreatmentProtocol = Class.create();
+TreatmentProtocol.TREATMENT_RESULT_TABLE = 'x_349606_vsvirus_treatment_result';
+TreatmentProtocol.TREATMENT_PROTOCOL_TABLE = 'x_349606_vsvirus_treatment_protocol';
+TreatmentProtocol.QA_TREATMENT_PROTOCOL_TABLE = 'x_349606_vsvirus_q_a_treatment_protocol';
+TreatmentProtocol.QA_TREATMENT_RESULT_TABLE = '';
 
 TreatmentProtocol.prototype = {
     initialize: function(treatmentGr) {
@@ -17,38 +21,72 @@ TreatmentProtocol.prototype = {
     recalculateResult: function() {
         if (!this.treatmentGr)
             return;
-		
-		var total = this._recordCount(this.treatmentGr);
-		var successCount = this._successCount(this.treatmentGr);
-		var percentage = (successCount / total) * 100;
-		
-		this.treatmentGr.setValue('success_rate', percentage);
 
-       
+        var total = this._recordCount(this.treatmentGr);
+        var successCount = this._successCount(this.treatmentGr);
+        var percentage = (successCount / total) * 100;
+
+        this.treatmentGr.setValue('success_rate', percentage);
     },
-	
-	_recordCount: function(treatmentGr) {
-		var ga = new GlideAggregate('x_349606_vsvirus_treatment_result');
+
+    getTotalCommentCount: function(id) {
+      //  var commentCount = parseInt(this.getCommentCount(id));
+        var answerCount = parseInt(this.getAnswerCount(id));
+		return answerCount;// commentCount
+    },
+
+    getCommentCount: function(id) {
+        var ga = new GlideAggregate('kb_social_qa_comment');
+        ga.addQuery('reference_id', id);
+        ga.addAggregate('COUNT');
+        ga.query();
+        if (ga.next())
+            return ga.getAggregate('COUNT');
+        return 0;
+    },
+
+    getAnswerCount: function(id) {
+        var ga = new GlideAggregate('kb_social_qa_answer');
+        ga.addQuery('question', id);
+        ga.addAggregate('COUNT');
+        ga.query();
+        if (ga.next())
+            return ga.getAggregate('COUNT');
+        return 0;
+
+    },
+
+    getViewCount: function(id) {
+        var ga = new GlideAggregate('kb_social_qa_view');
+        ga.addQuery('question', id);
+        ga.addAggregate('COUNT');
+        ga.query();
+        if (ga.next())
+            return ga.getAggregate('COUNT');
+        return 0;
+    },
+    _recordCount: function(treatmentGr) {
+        var ga = new GlideAggregate(this.TREATMENT_RESULT_TABLE);
         ga.addAggregate('COUNT');
         ga.addQuery('treatment_protocol', treatmentGr.getUniqueValue());
-		ga.query();
-		if (ga.next())
-			return ga.getAggregate('COUNT');
-		else 
-			return false;
-	},
-	
-	_successCount: function(treatmentGr) {
-		var ga = new GlideAggregate('x_349606_vsvirus_treatment_result');
+        ga.query();
+        if (ga.next())
+            return ga.getAggregate('COUNT');
+        else
+            return false;
+    },
+
+    _successCount: function(treatmentGr) {
+        var ga = new GlideAggregate(this.TREATMENT_RESULT_TABLE);
         ga.addAggregate('COUNT');
         ga.addQuery('treatment_protocol', treatmentGr.getUniqueValue());
-		ga.addQuery('result', 1); // success
-		ga.query();
-		if (ga.next())
-			return ga.getAggregate('COUNT');
-		else 
-			return false;
-	},
+        ga.addQuery('result', 1); // success
+        ga.query();
+        if (ga.next())
+            return ga.getAggregate('COUNT');
+        else
+            return false;
+    },
 
     type: 'TreatmentProtocol'
 };]]></script>
@@ -56,13 +94,13 @@ TreatmentProtocol.prototype = {
         <sys_created_by>wrangu.lansford</sys_created_by>
         <sys_created_on>2020-04-25 22:52:37</sys_created_on>
         <sys_id>32a5e89b2f985010f37fd0e62799b626</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>TreatmentProtocol</sys_name>
         <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
         <sys_update_name>sys_script_include_32a5e89b2f985010f37fd0e62799b626</sys_update_name>
         <sys_updated_by>wrangu.lansford</sys_updated_by>
-        <sys_updated_on>2020-04-26 00:48:00</sys_updated_on>
+        <sys_updated_on>2020-04-26 17:43:40</sys_updated_on>
     </sys_script_include>
 </record_update>

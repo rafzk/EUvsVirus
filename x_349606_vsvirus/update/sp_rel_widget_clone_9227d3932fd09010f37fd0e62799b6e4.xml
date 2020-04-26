@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="MediCast Quick Actions">9227d3932fd09010f37fd0e62799b6e1</child>
+        <cloned>2020-04-26 11:25:37</cloned>
+        <last_validated>2020-04-26 11:25:37</last_validated>
+        <parent display_value="link-button">abc50de6d702120023c84f80de61036a</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;standard&lt;/category&gt;&lt;client_script/&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.btn {
+  width: 100%;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data&gt;{
+	"href": "www.google.com",
+	"button_text": "Go to google"
+}&lt;/demo_data&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list&gt;color&lt;/field_list&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;widget-link-button&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;link-button&lt;/name&gt;&lt;option_schema&gt;[{"name":"href","section":"Presentation","label":"Link for button","type":"string"},{"name":"button_text","section":"Presentation","label":"Contents of button","type":"string"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles&gt;snc_external,snc_internal&lt;/roles&gt;&lt;script&gt;&lt;![CDATA[data.buttonMsg = gs.getMessage(options.button_text || "Click Here");
+data.socialQAEnabled = true;
+if (options.href == "?id=sqanda_new_question") {
+	data.socialQAEnabled = gs.getProperty('glide.sp.socialqa.enabled') === 'true';
+}]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-03-11 23:15:45&lt;/sys_created_on&gt;&lt;sys_id&gt;abc50de6d702120023c84f80de61036a&lt;/sys_id&gt;&lt;sys_mod_count&gt;48&lt;/sys_mod_count&gt;&lt;sys_name&gt;link-button&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Core" source="com.glide.service-portal"&gt;d568157e2f141010f37fd0e62799b636&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_abc50de6d702120023c84f80de61036a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2019-06-14 03:18:11&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;a ng-href="{{options.href}}" class="btn btn-{{options.color}} m-b" ng-if="data.socialQAEnabled"&gt;{{data.buttonMsg}}&lt;/a&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 11:25:37</sys_created_on>
+        <sys_id>9227d3932fd09010f37fd0e62799b6e4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>9227d3932fd09010f37fd0e62799b6e1</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_9227d3932fd09010f37fd0e62799b6e4</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 11:25:37</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

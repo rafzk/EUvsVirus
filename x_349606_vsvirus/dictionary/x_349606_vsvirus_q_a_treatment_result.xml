@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Q&amp;A Treatment Result" max_length="40" name="x_349606_vsvirus_q_a_treatment_result" type="collection">
+        <element label="Persona" max_length="32" name="persona" reference="x_349606_vsvirus_persona" type="reference"/>
+        <element label="Q&amp;A treatment protocol" max_length="32" name="q_a_treatment_protocol" reference="x_349606_vsvirus_q_a_treatment_protocol" type="reference"/>
+        <element choice="1" label="Result" mandatory="true" max_length="40" name="result" type="integer">
+            <choice>
+                <element inactive_on_update="false" label="Negative" sequence="-1" value="-1"/>
+                <element inactive_on_update="false" label="Inconclusive" sequence="0" value="0"/>
+                <element inactive_on_update="false" label="Positive" sequence="1" value="1"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="persona"/>
+        </index>
+        <index name="index2">
+            <element name="q_a_treatment_protocol"/>
+        </index>
+    </element>
+</database>

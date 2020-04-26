@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <client_script><![CDATA[function($scope, $http, $timeout, spUtil, $rootScope) {
+	var c = this;
+
+	c.tagList = "";
+	c.editMode = false;
+
+	c.toggleEditMode = function() {
+		if (c.editMode || c.data.tags.length === 0) {
+			$timeout(function() {
+				$scope.data.action = "update";
+				if ($scope.data.tagList != c.tagList) {
+					c.saving = true;
+					$scope.data.tagList = c.tagList;
+					$scope.server.update().then(function() {
+						c.saveMsg = c.data.tagsSavedMsg;
+						c.saving = false;
+						$timeout(function() {
+							c.saveMsg = "";
+						}, 1500);
+						c.editMode = false;
+						//spUtil.addTrivialMessage('Tags have been updated');
+						$rootScope.$broadcast("sp-favorite-tags-updated");
+					});
+				} else
+					c.editMode = false;
+
+				c.tagList = "";
+			});
+		} else {
+			c.editMode = true;
+			c.tagList = "";
+			$timeout(function() {
+				$rootScope.$broadcast("sp-favorite-tags-edit");
+			});
+		}
+	}	
+	$scope.$on("spTagListBlurred", function() {
+		c.toggleEditMode();
+	});
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>a.question-tag {
+    color: $qa-tag-color;
+    background-color: $qa-tag-bg;
+    border: 1px solid $qa-tag-border;
+    display: inline-block;
+    margin: 4px 4px 4px 0;
+    border-radius: 0;
+    text-align: center;
+    line-height: 1;
+    padding: .4em .5em;
+  
+    &amp;:hover {
+    	color: $qa-tag-hover-color;
+      background-color: $qa-tag-hover-bg;
+      border-color: $qa-tag-hover-bg;
+    }
+}
+
+.panel-title &gt; a {
+  color: $qa-panel-link-color !important;
+}
+
+.mc-panel {
+  margin-bottom: 20px;
+}
+
+.mc-panel-header {
+	word-wrap: break-word;
+  margin-top:15px; 
+  padding: 10px 15px; 
+  border-bottom: 1px solid transparent; 
+  border-color: #E6E8EA; 
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px;
+}
+
+.mc-panel-body {
+  padding: 5px 15px 15px;
+}
+
+.mc-panel-padding {
+  padding: 5px 15px 15px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>mc-tag-filter</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>MediCast Tag Filter</name>
+        <option_schema/>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[// populate the 'data' object
+// e.g., data.table = $sp.getValue('table');
+data.typeTagNameMsg = gs.getMessage("Type tag name...");
+data.tagsSavedMsg = gs.getMessage("Tags saved");
+var loggedInSysUserID = gs.getUser().getID();
+data.userIsGuest = (gs.getUserName() === "guest");
+data.liveProfileID = "";
+var liveProfileGR = new GlideRecord("live_profile");
+if (liveProfileGR.get("document", loggedInSysUserID))
+	data.liveProfileID = liveProfileGR.getUniqueValue();
+
+// blunt: delete the user's tags, then add back the ones we want to keep
+if (input && input.action == "update") {
+	var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+	labelEntryGR.addQuery("reference_name", "live_profile");
+	labelEntryGR.addQuery("reference_id", data.liveProfileID);
+	labelEntryGR.deleteMultiple();
+	
+	input.tagList.split(",").forEach(function(tagID) {
+		var newLabelEntryGR = new GlideRecord("sqanda_tag_entry");
+		newLabelEntryGR.initialize();
+		newLabelEntryGR.reference_name = "live_profile";
+		newLabelEntryGR.reference_id = data.liveProfileID;
+		newLabelEntryGR.tag = tagID;
+		newLabelEntryGR.insert();
+	});
+}
+
+data.tags = [];
+
+if (data.liveProfileID) {
+	var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+	labelEntryGR.addQuery("reference_name", "live_profile");
+	labelEntryGR.addQuery("reference_id", data.liveProfileID);
+	labelEntryGR.query();
+	
+	while (labelEntryGR.next()) {
+		var labelGR = labelEntryGR.getElement("tag").getRefRecord();
+		if (labelGR.getUniqueValue() !== null)
+			data.tags.push({
+				name: labelGR.getValue("name"),
+				sys_id: labelGR.getUniqueValue(),
+				label_entry_id: labelEntryGR.getUniqueValue()
+			});
+	}
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 16:33:26</sys_created_on>
+        <sys_id>eb9d94ef2f589010f37fd0e62799b641</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>MediCast Tag Filter</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_eb9d94ef2f589010f37fd0e62799b641</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:46:50</sys_updated_on>
+        <template><![CDATA[<div ng-if="!data.userIsGuest">
+  <div class="mc-panel">
+    <div class="mc-panel-header">
+      <h3 class="m-n">${Filter by Tags}</h3>
+    </div>
+    <div class="mc-panel-body">
+      <p>
+        Filter discussions by:
+      </p>
+      <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_symptom_tag" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_disease_tag" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_treatment_tag" glide-form="getGlideForm()"></sp-form-field>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--
+<div ng-if="!data.userIsGuest" class="panel panel-default b">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a ng-if="data.tags.length" href="?id=sqa_tagged_questions&sys_id=-1">${My Favorite Tags}</a>
+      <span ng-if="!data.tags.length">${My Favorite Tags}</span>
+    </h4>
+  </div>
+   
+  <div ng-if="data.tags.length > 0" class="panel-body">
+	<div role="list" ng-if="!c.editMode">
+      <span role="listitem" ng-repeat="tag in data.tags">
+      	<a ng-href="?id=sqa_tagged_questions&sys_id={{tag.sys_id}}" class="question-tag">{{tag.name}}</a>
+      </span>
+    </div>
+    <div ng-if="c.editMode">
+      <sp-tag-list ng-model="c.tagList" init-items="data.tags" prohibit-new-tag="true"></sp-tag-list>
+    </div>
+    <div class="m-t-sm">
+      <a ng-if="!c.editMode && !c.saveMsg" href="javascript:void(0)" ng-click="c.toggleEditMode()" role="button">${Edit tags lower}</a>
+      <a ng-if="!c.editMode && c.saveMsg" href="javascript:void(0)" ng-click="c.toggleEditMode()" role="button">${{{c.saveMsg}}}</a>
+      <a ng-if="c.editMode && !c.saving" href="javascript:void(0)" ng-click="c.toggleEditMode()" role="button">${Save tags}</a>
+      <a ng-if="c.editMode && c.saving" href="javascript:void(0)">${Saving tags...}</a>
+    </div>
+  </div>
+-->
+    
+  <!-- Empty State -->  
+<!--
+  <div ng-if="data.tags.length == 0" class="panel-body empty-state-content">
+    <p>${Favorite tags let you follow or participate in questions you care about}</p>
+    <p>${Type your favorite tags here}</p>
+	<sp-tag-list ng-model="c.tagList" init-items="data.tags" prohibit-new-tag="true" type-tag-name-msg="c.data.typeTagNameMsg"></sp-tag-list>
+    <div class="m-t-sm">
+      <a ng-if="!c.saving && c.tagList !== ''" ng-class="{'disabled': c.tagList === ''}" href="javascript:void(0)" ng-click="c.toggleEditMode()">${Save tags}</a>
+      <a ng-if="false && c.saving" href="javascript:void(0)" class="btn btn-primary">${Saving tags...}</a>
+    </div>
+  </div>
+</div>
+-->]]></template>
+    </sp_widget>
+</record_update>

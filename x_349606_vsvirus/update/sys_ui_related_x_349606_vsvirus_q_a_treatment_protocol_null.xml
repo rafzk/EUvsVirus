@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_related sys_domain="global" table="x_349606_vsvirus_q_a_treatment_protocol" version="2" view="">
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Q&amp;A Treatment Protocol - Default view" name="x_349606_vsvirus_q_a_treatment_protocol" related_list="NULL" sys_domain="global" view="Default view">56f74c6b2f189010f37fd0e62799b669</list_id>
+            <order_by/>
+            <position>0</position>
+            <related_list>REL:16f32280470002007f47563dbb9a718c</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:53</sys_created_on>
+            <sys_id>16f74c6b2f189010f37fd0e62799b66a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:53</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Q&amp;A Treatment Protocol - Default view" name="x_349606_vsvirus_q_a_treatment_protocol" related_list="NULL" sys_domain="global" view="Default view">56f74c6b2f189010f37fd0e62799b669</list_id>
+            <order_by/>
+            <position>1</position>
+            <related_list>REL:b79376809f233100fc6cd4b4232e70ff</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:53</sys_created_on>
+            <sys_id>9af74c6b2f189010f37fd0e62799b66a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:53</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Q&amp;A Treatment Protocol - Default view" name="x_349606_vsvirus_q_a_treatment_protocol" related_list="NULL" sys_domain="global" view="Default view">56f74c6b2f189010f37fd0e62799b669</list_id>
+            <order_by/>
+            <position>2</position>
+            <related_list>kb_social_qa_subscribe.question</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:53</sys_created_on>
+            <sys_id>12f74c6b2f189010f37fd0e62799b66b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:53</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Q&amp;A Treatment Protocol - Default view" name="x_349606_vsvirus_q_a_treatment_protocol" related_list="NULL" sys_domain="global" view="Default view">56f74c6b2f189010f37fd0e62799b669</list_id>
+            <order_by/>
+            <position>3</position>
+            <related_list>x_349606_vsvirus_m2m_treatments_q_a_treatmen.q_a_treatment_protocol</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:53</sys_created_on>
+            <sys_id>96f74c6b2f189010f37fd0e62799b66b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:53</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Q&amp;A Treatment Protocol - Default view</calculated_name>
+            <filter/>
+            <name>x_349606_vsvirus_q_a_treatment_protocol</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>56f74c6b2f189010f37fd0e62799b669</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Q&amp;A Treatment Protocol - Default view</sys_name>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_ui_related_x_349606_vsvirus_q_a_treatment_protocol_null</sys_update_name>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:53</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>

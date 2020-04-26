@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>4</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">82a97e172f509010f37fd0e62799b6ad</sp_column>
+        <sp_widget display_value="Text and link">bb02139f2f909010f37fd0e62799b676</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 11:09:52</sys_created_on>
+        <sys_id>ef83dbdf2f909010f37fd0e62799b62a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_instance_ef83dbdf2f909010f37fd0e62799b62a</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 11:34:35</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"text_link": {
+		"value": "If you are not registered, click below link to make an account",
+		"displayValue": "If you are not registered, click below link to make an account"
+	},
+	"href": {
+		"value": "/care?id=register_md",
+		"displayValue": "/care?id=register_md"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=ef83dbdf2f909010f37fd0e62799b62a"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sp_instance_ef83dbdf2f909010f37fd0e62799b62a</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance"&gt;&lt;sp_instance action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;glyph/&gt;&lt;id/&gt;&lt;order&gt;4&lt;/order&gt;&lt;roles/&gt;&lt;short_description/&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;82a97e172f509010f37fd0e62799b6ad&lt;/sp_column&gt;&lt;sp_widget display_value="Text and link"&gt;bb02139f2f909010f37fd0e62799b676&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance&lt;/sys_class_name&gt;&lt;sys_created_by&gt;wrangu.pier&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-04-26 11:09:52&lt;/sys_created_on&gt;&lt;sys_id&gt;ef83dbdf2f909010f37fd0e62799b62a&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="MediCast" source="x_349606_vsvirus"&gt;98e08a3a2f581010f37fd0e62799b6cf&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="MediCast"&gt;98e08a3a2f581010f37fd0e62799b6cf&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_ef83dbdf2f909010f37fd0e62799b62a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;wrangu.pier&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-04-26 11:34:35&lt;/sys_updated_on&gt;&lt;title/&gt;&lt;url/&gt;&lt;widget_parameters&gt;&lt;![CDATA[{
+	"text_link": {
+		"value": "If you are not registered, click below link to make an account",
+		"displayValue": "If you are not registered, click below link to make an account"
+	},
+	"href": {
+		"value": "/care?id=register_md",
+		"displayValue": "/care?id=register_md"
+	}
+}]]&gt;&lt;/widget_parameters&gt;&lt;/sp_instance&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=ef83dbdf2f909010f37fd0e62799b62a"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1094696946</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>3d261cd72f585010f37fd0e62799b622</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 11:34:35</sys_created_on>
+        <sys_id>f9399fd32fd09010f37fd0e62799b673</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b64482600000001</sys_recorded_at>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 11:34:35</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>35399fd304d090108d2065f06c217573</update_guid>
+        <update_guid_history>35399fd304d090108d2065f06c217573:-1094696946,b9449fdf9e909010e22623f2a1552fd2:1875619183,a783dbdfc790901027d8bb6d6c9bc42c:-916486563</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">af3a5f172fd09010f37fd0e62799b60f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 11:39:05</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>5bcd089cd2ab4001813b0ddf1c881be9</sys_id>
+        <sys_metadata>ef83dbdf2f909010f37fd0e62799b62a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sp_instance_ef83dbdf2f909010f37fd0e62799b62a</sys_update_name>
+        <sys_update_version display_value="sp_instance_ef83dbdf2f909010f37fd0e62799b62a">f9399fd32fd09010f37fd0e62799b673</sys_update_version>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 11:39:05</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

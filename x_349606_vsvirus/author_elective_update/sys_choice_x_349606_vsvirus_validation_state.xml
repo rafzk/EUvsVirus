@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="state" table="x_349606_vsvirus_validation" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Draft</label>
+            <language>en</language>
+            <name>x_349606_vsvirus_validation</name>
+            <sequence>10</sequence>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-25 21:55:36</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>10bd94132f985010f37fd0e62799b68d</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-25 21:55:42</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Validating</label>
+            <language>en</language>
+            <name>x_349606_vsvirus_validation</name>
+            <sequence>20</sequence>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-25 21:55:45</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>49cdd4132f985010f37fd0e62799b6e6</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-25 21:55:50</sys_updated_on>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Completed</label>
+            <language>en</language>
+            <name>x_349606_vsvirus_validation</name>
+            <sequence>30</sequence>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-25 21:55:55</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13cdd4132f985010f37fd0e62799b6c4</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-25 21:56:00</sys_updated_on>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <name>x_349606_vsvirus_validation</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-25 21:55:36</sys_created_on>
+            <sys_id>74cd98132f985010f37fd0e62799b650</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>state</sys_name>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_choice_x_349606_vsvirus_validation_state</sys_update_name>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-25 21:55:36</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

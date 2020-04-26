@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_import_set_row" label="Imp Tmpl X 349606 Vsvirus M2m Diseases Symptoms" max_length="40" name="u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms" sizeclass="1677" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Disease" label="Disease" max_length="32" name="u_disease" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Symptom" label="Symptom" max_length="32" name="u_symptom" type="string"/>
+    </element>
+</database>

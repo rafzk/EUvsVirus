@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_portal_search_source">
+    <m2m_sp_portal_search_source action="DELETE">
+        <order>100</order>
+        <sp_portal display_value="MediCast">e1a5d4d72f585010f37fd0e62799b676</sp_portal>
+        <sp_search_source display_value="Questions and Answers">c450a0616761220023c82e08f585ef3e</sp_search_source>
+        <sys_class_name>m2m_sp_portal_search_source</sys_class_name>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 10:56:49</sys_created_on>
+        <sys_id>94909f1f2f909010f37fd0e62799b6c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MediCast.Questions and Answers</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>m2m_sp_portal_search_source_94909f1f2f909010f37fd0e62799b6c4</sys_update_name>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 10:56:49</sys_updated_on>
+    </m2m_sp_portal_search_source>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>m2m_sp_portal_search_source_94909f1f2f909010f37fd0e62799b6c4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_portal_search_source"><m2m_sp_portal_search_source action="INSERT_OR_UPDATE"><order>100</order><sp_portal display_value="MediCast">e1a5d4d72f585010f37fd0e62799b676</sp_portal><sp_search_source display_value="Questions and Answers">c450a0616761220023c82e08f585ef3e</sp_search_source><sys_class_name>m2m_sp_portal_search_source</sys_class_name><sys_created_by>wrangu.andre</sys_created_by><sys_created_on>2020-04-26 10:56:49</sys_created_on><sys_id>94909f1f2f909010f37fd0e62799b6c4</sys_id><sys_mod_count>0</sys_mod_count><sys_name>MediCast.Questions and Answers</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>m2m_sp_portal_search_source_94909f1f2f909010f37fd0e62799b6c4</sys_update_name><sys_updated_by>wrangu.andre</sys_updated_by><sys_updated_on>2020-04-26 10:56:49</sys_updated_on></m2m_sp_portal_search_source></record_update>]]></payload>
+        <payload_hash>1101085465</payload_hash>
+        <record_name>MediCast.Questions and Answers</record_name>
+        <reverted_from/>
+        <source>2bf9b2572f509010f37fd0e62799b62d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 10:56:49</sys_created_on>
+        <sys_id>5c909f1f2f909010f37fd0e62799b6c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b621edb80000001</sys_recorded_at>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 10:56:49</sys_updated_on>
+        <type>Search Source</type>
+        <update_guid>94909f1f48909010696448fe057a77c6</update_guid>
+        <update_guid_history>94909f1f48909010696448fe057a77c6:1101085465</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="MediCast.Questions and Answers">c5aba4af2f989010f37fd0e62799b69e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 17:34:43</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_portal_search_source">m2m_sp_portal_search_source</sys_db_object>
+        <sys_id>0cb47f2e576d407c94ae4675d8dd7849</sys_id>
+        <sys_metadata>94909f1f2f909010f37fd0e62799b6c4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MediCast.Questions and Answers</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>m2m_sp_portal_search_source_94909f1f2f909010f37fd0e62799b6c4</sys_update_name>
+        <sys_update_version display_value="m2m_sp_portal_search_source_94909f1f2f909010f37fd0e62799b6c4">5c909f1f2f909010f37fd0e62799b6c6</sys_update_version>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:34:43</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

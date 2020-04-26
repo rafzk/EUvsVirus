@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <client_script><![CDATA[function($scope, $http, $timeout, spUtil, $rootScope) {
+	var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>a.question-tag {&#13;
+    color: $qa-tag-color;&#13;
+    background-color: $qa-tag-bg;&#13;
+    border: 1px solid $qa-tag-border;&#13;
+    display: inline-block;&#13;
+    margin: 4px 4px 4px 0;&#13;
+    border-radius: 0;&#13;
+    text-align: center;&#13;
+    line-height: 1;&#13;
+    padding: .4em .5em;&#13;
+  &#13;
+    &amp;:hover {&#13;
+    	color: $qa-tag-hover-color;&#13;
+      background-color: $qa-tag-hover-bg;&#13;
+      border-color: $qa-tag-hover-bg;&#13;
+    }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>mc-featured-tags</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>MediCast Featured Tags</name>
+        <option_schema>[{"name":"title","section":"Presentation","label":"Title","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[// populate the 'data' object
+data.tags = [];
+options.title= gs.getMessage(options.title) || "";
+var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+labelEntryGR.addQuery("reference_name", "kb_social_qa_question");
+//labelEntryGR.orderBy("tag");
+labelEntryGR.query();
+
+while (labelEntryGR.next()) {
+	var labelGR = labelEntryGR.getElement("tag").getRefRecord();
+
+	if (labelGR.getUniqueValue() !== null) {
+		var si_labelGR = labelGR.getUniqueValue();
+		var str_arr_tags = JSON.stringify(data.tags);
+
+		if(str_arr_tags.indexOf(si_labelGR) != -1)
+			continue;
+		
+		data.tags.push({
+			name: labelGR.getValue("name"),
+			sys_id: si_labelGR,
+			label_entry_id: labelEntryGR.getUniqueValue()
+		});
+
+	}
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 09:37:04</sys_created_on>
+        <sys_id>1c5ef29b2f509010f37fd0e62799b69b</sys_id>
+        <sys_mod_count>33</sys_mod_count>
+        <sys_name>MediCast Featured Tags</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_1c5ef29b2f509010f37fd0e62799b69b</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 19:51:21</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="mc-panel">
+      <mc-header title="{{c.options.title}}" icon="fa-line-chart"></mc-header>
+  </div> 
+
+  <div ng-if="data.tags.length > 0" class="panel-body">
+    <div role="list">
+      <span role="listitem" ng-repeat="tag in data.tags | limitTo:10">
+        <a ng-href="?id=sqa_tagged_questions&sys_id={{tag.sys_id}}" class="question-tag">{{tag.name}}</a>
+      </span>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

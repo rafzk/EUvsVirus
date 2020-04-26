@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <client_script><![CDATA[function questionListController($scope, spUtil, $timeout) {
+	var c = this;
+	$timeout(function() {
+		spUtil.setBreadCrumb($scope, [
+			{label: c.data.communityBreadcrumb, url: '#'}
+		]);
+	});
+  c.mode = getMode();
+	function getMode() {
+		if (!c.data.tagID)
+			return "all";
+		
+		if (c.data.tagID == "-1")
+			return "favorites";
+		
+		return "tag";
+	}
+
+	c.getSysIDParam = function() {
+		return (c.data.tagID) ? "&sys_id=" + c.data.tagID : "";
+	}
+
+	c.capitalize = function(str) {
+		if (str.length === 0)
+			return "";
+
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
+	$scope.$on("sp-favorite-tags-updated", function() {
+		c.data.tagID = -1;
+		$scope.server.update().then(function() {
+			c.mode = getMode();
+		});
+	})
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>a.question-tag {
+    color: $qa-tag-color;
+    background-color: $qa-tag-bg;
+    border: 1px solid $qa-tag-border;
+    display: inline-block;
+    margin: 4px 4px 4px 0;
+    border-radius: 0;
+    text-align: center;
+    line-height: 1;
+    padding: .4em .5em;
+  	font-size: .9em;
+  
+    &amp;:hover {
+    	color: $qa-tag-hover-color;
+      background-color: $qa-tag-hover-bg;
+      border-color: $qa-tag-hover-bg;
+    }
+}
+
+.list-header {
+  border-bottom: 1px solid #ddd;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.list-header &gt; h3 {
+  display: inline-block;
+  float: left;
+  margin-top: 0px;
+  margin-left: 15px;
+}
+
+.question {
+  display: flex;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.panel-body .question-list .question:last-of-type {
+  border-bottom:none;
+}
+
+.stats-container {
+  flex: 0 0 auto;
+  width: 55px;
+  height: 100%;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.summary {
+  flex: 1 1 auto;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+.stats-container {
+  padding-top: 6px;
+}
+
+.stat {
+  padding: 1px;
+}
+
+.stat-count {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.stat-label {
+  text-align: center;
+}
+
+.empty-state-content {
+  margin-top: 30px;
+  
+  .fa-comments {
+    color: $gray-light;
+    font-size: 80px;
+    display: block;
+    text-align: center;
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    max-width: 100%;
+    margin-bottom: 35px;
+  }
+}
+
+.mc-panel {
+  margin-bottom: 20px;
+}
+
+.mc-panel-header {
+	word-wrap: break-word;
+  margin-top:15px; 
+  padding: 10px 15px; 
+  border-bottom: 1px solid transparent; 
+  border-color: #E6E8EA; 
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px;
+}
+
+.mc-panel-body {
+  padding: 5px 15px 15px;
+}
+
+.mc-panel-padding {
+  padding: 5px 15px 15px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>mc-discussion-list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>MediCast Discussion List</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.communityBreadcrumb = gs.getMessage("Community");
+	data.msgs = {};
+	data.msgs.newest = gs.getMessage("Newest");
+	data.msgs.unanswered = gs.getMessage("Unanswered");
+	data.msgs.top = gs.getMessage("Top");
+	data.pageURL = 'mc_all_discussions';
+	data.knowledgeBase = $sp.getPortalRecord().getValue("sqanda_knowledge_base") || gs.getProperty("glide.service_portal.sqanda.default_kb");
+	data.socialQAEnabled = gs.getProperty('glide.sp.socialqa.enabled') === 'true';
+	//If no questions have been asked yet, don't load anything up.
+	data.noQuestionsExist = false;
+	var allQuestionsGR = new GlideRecord("kb_social_qa_question");
+	allQuestionsGR.addActiveQuery();
+	allQuestionsGR.addQuery("kb_knowledge_base", data.knowledgeBase);
+	allQuestionsGR.query();
+	if (allQuestionsGR.getRowCount() === 0) {
+		data.noQuestionsExist = true;
+		return;
+	}
+
+	var sortTypes = ['newest', 'top', 'unanswered'];
+	data.tagID = (input && input.tagID) || $sp.getParameter("sys_id");
+
+	if (data.tagID && data.tagID != "-1") {
+		var labelGR = new GlideRecord("sqanda_tag");
+		if (!labelGR.get(data.tagID))
+			data.tagID = null;
+	}
+
+	data.page = $sp.getParameter("page") || 1;
+	data.page = parseInt(data.page);
+	if (isNaN(data.page))
+		data.page = 1;
+
+	var pageCount = 20;
+
+	data.sort = (input && input.sort) || $sp.getParameter("sort") || "newest";
+	if (!contains(sortTypes, data.sort))
+		data.sort = "newest";
+
+	var entryIDs = [];
+
+	if (data.tagID != null) {
+		var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+		labelEntryGR.addQuery("reference_name", "kb_social_qa_question");
+		if (data.tagID != "-1") {
+			data.tagName = labelGR.getValue("name");
+			labelEntryGR.addQuery("tag", data.tagID);
+		} else {
+			var loggedInSysUserID = gs.getUser().getID();
+			var liveProfileID = "";
+			var liveProfileGR = new GlideRecord("live_profile");
+			liveProfileGR.addQuery("document", loggedInSysUserID);
+			liveProfileGR.query();
+			if (liveProfileGR.next())
+				liveProfileID = liveProfileGR.getValue("sys_id");
+
+			var tagIDs = [];
+			var userTagsGR = new GlideRecord("sqanda_tag_entry");
+			userTagsGR.addQuery("reference_name", "live_profile");
+			userTagsGR.addQuery("reference_id", liveProfileID);
+			userTagsGR.addNotNullQuery("tag");
+			userTagsGR.query();
+			while (userTagsGR.next()) {
+				tagIDs.push(userTagsGR.getValue("tag"));
+			}
+
+			labelEntryGR.addQuery("tag", "IN", tagIDs.join(","));
+			if (tagIDs.length == 0)
+				data.tagID = null;
+		}
+
+		labelEntryGR.query();
+
+		entryIDs = [];
+		while (labelEntryGR.next())
+			entryIDs.push(labelEntryGR.getValue("reference_id"));
+	}
+
+	var questionGR = new GlideRecord("kb_social_qa_question");
+	questionGR.addQuery("kb_knowledge_base", data.knowledgeBase);
+	questionGR.addActiveQuery();
+
+	if (data.tagID != null)
+		questionGR.addQuery("sys_id", "IN", entryIDs.concat(","));
+
+	if (data.sort.equals("newest"))
+		questionGR.orderByDesc('sys_created_on');
+	else
+		questionGR.orderByDesc('votes');
+
+	if (data.sort.equals("unanswered"))
+		questionGR.addQuery("answer_count", 0);
+
+	questionGR.chooseWindow((data.page - 1) * pageCount, (data.page - 1) * pageCount + pageCount, true);
+	questionGR.query();
+
+	data.hasNextPage = (questionGR.getRowCount() > ((data.page - 1) * pageCount + pageCount));
+
+	data.questions = [];
+	while (questionGR.next())
+		data.questions.push(new Question(questionGR))
+		})();
+
+function Question(gr) {
+	this.question = gr.getValue("question");
+	this.question_details = gr.getValue("question_details");
+	this.sys_id = gr.getUniqueValue();
+	this.votes = parseInt(gr.getValue("votes")) || 0;
+	this.tags = [];
+	this.profile = new Profile(gr.getElement("profile").getRefRecord());
+	this.sys_created_on = gr.getValue("sys_created_on");
+	this.answer_count = parseInt(gr.getValue("answer_count")) || 0;
+
+	var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+	labelEntryGR.addQuery("reference_id", this.sys_id);
+	labelEntryGR.query();
+
+	while(labelEntryGR.next()) {
+		this.tags.push(new Tag(labelEntryGR.getElement("tag").getRefRecord()));
+	}	
+}
+
+function Profile(gr) {
+	this.name = gr.getValue("name");
+	this.sys_id = gr.getValue("sys_id");
+	this.document = {
+		sys_id: gr.getValue("document")
+	};
+}
+
+function Tag(gr) {
+	this.sys_id = gr.getUniqueValue();
+	this.name = gr.getValue('name');
+}
+
+function contains(arr, str) {
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i].equals(str))
+			return true;
+	}
+
+	return false;
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 13:18:57</sys_created_on>
+        <sys_id>2a11b35f2f949010f37fd0e62799b699</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>MediCast Discussion List</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_2a11b35f2f949010f37fd0e62799b699</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:30:34</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="mc-panel">
+    
+    <div ng-if="data.noQuestionsExist" class="panel-body">
+      <div class="empty-state-content">
+        <span class="fa fa-comments" aria-label="${Question icon}"></span>
+        <h3>${No questions have been asked yet}</h3>
+        <p ng-if="data.socialQAEnabled">${Once questions are asked, they will show up here. You can be the first!}</p>
+        <a href="?id=sqanda_new_question" class="btn btn-primary" ng-if="data.socialQAEnabled">${Ask a Question}</a>
+      </div>
+    </div>
+    
+    <div class="mc-panel-header clearfix">
+      <div class="pull-left m-n">
+        <h3 class="m-n" ng-if="c.mode == 'tag'">${Tagged Questions} | {{::data.msgs[data.sort]}} | {{::data.tagName}}</h3>
+      	<h3 class="m-n" ng-if="c.mode == 'favorites'">${My Favorite Tags} | {{::data.msgs[data.sort]}}</h3>
+      	<h3 class="m-n" ng-if="c.mode == 'all'">${Discussions} | {{::data.msgs[data.sort]}}</h3>
+      </div>
+      <div class="dropdown pull-right">
+        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          {{::data.msgs[data.sort]}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="?id={{c.data.pageURL}}&sort=newest{{c.getSysIDParam()}}">{{::data.msgs.newest}}</a></li>
+          <li><a href="?id={{c.data.pageURL}}&sort=top{{c.getSysIDParam()}}">{{::data.msgs.top}}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mc-panel-body">
+      <ul class="list-group m-t">
+        <li class="list-group-item" ng-repeat="question in data.questions">
+          <div class="row">
+            <div class="col-md-6">
+              <sn-time-ago timestamp="question.sys_created_on"></sn-time-ago> 
+              &middot; 
+              <a ng-href="?id=user_profile&sys_id={{question.profile.document.sys_id}}">
+                {{question.profile.name}}
+              </a> 
+              <sn-avatar class="m-l-xs hidden-xs" primary="question.profile.document.sys_id"></sn-avatar>
+            </div>
+            <div class="col-md-6 clearfix">
+              <div class="pull-right">
+                <span>{{question.votes}} 
+                  <span ng-if="question.votes === 1" class="stat-label">${Vote}</span>
+                  <span ng-if="question.votes !== 1" class="stat-label">${Votes}</span>
+                </span>
+                &middot;
+                <span>{{question.answer_count}}
+                  <span ng-if="question.answer_count === 1" class="stat-label">${Comment}</span>
+                  <span ng-if="question.answer_count !== 1" class="stat-label">${Comments}</span>
+                </span>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row m-t">
+          	<div class="col-md-12">
+              <h4><a ng-href="?id=kb_article_mc&sys_id={{question.sys_id}}">{{question.question}}</a></h4>
+              <sp-html-content model="question.question_details"></sp-html-content>
+            </div>
+          </div>
+        </li>
+        <div ng-if="data.questions.length == 0" class="m-t alert alert-info" role="alert">
+          <span ng-if="c.mode == 'all'">${There are no matching questions}</span>
+          <span ng-if="c.mode == 'favorites'">${There are no matching questions with your favorite tags}</span>
+          <span ng-if="c.mode == 'tag'">${There are no matching questions tagged with "{{c.capitalize(data.tagName)}}"}</span>
+        </div>
+      </ul>
+      <nav ng-if="data.page > 1 || data.hasNextPage">
+        <ul class="pager">
+          <li><a ng-if="data.page > 1" ng-href="?id={{c.data.pageURL}}{{c.getSysIDParam()}}&sort={{data.sort}}&page={{data.page - 1}}">${Previous}</a></li>
+          <li><a ng-if="data.hasNextPage" ng-href="?id={{c.data.pageURL}}{{c.getSysIDParam()}}&sort={{data.sort}}&page={{data.page + 1}}">${Next}</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

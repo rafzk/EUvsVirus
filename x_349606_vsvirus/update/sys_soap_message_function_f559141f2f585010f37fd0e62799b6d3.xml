@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_soap_message_function">
+    <sys_soap_message_function action="INSERT_OR_UPDATE">
+        <authentication_type/>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <certificate/>
+        <enable_mutual_auth>false</enable_mutual_auth>
+        <envelope><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ext="http://services.cibg.nl/ExternalUser">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ext:listHcpApproxRequest>
+         <ext:WebSite>${listHcpApproxRequest.WebSite}</ext:WebSite>
+         <!--Optional:-->
+         <ext:Name>${listHcpApproxRequest.Name}</ext:Name>
+         <!--Optional:-->
+         <ext:Initials>${listHcpApproxRequest.Initials}</ext:Initials>
+         <!--Optional:-->
+         <ext:Prefix>${listHcpApproxRequest.Prefix}</ext:Prefix>
+         <!--Optional:-->
+         <ext:Street>${listHcpApproxRequest.Street}</ext:Street>
+         <!--Optional:-->
+         <ext:Gender>${listHcpApproxRequest.Gender}</ext:Gender>
+         <!--Optional:-->
+         <ext:HouseNumber>${listHcpApproxRequest.HouseNumber}</ext:HouseNumber>
+         <!--Optional:-->
+         <ext:Postalcode>${listHcpApproxRequest.Postalcode}</ext:Postalcode>
+         <!--Optional:-->
+         <ext:City>${listHcpApproxRequest.City}</ext:City>
+         <!--Optional:-->
+         <ext:RegistrationNumber>${listHcpApproxRequest.RegistrationNumber}</ext:RegistrationNumber>
+         <!--Optional:-->
+         <ext:DateOfBirth>${listHcpApproxRequest.DateOfBirth}</ext:DateOfBirth>
+         <!--Optional:-->
+         <ext:ProfessionalGroup>${listHcpApproxRequest.ProfessionalGroup}</ext:ProfessionalGroup>
+         <!--Optional:-->
+         <ext:TypeOfSpecialism>${listHcpApproxRequest.TypeOfSpecialism}</ext:TypeOfSpecialism>
+      </ext:listHcpApproxRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></envelope>
+        <function_name>PublicV4Soap.ListHcpApprox4</function_name>
+        <key_store/>
+        <key_store_alias/>
+        <key_store_password/>
+        <lock>false</lock>
+        <protocol_profile/>
+        <qualified_name>BIG web services [ PublicV4Soap.ListHcpApprox4 ]</qualified_name>
+        <soap_action>http://services.cibg.nl/ExternalUser/ListHcpApprox4</soap_action>
+        <soap_endpoint>https://webservices.cibg.nl:443/Ribiz/OpenbaarV4.asmx</soap_endpoint>
+        <soap_message display_value="BIG web services">afc8d0db2f585010f37fd0e62799b62b</soap_message>
+        <strip_whitespace>false</strip_whitespace>
+        <sys_class_name>sys_soap_message_function</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-25 21:36:16</sys_created_on>
+        <sys_id>f559141f2f585010f37fd0e62799b6d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PublicV4Soap.ListHcpApprox4</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_soap_message_function_f559141f2f585010f37fd0e62799b6d3</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:36:16</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_ws_security>false</use_ws_security>
+        <ws_security_type/>
+        <ws_security_username_profile/>
+        <ws_security_x509_profile/>
+    </sys_soap_message_function>
+</record_update>

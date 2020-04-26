@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_portal_knowledge_base">
+    <m2m_sp_portal_knowledge_base action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <kb_knowledge_base display_value="MediCast">f6a004d72f185010f37fd0e62799b6ef</kb_knowledge_base>
+        <order>100</order>
+        <sp_portal display_value="MediCast">e1a5d4d72f585010f37fd0e62799b676</sp_portal>
+        <sys_class_name>m2m_sp_portal_knowledge_base</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 15:29:15</sys_created_on>
+        <sys_id>17ee40ef2f189010f37fd0e62799b62b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MediCast.MediCast</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>m2m_sp_portal_knowledge_base_17ee40ef2f189010f37fd0e62799b62b</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 15:29:15</sys_updated_on>
+    </m2m_sp_portal_knowledge_base>
+</record_update>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Vsvirus M2m Diseases Treatments" max_length="40" name="x_349606_vsvirus_m2m_diseases_treatments" type="collection">
+        <element attributes="encode_utf8=false" label="Disease" max_length="32" name="disease" reference="x_349606_vsvirus_disease" type="reference"/>
+        <element attributes="encode_utf8=false" label="Treatment" max_length="32" name="treatment" reference="x_349606_vsvirus_treatment" type="reference"/>
+        <index name="index">
+            <element name="treatment"/>
+        </index>
+        <index name="index2">
+            <element name="disease"/>
+        </index>
+    </element>
+</database>

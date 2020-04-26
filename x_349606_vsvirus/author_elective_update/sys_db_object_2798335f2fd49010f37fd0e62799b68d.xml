@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="DELETE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Q&amp;A Treatment Protocal</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_349606_vsvirus_q_a_treatment_protocal</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class display_value="Social Q&amp;A Question" name="kb_social_qa_question">478c3d24c49132001e2f54043bffa474</super_class>
+        <sys_class_code/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_class_path/>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:45</sys_created_on>
+        <sys_id>2798335f2fd49010f37fd0e62799b68d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Q&amp;A Treatment Protocal</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_db_object_2798335f2fd49010f37fd0e62799b68d</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:45</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role display_value="x_349606_vsvirus.user" name="x_349606_vsvirus.user">bdc09c932f585010f37fd0e62799b6aa</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_db_object_2798335f2fd49010f37fd0e62799b68d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object"><sys_db_object action="INSERT_OR_UPDATE"><access>public</access><actions_access>false</actions_access><alter_access>false</alter_access><caller_access/><client_scripts_access>false</client_scripts_access><configuration_access>false</configuration_access><create_access>false</create_access><create_access_controls>true</create_access_controls><delete_access>false</delete_access><extension_model/><is_extendable>false</is_extendable><label>Q&amp;A Treatment Protocal</label><live_feed_enabled>false</live_feed_enabled><name>x_349606_vsvirus_q_a_treatment_protocal</name><number_ref/><provider_class/><read_access>true</read_access><scriptable_table>false</scriptable_table><super_class display_value="Social Q&amp;A Question" name="kb_social_qa_question">478c3d24c49132001e2f54043bffa474</super_class><sys_class_code/><sys_class_name>sys_db_object</sys_class_name><sys_class_path/><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-26 13:53:45</sys_created_on><sys_id>2798335f2fd49010f37fd0e62799b68d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Q&amp;A Treatment Protocal</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_db_object_2798335f2fd49010f37fd0e62799b68d</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-26 13:53:45</sys_updated_on><update_access>false</update_access><user_role display_value="x_349606_vsvirus.user" name="x_349606_vsvirus.user">bdc09c932f585010f37fd0e62799b6aa</user_role><ws_access>true</ws_access></sys_db_object></record_update>]]></payload>
+        <payload_hash>1501367525</payload_hash>
+        <record_name>Q&amp;A Treatment Protocal</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:46</sys_created_on>
+        <sys_id>e419b75f2fd49010f37fd0e62799b63b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b6c3f0be0000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:46</sys_updated_on>
+        <type>Table</type>
+        <update_guid>2019b75f09d490107c6bab9a48db933b</update_guid>
+        <update_guid_history>2019b75f09d490107c6bab9a48db933b:1501367525</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 14:05:42</sys_created_on>
+        <sys_db_object display_value="" name="sys_db_object">sys_db_object</sys_db_object>
+        <sys_id>86d058de82ce49009eb324ae8932f900</sys_id>
+        <sys_metadata>2798335f2fd49010f37fd0e62799b68d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Q&amp;A Treatment Protocal</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_db_object_2798335f2fd49010f37fd0e62799b68d</sys_update_name>
+        <sys_update_version display_value="sys_db_object_2798335f2fd49010f37fd0e62799b68d">e419b75f2fd49010f37fd0e62799b63b</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 14:05:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

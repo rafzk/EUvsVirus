@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $location) {
+	/* widget controller */
+	var c = this;
+
+	$scope.goToUserRecord = function (id) {
+		$location.search({
+			id:'user_profile',
+			sys_id:id
+		});
+	}
+
+	$scope.goToArticle = function (id) {
+		$location.search({
+			id:'kb_article_mc',
+			sys_id:id
+		});
+	}
+
+	$scope.goToAllQuestions = function () {
+		$location.search({
+			id:'mc_all_discussions'
+		});
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.mc-block-body {
+  margin-top: 15px;
+}
+.mc-psot-votes {
+	margin-top: 10px;
+}
+
+.show-more {
+	text-align: center
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>mc-recent-posts</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>MediCast Recent Posts</name>
+        <option_schema>[{"name":"summary","section":"Behavior","default_value":"300","label":"Summary length (Characters)","type":"integer"},{"name":"limit","section":"Behavior","default_value":"3","label":"limit","type":"integer"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	var tp = new TreatmentProtocol();
+	var limit = options.limit || 1;
+
+	data.articles = recentPostData();
+	data.showMore = true;
+
+	function recentPostData() {
+		var posts = [];
+		var latestTp = getLatestTpRecords();
+		while (latestTp.next()) {
+			var summary = generateSummary(latestTp.getValue('question_details'));
+			var id = latestTp.getUniqueValue();
+			posts.push({
+				title: latestTp.getValue('question'),
+				id: id,
+				summary: summary,//
+				link: '/#',
+				createdBy: latestTp.created_by.getDisplayValue(),
+				createdByUserId: latestTp.getValue('created_by '),
+				lastUpdated: latestTp.getValue('last_activity'),
+				updatedBy: latestTp.updated_by.getDisplayValue(),
+				updatedByUserId: latestTp.getValue('updated_by'),
+				views: tp.getViewCount(id),
+				commentCount: tp.getTotalCommentCount(id),
+				vote: {
+					up: latestTp.getValue('votes'),
+					down: 0
+				}
+			});
+		}
+		return posts;
+	}
+
+	function getLatestTpRecords() {
+		var tp = new GlideRecord(TreatmentProtocol.QA_TREATMENT_PROTOCOL_TABLE);
+		tp.orderByDesc('sys_created_on');
+		tp.setLimit(limit)
+		tp.query();
+		return tp;
+	}
+
+
+
+
+	function generateSummary(text) {
+		if (!text)
+			return '';
+		text = text.replace(/<\/?[^>]+(>|$)/g, "");
+		text = text.replace('[code]', ' ');
+		text = text.replace('[/code]', '');
+		return text.substring(0, options.summary || 100);
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-25 23:09:05</sys_created_on>
+        <sys_id>ad1e64d32fd85010f37fd0e62799b6bb</sys_id>
+        <sys_mod_count>95</sys_mod_count>
+        <sys_name>MediCast Recent Posts</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_ad1e64d32fd85010f37fd0e62799b6bb</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 19:05:34</sys_updated_on>
+        <template><![CDATA[<div>
+  <!-- your widget template -->
+  <mc-header title="Recent Posts" icon="fa-comments-o">
+    <div class="mc-block-body">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="article in data.articles">
+          <div class="clearfix">
+            <div class="pull-left">
+              <h4><a href="javascript:void(0)"  ng-click="goToArticle(article.id)">{{ ::article.title }}</a></h4>
+            </div>
+            <div class="pull-right mc-psot-votes">
+              <span class="m-r"><i class="fa fa-arrow-up" aria-hidden="true"></i> {{ ::article.vote.up }}</span>
+              <span><i class="fa fa-arrow-down" aria-hidden="true"></i> {{ ::article.vote.down }}</span>
+            </div>
+          </div>
+
+          <div>{{ ::article.summary }}</div>
+          <div>
+            <span class="label label-default">Default</span>
+          </div>
+          <div class="clearfix">
+            <div class="pull-left">
+              <strong>By</strong> 
+              <a href="javascript:void(0)" ng-click="goToUserRecord(article.createdByUserId)">{{ ::article.createdBy}}</a>
+              • updated 
+              <sn-time-ago timestamp="article.lastUpdated"></sn-time-ago> 
+              <!-- Todo -->
+              By <a href="javascript:void(0)" ng-click="goToUserRecord(article.createdByUserId)">{{ ::article.updatedBy }}</a></div>
+            <div class="pull-right">{{ ::article.commentCount }} replies • {{ ::article.views }} views</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </mc-header>
+  <div class="show-more">
+
+    <button ng-if="data.showMore" ng-click="goToAllQuestions()" class="m-t-xs btn btn-default btn-loadmore m-b-lg">
+      ${Show More}
+    </button>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Validation" max_length="40" name="x_349606_vsvirus_validation" sizeclass="7" type="collection">
+        <element label="Gender" max_length="100" name="gender" type="string"/>
+        <element label="Initials" max_length="100" name="initials" type="string"/>
+        <element label="Lastname" max_length="150" name="lastname" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element label="Profession" max_length="32" name="profession" reference="x_349606_vsvirus_professional_codes" type="reference"/>
+        <element label="Profession code" max_length="100" name="profession_code" reference="x_349606_vsvirus_professional_codes" type="reference"/>
+        <element label="Registration number" max_length="150" name="registration_number" type="string"/>
+        <element choice="3" default="not_validated" label="Result" max_length="40" name="result" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="not validated" sequence="1" value="not_validated"/>
+                <element inactive_on_update="false" label="Valid" sequence="10" value="valid"/>
+                <element inactive_on_update="false" label="Invalid" sequence="20" value="invalid"/>
+            </choice>
+        </element>
+        <element choice="3" default="1" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="1"/>
+                <element inactive_on_update="false" label="Validating" sequence="20" value="2"/>
+                <element inactive_on_update="false" label="Completed" sequence="30" value="3"/>
+            </choice>
+        </element>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="profession"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+        <index name="index3">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
+        <sp_dependency display_value="selectize">4a3c6ab7d730120023c84f80de6103de</sp_dependency>
+        <sp_widget display_value="MediCast Article Widget">4a92c9572f1c5010f37fd0e62799b6cd</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 00:36:31</sys_created_on>
+        <sys_id>1e9249972f1c5010f37fd0e62799b6ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>selectize.MediCast</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_1e9249972f1c5010f37fd0e62799b6ff</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 00:36:31</sys_updated_on>
+    </m2m_sp_widget_dependency>
+</record_update>

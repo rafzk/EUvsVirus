@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>standard</category>
+        <client_script><![CDATA[function loginCtrl($scope, $http, $window, $location, glideUserSession, glideSystemProperties, spUtil) {
+
+    var c = this;
+
+    c.register = function(username, password, md_reg_nmbr) {
+
+        if (username === undefined || username == '' || password === undefined || password == '') {
+            c.invalid = true;
+        } else {
+            c.data.username = username;
+            c.data.password = password;
+            c.data.md_reg_nmbr = md_reg_nmbr;
+            c.submitted = true;
+            c.server.update();
+            /*c.server.update().then(function(){
+            	$window.location = '/care';
+            });*/
+        }
+    };
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.sp-register-widget { &#13;
+   margin-top: 25px;&#13;
+  &#13;
+  .panel-body {&#13;
+    padding: 15px 15px 15px 15px;&#13;
+  }&#13;
+  &#13;
+  .form-control,&#13;
+  label[for="username"],&#13;
+  label[for="password"] {&#13;
+    color: black;&#13;
+  }&#13;
+  &#13;
+  input.invalid{&#13;
+  border: 3px solid #FF0000;&#13;
+  }&#13;
+  &#13;
+  .btn {&#13;
+    font-weight: 600;&#13;
+    font-size: 2.0rem;&#13;
+    background-color: $login-btn-bg;&#13;
+    border-color: $login-btn-border;&#13;
+  }&#13;
+  &#13;
+  .list-group {&#13;
+    margin-bottom: 12px;&#13;
+  }&#13;
+  &#13;
+  .login-button-old {&#13;
+    margin-top: 7px;&#13;
+  }&#13;
+  &#13;
+  .login-alert {&#13;
+    margin-left: 0px;&#13;
+    margin-right: 0px;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+.sp-login-widget.advanced { &#13;
+  margin-top: 15px;&#13;
+  &#13;
+  .panel-title {&#13;
+    font-size: 25px;&#13;
+  }&#13;
+  &#13;
+  .panel-default &gt; .panel-heading {&#13;
+    background-color: $panel-bg; &#13;
+    border: 15px;    &#13;
+  }&#13;
+  &#13;
+  .panel-body {&#13;
+    padding: 15px 15px 15px 15px;&#13;
+  }&#13;
+&#13;
+  [placeholder]::-webkit-input-placeholder { &#13;
+    transition: opacity 0.01s 0.01s ease !important; &#13;
+    opacity: 0 !important; &#13;
+  }&#13;
+&#13;
+  .registration-signin {&#13;
+    margin-top: 15px;&#13;
+    &#13;
+    .list-group-item { &#13;
+      border: 0px;&#13;
+    }&#13;
+    &#13;
+    .login-alert {&#13;
+    margin-left: 15px;&#13;
+    margin-right: 15px;&#13;
+    }&#13;
+    &#13;
+    .btn {&#13;
+      font-weight: 400 !important;&#13;
+      border-color: $brand-primary;&#13;
+      background-color: $brand-primary;&#13;
+      border-radius: 2px;&#13;
+    }&#13;
+&#13;
+    .info-text-div {&#13;
+      padding-right: 15px;&#13;
+      padding-left: 15px;&#13;
+      .info-text {&#13;
+        font-size: 16px;	&#13;
+        line-height: 20px;&#13;
+        padding-top: 8px;&#13;
+      }&#13;
+      &#13;
+      .btn {&#13;
+        line-height: 16px;&#13;
+        font-size: 14px;&#13;
+        margin-top: 0px;&#13;
+      }&#13;
+      &#13;
+    }&#13;
+    &#13;
+    .submit-btn {&#13;
+      padding-right: 15px;&#13;
+      padding-left: 15px;&#13;
+    }&#13;
+    &#13;
+    .input-advanced {&#13;
+      margin-top: 10px;&#13;
+      border: 1px solid $panel-default-border !important;&#13;
+      border-radius: 3px !important;&#13;
+      background-color: $panel-bg !important;&#13;
+    }&#13;
+    &#13;
+    &#13;
+    .checkbox {&#13;
+      padding-left: 15px !important; &#13;
+    }&#13;
+   &#13;
+    .label-advanced {&#13;
+      position: relative;&#13;
+      width: 100%;&#13;
+      padding: 0;&#13;
+      overflow: visible;&#13;
+      border: 0;&#13;
+      height: 19px;&#13;
+      color: $text-color;&#13;
+      font-size: 16px;&#13;
+      line-height: 19px;&#13;
+    }&#13;
+&#13;
+  }&#13;
+&#13;
+}&#13;
+//End -- login widget advanced view&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget-registration</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Registration</name>
+        <option_schema>[{"name":"show_panel","section":"Presentation","default_value":"true","label":"Show Panel","type":"boolean"},{"name":"use_advanced","section":"Presentation","default_value":"false","label":"Use Advanced View","type":"boolean"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    options.show_panel = options.show_panel == "true" || options.show_panel == true;
+
+
+    data.errorMsg = gs.getMessage("There was an error processing your request");
+    data.errorMsg2 = gs.getMessage("An error has occurred - please contact your system administrator");
+    data.passwordMsg = gs.getMessage("Password");
+    data.usernameMsg = gs.getMessage("Email adress");
+    data.mdRegNumberMsg = gs.getMessage("Medical register number");
+    data.is_logged_in = gs.getSession().isLoggedIn();
+
+    if (input) {
+        var gtUs = new GlideRecord('sys_user');
+        gtUs.addQuery('user_name', input.username);
+        gtUs.query();
+        if (gtUs.next()) {
+            data.submit_message = gs.getMessage("User already exists");
+        } else {
+            gtUs.initialize();
+            gtUs.user_name = input.username;
+            gtUs.email = input.username;
+            gtUs.user_password.setDisplayValue(input.password);
+            data.u_sys_id = gtUs.insert();
+
+            if (input.md_reg_nmbr != '') {
+                var cValidate = new GlideRecord('x_349606_vsvirus_validation');
+                cValidate.initialize();
+                cValidate.user = data.u_sys_id;
+                cValidate.registration_number = input.md_reg_nmbr;
+                cValidate.state = '2';
+                cValidate.insert();
+            }
+
+            data.submit_message = gs.getMessage("Registration completed");
+        }
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 13:00:43</sys_created_on>
+        <sys_id>d3ecebd32f949010f37fd0e62799b609</sys_id>
+        <sys_mod_count>53</sys_mod_count>
+        <sys_name>Registration</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_d3ecebd32f949010f37fd0e62799b609</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 19:07:37</sys_updated_on>
+        <template><![CDATA[<div ng-if="!data.is_logged_in" class="sp-register-widget" ng-class="::(c.options.use_advanced == 'true' ? 'advanced' : '')">
+    <form class="registration-signin" ng-submit="c.register(c.username, c.password,c.md_reg_nmbr)" method="post" ng-if="(!c.submitted)">
+          <div ng-class="::{'panel panel-default': c.options.show_panel}">
+              <div ng-if="::c.options.show_panel" class="panel-heading padder-v">	      
+                  <h3 class="panel-title">${Registration}</h3>
+              </div>
+              <div ng-class="::{'panel-body': c.options.show_panel}">
+                  <div class="list-group list-group-sm">
+                      <div class="list-group-item">
+              <label for="username" class="sr-only label-advanced">{{::data.usernameMsg}}</label>
+              <input id="username" name="username" autocapitalize="off" ng-keypress="c.message = ''" ng-click="c.message = ''" class="form-control no-border input-advanced" type="email" placeholder='{{::data.usernameMsg}}' autofocus="true" ng-model="c.username" ng-class="(c.invalid == true ? 'invalid' : '')"/>
+                      </div>
+                      <div class="list-group-item">
+              <label for="password" class="sr-only label-advanced">{{::data.passwordMsg}}</label>
+              <input id="password" name="password" ng-keypress="c.message = ''" ng-click="c.message = ''" class="form-control no-border input-advanced" type="password" placeholder='{{::data.passwordMsg}}' ng-model="c.password" ng-class="(c.invalid == true ? 'invalid' : '')"/>
+                      </div>
+                      <div class="list-group-item">
+                        <label for="md_reg_nmbr" class="sr-only label-advanced">{{::data.mdRegNumberMsg}}</label>
+                        <input id="md_reg_nmbr" name="md_reg_nmbr" ng-keypress="c.message = ''" ng-click="c.message = ''" class="form-control no-border input-advanced" type="text" placeholder='{{::data.mdRegNumberMsg}}' ng-model="c.md_reg_nmbr"/>
+                        </div>
+                  </div>
+  
+                  <div ng-if="c.message" class="alert alert-danger login-alert" role="alert">{{c.message}}</div>
+                  <div ng-if="c.success" class="alert alert-success login-alert" role="alert">{{c.success}}</div>
+  
+          
+          <div class="info-text-div m-b">
+            <div class="row">
+              <div class="info-text" ng-class="::(c.options.use_advanced == 'true' ? 'col-xs-8' : 'col-xs-12')">
+               ${By registering you will accept the terms and conditions}
+              </div>
+              <div class="col-xs-12">
+                <button name="register" type="submit" class="btn btn-lg btn-primary btn-block login-button-old">
+                  ${Register}
+                </button>
+              </div>
+            </div>
+          </div>
+   
+              </div>
+          </div>
+      </form>
+  
+  <div class="wrapper info" ng-if="c.submitted">
+        <div class="text-white">
+{{data.submit_message}}
+      </div>
+  </div>
+
+  </div>]]></template>
+    </sp_widget>
+</record_update>

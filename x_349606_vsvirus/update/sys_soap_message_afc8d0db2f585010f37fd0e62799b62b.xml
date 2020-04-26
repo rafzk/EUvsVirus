@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_soap_message">
+    <sys_soap_message action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <authentication_type>basic</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile display_value="admin">59f0b43f53132300ee0dddeeff7b12a1</basic_auth_profile>
+        <basic_auth_user/>
+        <description>BIG: Dutch medical professionals register. Nurses, doctors and specialsts are registered here and validated by them. Public info.&#13;
+value 'Ribiz' is hard coded because only this value is allowed on node website </description>
+        <download_wsdl>true</download_wsdl>
+        <enable_mutual_auth>false</enable_mutual_auth>
+        <name>BIG web services</name>
+        <protocol_profile/>
+        <sys_class_name>sys_soap_message</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-25 21:35:38</sys_created_on>
+        <sys_id>afc8d0db2f585010f37fd0e62799b62b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>BIG web services</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_soap_message_afc8d0db2f585010f37fd0e62799b62b</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-25 21:38:44</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <wsdl>https://webservices.cibg.nl/Ribiz/OpenbaarV4.asmx?wsdl</wsdl>
+        <wsdl_xml><![CDATA[<wsdl:definitions targetNamespace="http://services.cibg.nl/ExternalUser" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://services.cibg.nl/ExternalUser" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.cibg.nl/ExternalUser">
+      <s:element name="listHcpApproxRequest" type="tns:ListHcpApproxRequest"/>
+      <s:complexType name="ListHcpApproxRequest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="WebSite" type="tns:SourceWebSite"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Initials" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Prefix" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Street" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HouseNumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Postalcode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="RegistrationNumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DateOfBirth" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ProfessionalGroup" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TypeOfSpecialism" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SourceWebSite">
+        <s:restriction base="s:string">
+          <s:enumeration value="None"/>
+          <s:enumeration value="Ribiz"/>
+          <s:enumeration value="Skp"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ListHcpApprox4Result" type="tns:ListHcpApproxResponse4"/>
+      <s:complexType name="ListHcpApproxResponse4">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ListHcpApprox" type="tns:ArrayOfListHcpApprox4"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfListHcpApprox4">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ListHcpApprox4" nillable="true" type="tns:ListHcpApprox4"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ListHcpApprox4">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="BirthSurname" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="MailingName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Prefix" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Initial" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="WorkAddress1" type="tns:Address"/>
+          <s:element maxOccurs="1" minOccurs="0" name="WorkAddress2" type="tns:Address"/>
+          <s:element maxOccurs="1" minOccurs="0" name="WorkAddress3" type="tns:Address"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ArticleRegistration" type="tns:ArrayOfArticleRegistrationExtApp"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Specialism" type="tns:ArrayOfSpecialismExtApp1"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Mention" type="tns:ArrayOfMentionExtApp"/>
+          <s:element maxOccurs="1" minOccurs="0" name="JudgmentProvision" type="tns:ArrayOfJudgmentProvisionExtApp"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Limitation" type="tns:ArrayOfLimitationExtApp"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="AddressTo" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="StreetName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HouseNumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HouseNumberAddition" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PostalCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ForeignAddress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CountryCode" nillable="true" type="s:decimal"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArticleRegistrationExtApp">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ArticleRegistrationExtApp" nillable="true" type="tns:ArticleRegistrationExtApp"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArticleRegistrationExtApp">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationNumber" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationStartDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationEndDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ProfessionalGroupCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSpecialismExtApp1">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="SpecialismExtApp1" nillable="true" type="tns:SpecialismExtApp1"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SpecialismExtApp1">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="SpecialismId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationNumber" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="TypeOfSpecialismId" type="s:decimal"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMentionExtApp">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="MentionExtApp" nillable="true" type="tns:MentionExtApp"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MentionExtApp">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="MentionId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationNumber" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="TypeOfMentionId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" nillable="true" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfJudgmentProvisionExtApp">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="JudgmentProvisionExtApp" nillable="true" type="tns:JudgmentProvisionExtApp"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="JudgmentProvisionExtApp">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleNumber" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PublicDescription" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" nillable="true" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Public" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLimitationExtApp">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="LimitationExtApp" nillable="true" type="tns:LimitationExtApp"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LimitationExtApp">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="LimitationId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ArticleRegistrationNumber" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CompetenceRegistrationId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="TypeLimitationId" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="StartDate" nillable="true" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" nillable="true" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ExpirationEndDate" nillable="true" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MonthsValid" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="YearsValid" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRibizReferenceData">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="getCibgReferenceDataRequest" type="tns:GetRibizReferenceDataRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetRibizReferenceDataRequest"/>
+      <s:element name="GetRibizReferenceDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetRibizReferenceDataResult" type="tns:GetRibizReferenceDataResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetRibizReferenceDataResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ProfessionalGroups" type="tns:ArrayOfProfessionalGroup"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TypeOfSpecialisms" type="tns:ArrayOfTypeOfSpecialism"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProfessionalGroup">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ProfessionalGroup" nillable="true" type="tns:ProfessionalGroup"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProfessionalGroup">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Code" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DescriptionEnglish" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Article3" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Article34" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="BusinessOwner" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="RequiredHoursForReregistration" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeOfSpecialism">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="TypeOfSpecialism" nillable="true" type="tns:TypeOfSpecialism"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TypeOfSpecialism">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Code" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DescriptionEn" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TitleOfSpecialist" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TitleOfSpecialistEn" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Register" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" nillable="true" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ProfessionalGroupCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListHcpApprox4SoapIn">
+    <wsdl:part element="tns:listHcpApproxRequest" name="listHcpApproxRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ListHcpApprox4SoapOut">
+    <wsdl:part element="tns:ListHcpApprox4Result" name="ListHcpApprox4Result"/>
+  </wsdl:message>
+  <wsdl:message name="GetRibizReferenceDataSoapIn">
+    <wsdl:part element="tns:GetRibizReferenceData" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetRibizReferenceDataSoapOut">
+    <wsdl:part element="tns:GetRibizReferenceDataResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="PublicV4Soap">
+    <wsdl:operation name="ListHcpApprox4">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for health care professionals based on approx match</wsdl:documentation>
+      <wsdl:input message="tns:ListHcpApprox4SoapIn"/>
+      <wsdl:output message="tns:ListHcpApprox4SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetRibizReferenceData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the RIBIZ reference data</wsdl:documentation>
+      <wsdl:input message="tns:GetRibizReferenceDataSoapIn"/>
+      <wsdl:output message="tns:GetRibizReferenceDataSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PublicV4Soap" type="tns:PublicV4Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ListHcpApprox4">
+      <soap:operation soapAction="http://services.cibg.nl/ExternalUser/ListHcpApprox4" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRibizReferenceData">
+      <soap:operation soapAction="http://services.cibg.nl/ExternalUser/GetRibizReferenceData" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PublicV4Soap12" type="tns:PublicV4Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ListHcpApprox4">
+      <soap12:operation soapAction="http://services.cibg.nl/ExternalUser/ListHcpApprox4" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRibizReferenceData">
+      <soap12:operation soapAction="http://services.cibg.nl/ExternalUser/GetRibizReferenceData" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PublicV4">
+    <wsdl:port binding="tns:PublicV4Soap" name="PublicV4Soap">
+      <soap:address location="https://webservices.cibg.nl:443/Ribiz/OpenbaarV4.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:PublicV4Soap12" name="PublicV4Soap12">
+      <soap12:address location="https://webservices.cibg.nl:443/Ribiz/OpenbaarV4.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></wsdl_xml>
+    </sys_soap_message>
+</record_update>

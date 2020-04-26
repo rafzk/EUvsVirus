@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>false</flush_cache>
+        <name>WR - Fix tags</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[var gr = new GlideRecord('kb_social_qa_question');
+gr.addEncodedQuery('x_349606_vsvirus_symptom_tagISNOTEMPTY^ORx_349606_vsvirus_treatment_tagISNOTEMPTY^ORx_349606_vsvirus_disease_tagISNOTEMPTY');
+gr.query();
+
+while(gr.next()) {
+	executeRule(gr);
+}
+
+function executeRule(current) {
+
+	function getArrDisplay(table, fld) {
+		var dsp_arr = [];
+		var si_arr = current.getValue(fld) || '';
+		si_arr = si_arr.split(',');
+
+		for (var i = 0; i < si_arr.length; i++) {
+			var si = si_arr[i];
+
+			if (gs.nil(si))
+				continue;
+
+			var gr = new GlideRecord(table);
+
+			if (gr.get(si)) {
+				dsp_arr.push(gr.getDisplayValue());
+			}
+		}
+		return dsp_arr;
+	}
+
+	var arr_tags = getArrDisplay('x_349606_vsvirus_symptom', 'x_349606_vsvirus_symptom_tag').concat(getArrDisplay('x_349606_vsvirus_disease', 'x_349606_vsvirus_disease_tag')).concat(getArrDisplay('x_349606_vsvirus_treatment', 'x_349606_vsvirus_treatment_tag'));
+	gs.info('WR - Fix tags | arr_tags: ' + JSON.stringify(arr_tags));
+
+	// Iterate through the tags
+	for (var j = 0; j < arr_tags.length; j++) {
+		var name_tag = arr_tags[j];
+
+		if (gs.nil(name_tag))
+			continue;
+
+		var si_tag = '';
+
+		var grSqandaTag = new GlideRecord('sqanda_tag');
+		grSqandaTag.addActiveQuery();
+		grSqandaTag.addQuery("name", name_tag);
+		grSqandaTag.query();
+
+		if (grSqandaTag.next()) {
+			si_tag = grSqandaTag.getUniqueValue();
+		}
+		// Create Tag
+		else {
+			grSqandaTag.initialize();
+			grSqandaTag.setValue('name', name_tag);
+			si_tag = grSqandaTag.insert();
+		}
+		var si_article = current.getUniqueValue();
+		// Check the tag has already been associated to the record
+		var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+		labelEntryGR.addQuery("reference_id", si_article);
+		labelEntryGR.addQuery("tag", si_tag);
+		labelEntryGR.query();
+
+		if (!labelEntryGR.hasNext()) {
+			labelEntryGR.initialize();
+			labelEntryGR.setValue("reference_name", "kb_social_qa_question");
+			labelEntryGR.setValue("reference_id", si_article);
+			// Need to use existing or create new
+			labelEntryGR.setValue("tag", si_tag);
+			labelEntryGR.insert();
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 20:04:15</sys_created_on>
+        <sys_id>633d05232f5c9010f37fd0e62799b66e</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>WR - Fix tags</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_script_fix_633d05232f5c9010f37fd0e62799b66e</sys_update_name>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 20:25:09</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list action="DELETE" parent="" relationship="" sys_domain="global" table="u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms" version="2" view="">
+        <sys_ui_list action="DELETE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name/>
+            <sys_created_by/>
+            <sys_created_on/>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path/>
+            <sys_id/>
+            <sys_mod_count/>
+            <sys_name/>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name/>
+            <sys_updated_by/>
+            <sys_updated_on>2020-04-25 22:49:04</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_ui_list_u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms_null</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_list parent="" relationship="" sys_domain="global" table="u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms" version="2" view=""><sys_ui_list action="DELETE"><average_value>false</average_value><element/><max_value>false</max_value><min_value>false</min_value><name>u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms</name><parent/><position/><relationship/><sum>false</sum><sys_class_name/><sys_created_by/><sys_created_on/><sys_domain>global</sys_domain><sys_domain_path/><sys_id/><sys_mod_count/><sys_name/><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name/><sys_updated_by/><sys_updated_on>2020-04-25 22:49:04</sys_updated_on><sys_user/><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_list></sys_ui_list></record_update>]]></payload>
+        <payload_hash>-993542093</payload_hash>
+        <record_name>Imp Tmpl X 349606 Vsvirus M2m Diseases Symptoms</record_name>
+        <reverted_from/>
+        <source>9bb34f322f1c1010f37fd0e62799b66b</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>wrangu.phil</sys_created_by>
+        <sys_created_on>2020-04-25 22:49:04</sys_created_on>
+        <sys_id>180aec9f2f985010f37fd0e62799b609</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b387aa130000001</sys_recorded_at>
+        <sys_updated_by>wrangu.phil</sys_updated_by>
+        <sys_updated_on>2020-04-25 22:49:04</sys_updated_on>
+        <type>List Layout</type>
+        <update_guid>900aec9f2a9850108d53739e753a0309</update_guid>
+        <update_guid_history>900aec9f2a9850108d53739e753a0309:-993542093,400aec9f3d9850109c21ee3d8d6cc603:181804367</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.phil</sys_created_by>
+        <sys_created_on>2020-04-25 23:57:12</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_list">sys_ui_list</sys_db_object>
+        <sys_id>323474d5c08a4408b9b0af9c6a9782e1</sys_id>
+        <sys_metadata>580aec9f2f985010f37fd0e62799b648</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent display_value="Imp Tmpl X 349606 Vsvirus M2m Diseases Symptoms">ae69e09f2f985010f37fd0e62799b6bd</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_ui_list_u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms_null</sys_update_name>
+        <sys_update_version display_value="sys_ui_list_u_imp_tmpl_x_349606_vsvirus_m2m_diseases_symptoms_null">180aec9f2f985010f37fd0e62799b609</sys_update_version>
+        <sys_updated_by>wrangu.phil</sys_updated_by>
+        <sys_updated_on>2020-04-25 23:57:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

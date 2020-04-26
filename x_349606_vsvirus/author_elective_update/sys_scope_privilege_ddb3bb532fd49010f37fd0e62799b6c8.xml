@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="DELETE">
+        <operation>execute</operation>
+        <source_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 13:30:51</sys_created_on>
+        <sys_id>ddb3bb532fd49010f37fd0e62799b6c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>setWorkflow</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_scope_privilege_ddb3bb532fd49010f37fd0e62799b6c8</sys_update_name>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:30:51</sys_updated_on>
+        <target_name>setWorkflow</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>scriptable</target_type>
+    </sys_scope_privilege>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_scope_privilege_ddb3bb532fd49010f37fd0e62799b6c8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>execute</operation><source_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</source_scope><status>allowed</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>wrangu.andre</sys_created_by><sys_created_on>2020-04-26 13:30:51</sys_created_on><sys_id>ddb3bb532fd49010f37fd0e62799b6c8</sys_id><sys_mod_count>0</sys_mod_count><sys_name>setWorkflow</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_scope_privilege_ddb3bb532fd49010f37fd0e62799b6c8</sys_update_name><sys_updated_by>wrangu.andre</sys_updated_by><sys_updated_on>2020-04-26 13:30:51</sys_updated_on><target_name>setWorkflow</target_name><target_scope display_value="Global">global</target_scope><target_type>scriptable</target_type></sys_scope_privilege></record_update>]]></payload>
+        <payload_hash>1472861149</payload_hash>
+        <record_name>setWorkflow</record_name>
+        <reverted_from/>
+        <source>2bf9b2572f509010f37fd0e62799b62d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 13:30:51</sys_created_on>
+        <sys_id>f0d3fb532fd49010f37fd0e62799b6df</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b6aef4160000001</sys_recorded_at>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:30:51</sys_updated_on>
+        <type>Cross scope privilege</type>
+        <update_guid>3cd3fb5350d490100b7e5d118b7e15de</update_guid>
+        <update_guid_history>3cd3fb5350d490100b7e5d118b7e15de:1472861149</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.andre</sys_created_by>
+        <sys_created_on>2020-04-26 13:34:00</sys_created_on>
+        <sys_db_object display_value="" name="sys_scope_privilege">sys_scope_privilege</sys_db_object>
+        <sys_id>262dac9d7f274e059c410ccc9097a179</sys_id>
+        <sys_metadata>ddb3bb532fd49010f37fd0e62799b6c8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>setWorkflow</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_scope_privilege_ddb3bb532fd49010f37fd0e62799b6c8</sys_update_name>
+        <sys_update_version display_value="sys_scope_privilege_ddb3bb532fd49010f37fd0e62799b6c8">f0d3fb532fd49010f37fd0e62799b6df</sys_update_version>
+        <sys_updated_by>wrangu.andre</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:34:00</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

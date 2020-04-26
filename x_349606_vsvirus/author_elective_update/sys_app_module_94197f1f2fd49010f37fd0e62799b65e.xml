@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="MediCast">6952081b2f185010f37fd0e62799b6a0</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Q&amp;A Treatment Protocals</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_349606_vsvirus_q_a_treatment_protocal</name>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_349606_vsvirus.user</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>94197f1f2fd49010f37fd0e62799b65e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Q&amp;A Treatment Protocals</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_app_module_94197f1f2fd49010f37fd0e62799b65e</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:45</sys_updated_on>
+        <timeline_page/>
+        <title>Q&amp;A Treatment Protocals</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_app_module_94197f1f2fd49010f37fd0e62799b65e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="MediCast">6952081b2f185010f37fd0e62799b6a0</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Q&amp;A Treatment Protocals</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_349606_vsvirus_q_a_treatment_protocal</name><order/><override_menu_roles>false</override_menu_roles><query/><report/><roles>x_349606_vsvirus.user</roles><sys_class_name>sys_app_module</sys_class_name><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-26 13:53:45</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>94197f1f2fd49010f37fd0e62799b65e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Q&amp;A Treatment Protocals</sys_name><sys_overrides/><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_app_module_94197f1f2fd49010f37fd0e62799b65e</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-26 13:53:45</sys_updated_on><timeline_page/><title>Q&amp;A Treatment Protocals</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>-122590685</payload_hash>
+        <record_name>Q&amp;A Treatment Protocals</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:53:45</sys_created_on>
+        <sys_id>1019775f2fd49010f37fd0e62799b6e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b6c3eb600000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:53:45</sys_updated_on>
+        <type>Module</type>
+        <update_guid>5819775fa2d490102c6c6ab987d23fe1</update_guid>
+        <update_guid_history>5819775fa2d490102c6c6ab987d23fe1:-122590685</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Q&amp;A Treatment Protocals">3bcbf7132f189010f37fd0e62799b68a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 14:05:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>8f05cc12a8ac4cd0b76edbbf401824e4</sys_id>
+        <sys_metadata>94197f1f2fd49010f37fd0e62799b65e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Q&amp;A Treatment Protocals</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_app_module_94197f1f2fd49010f37fd0e62799b65e</sys_update_name>
+        <sys_update_version display_value="sys_app_module_94197f1f2fd49010f37fd0e62799b65e">1019775f2fd49010f37fd0e62799b6e2</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 14:05:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

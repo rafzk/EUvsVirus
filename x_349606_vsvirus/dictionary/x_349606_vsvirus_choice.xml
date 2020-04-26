@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="Choice" max_length="40" name="x_349606_vsvirus_choice" sizeclass="6" type="collection">
+        <element choice="1" label="Choice category" max_length="40" name="choice_category" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Type" sequence="100" value="type"/>
+            </choice>
+        </element>
+        <element label="Name" max_length="40" name="name" type="string"/>
+        <element label="Order" max_length="40" name="order" type="integer"/>
+        <element choice="1" label="Set" max_length="40" name="set" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Attribute" sequence="100" value="x_349606_vsvirus_attribute"/>
+            </choice>
+        </element>
+        <element label="Value" max_length="40" name="value" type="string"/>
+    </element>
+</database>

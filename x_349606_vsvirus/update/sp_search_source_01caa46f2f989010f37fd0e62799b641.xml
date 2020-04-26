@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_search_source">
+    <sp_search_source action="INSERT_OR_UPDATE">
+        <advanced_typeahead_config>false</advanced_typeahead_config>
+        <condition/>
+        <data_fetch_script><![CDATA[var indexGroup = (typeof indexGroup !== "undefined") ? indexGroup : "portal_index_group";
+(function(query, indexGroup) {
+	var results = [];
+
+	var sqandaEnabled = gs.getProperty('glide.sp.socialqa.enabled', false) === 'true';
+	if (!sqandaEnabled)
+		return results;
+
+	var questionGR = new GlideRecord("kb_social_qa_question");
+	questionGR.addQuery('123TEXTQUERY321', query);
+	if (indexGroup)
+ 		questionGR.addQuery('123TEXTINDEXGROUP321', indexGroup);
+	questionGR.setLimit(data.limit);
+	questionGR.query();
+
+	while (questionGR.next()) {
+		if (!$sp.canReadRecord(questionGR))
+			continue;
+
+		var question = {};
+		question.type = "qa";
+		question.table = "kb_social_qa_question"; // populate the table name for analytics
+		$sp.getRecordDisplayValues(question, questionGR, 'question,votes,question_details,sys_id');
+		question.createdUTC = questionGR.getValue('sys_created_on');
+		question.text = (question.question_details) ? $sp.stripHTML(question.question_details) : "";
+		question.text = question.text.substring(0,200);
+		question.primary = $sp.stripHTML(question.question);
+
+		question.votes = 0;
+		var voteGR = new GlideRecord("kb_social_qa_vote");
+		voteGR.addQuery("reference_id", questionGR.getUniqueValue());
+		voteGR.query();
+		while (voteGR.next())
+			question.votes = (voteGR.getValue("up_vote") === "1") ? question.votes + 1 : question.votes - 1;
+
+		question.votes = question.votes;
+		question.score = parseInt(questionGR.ir_query_score.getDisplayValue());
+		question.tags = [];
+		var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+		labelEntryGR.addQuery("reference_id", question.sys_id);
+		labelEntryGR.query();
+		while (labelEntryGR.next()) {
+			var labelGR = labelEntryGR.getElement("tag").getRefRecord();
+			question.tags.push({
+				sys_id: labelGR.getUniqueValue(),
+				name: labelGR.getValue("name")
+			});
+		}
+
+		results.push(question);
+	}
+
+	if (!data.includeFacets)
+	   $sp.logSearch('kb_social_qa_question', query, questionGR.getRowCount(), data.searchType, data.portal, data.page);
+	
+        
+	return results;
+})(query, indexGroup);]]></data_fetch_script>
+        <display_fields/>
+        <enable_typeahead>true</enable_typeahead>
+        <facet_generation_script><![CDATA[(function(query, facetService, searchResults) {
+	/* Calculate your facets here using facetService */
+	/* var stateFacet = facetService.createFacet('State', 'state'); */
+	/* stateFacet.addFacetItem('Facet Item Label', '123'); */
+
+})(query, facetService, searchResults);]]></facet_generation_script>
+        <id>mc-qa</id>
+        <is_scripted_source>true</is_scripted_source>
+        <name>MediCast Questions and Answers</name>
+        <page/>
+        <pagination_supported>false</pagination_supported>
+        <primary_display_field/>
+        <roles/>
+        <search_page_template><![CDATA[<div>
+  <a href="?id=kb_article_mc&amp;question_id={{item.sys_id}}" class="h4 text-primary m-b-sm block">
+    <i class="fa fa-comments-o m-r-sm"></i>
+    <span ng-bind-html="highlight(item.primary, data.q)"></span></a>
+  <p ng-bind-html="item.text"></p>
+  <div>
+    <a ng-repeat="tag in item.tags track by $index" ng-if="tag.sys_id" ng-href="?id=mc_all_discussions&sys_id={{tag.sys_id}}" class="question-tag">{{tag.name}}</a>
+  </div>
+  <span class="text-muted">${Asked} <sn-day-ago date="item.createdUTC"/></span>
+  <span class="text-muted">
+    <span class="m-l-xs m-r-xs"> &#8226; </span>
+    ${Score}: {{item.votes}}
+  </span>
+</div>]]></search_page_template>
+        <source_table/>
+        <sys_class_name>sp_search_source</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 17:33:14</sys_created_on>
+        <sys_id>01caa46f2f989010f37fd0e62799b641</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MediCast Questions and Answers</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_search_source_01caa46f2f989010f37fd0e62799b641</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 17:45:36</sys_updated_on>
+        <typeahead_glyph/>
+        <typeahead_template/>
+    </sp_search_source>
+    <sys_translated_text action="delete_multiple" query="documentkey=01caa46f2f989010f37fd0e62799b641"/>
+</record_update>

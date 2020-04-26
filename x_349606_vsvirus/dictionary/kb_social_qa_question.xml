@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="all_tables.text_index_translations=true,attachment_index=true,global_search_config_handler=SocialQAQuestion,hasLabels=true" label="Social Q&amp;A Question" max_length="40" name="kb_social_qa_question" sizeclass="6" text_index="true" type="collection"/>
+    <element attributes="all_tables.text_index_translations=true,attachment_index=true,global_search_config_handler=SocialQAQuestion,hasLabels=true" label="Social Q&amp;A Question" max_length="40" name="kb_social_qa_question" sizeclass="6" text_index="true" type="collection">
+        <element label="Disease Tags" max_length="4000" name="x_349606_vsvirus_disease_tag" reference="x_349606_vsvirus_disease" type="glide_list"/>
+        <element label="Symptom Tags" max_length="4000" name="x_349606_vsvirus_symptom_tag" reference="x_349606_vsvirus_symptom" type="glide_list"/>
+        <element label="Treatment Tags" max_length="4000" name="x_349606_vsvirus_treatment_tag" reference="x_349606_vsvirus_treatment" type="glide_list"/>
+    </element>
 </database>

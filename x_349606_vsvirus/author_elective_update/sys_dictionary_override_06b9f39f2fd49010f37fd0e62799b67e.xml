@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary_override">
+    <sys_dictionary_override action="DELETE">
+        <attributes/>
+        <attributes_override>false</attributes_override>
+        <base_table>kb_social_qa_question</base_table>
+        <calculation/>
+        <calculation_override>false</calculation_override>
+        <default_value>f6a004d72f185010f37fd0e62799b6ef</default_value>
+        <default_value_override>true</default_value_override>
+        <dependent/>
+        <dependent_override>false</dependent_override>
+        <display_override>false</display_override>
+        <element>kb_knowledge_base</element>
+        <mandatory>false</mandatory>
+        <mandatory_override>false</mandatory_override>
+        <name>x_349606_vsvirus_q_a_treatment_protocal</name>
+        <read_only>true</read_only>
+        <read_only_override>true</read_only_override>
+        <reference_qual/>
+        <reference_qual_override>false</reference_qual_override>
+        <sys_class_name>sys_dictionary_override</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:56:52</sys_created_on>
+        <sys_id>06b9f39f2fd49010f37fd0e62799b67e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>kb_knowledge_base</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sys_dictionary_override_06b9f39f2fd49010f37fd0e62799b67e</sys_update_name>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:56:52</sys_updated_on>
+    </sys_dictionary_override>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sys_dictionary_override_06b9f39f2fd49010f37fd0e62799b67e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary_override"><sys_dictionary_override action="INSERT_OR_UPDATE"><attributes/><attributes_override>false</attributes_override><base_table>kb_social_qa_question</base_table><calculation/><calculation_override>false</calculation_override><default_value>f6a004d72f185010f37fd0e62799b6ef</default_value><default_value_override>true</default_value_override><dependent/><dependent_override>false</dependent_override><display_override>false</display_override><element>kb_knowledge_base</element><mandatory>false</mandatory><mandatory_override>false</mandatory_override><name>x_349606_vsvirus_q_a_treatment_protocal</name><read_only>true</read_only><read_only_override>true</read_only_override><reference_qual/><reference_qual_override>false</reference_qual_override><sys_class_name>sys_dictionary_override</sys_class_name><sys_created_by>wrangu.lansford</sys_created_by><sys_created_on>2020-04-26 13:56:52</sys_created_on><sys_id>06b9f39f2fd49010f37fd0e62799b67e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>kb_knowledge_base</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sys_dictionary_override_06b9f39f2fd49010f37fd0e62799b67e</sys_update_name><sys_updated_by>wrangu.lansford</sys_updated_by><sys_updated_on>2020-04-26 13:56:52</sys_updated_on></sys_dictionary_override></record_update>]]></payload>
+        <payload_hash>-1661626052</payload_hash>
+        <record_name>kb_knowledge_base</record_name>
+        <reverted_from/>
+        <source>2b30c8972f185010f37fd0e62799b693</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 13:56:52</sys_created_on>
+        <sys_id>c6c97f5f2fd49010f37fd0e62799b603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b6c6c6bf0000001</sys_recorded_at>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 13:56:52</sys_updated_on>
+        <type>Dictionary Entry Override</type>
+        <update_guid>02c97f5fd8d49010e324f341c08fec03</update_guid>
+        <update_guid_history>02c97f5fd8d49010e324f341c08fec03:-1661626052</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.lansford</sys_created_by>
+        <sys_created_on>2020-04-26 14:05:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_dictionary_override">sys_dictionary_override</sys_db_object>
+        <sys_id>0cd58cd0faf24a808461de0aad53b244</sys_id>
+        <sys_metadata>06b9f39f2fd49010f37fd0e62799b67e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>kb_knowledge_base</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent display_value="">a019b75f2fd49010f37fd0e62799b60b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sys_dictionary_override_06b9f39f2fd49010f37fd0e62799b67e</sys_update_name>
+        <sys_update_version display_value="sys_dictionary_override_06b9f39f2fd49010f37fd0e62799b67e">c6c97f5f2fd49010f37fd0e62799b603</sys_update_version>
+        <sys_updated_by>wrangu.lansford</sys_updated_by>
+        <sys_updated_on>2020-04-26 14:05:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

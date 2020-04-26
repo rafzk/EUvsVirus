@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Professional codes" max_length="40" name="x_349606_vsvirus_professional_codes" sizeclass="3" type="collection">
+        <element label="Code" max_length="50" name="code" type="string"/>
+        <element label="Short description" max_length="150" name="short_description" type="string"/>
+        <element display="true" label="Title" max_length="150" name="title" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
+    <sp_column action="DELETE">
+        <class_name/>
+        <order>4</order>
+        <size>1</size>
+        <size_lg/>
+        <size_sm/>
+        <size_xs/>
+        <sp_row display_value="1">94a66b5f2f549010f37fd0e62799b617</sp_row>
+        <sys_class_name>sp_column</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 12:36:12</sys_created_on>
+        <sys_id>dc572b9f2f549010f37fd0e62799b68f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>4</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_column_dc572b9f2f549010f37fd0e62799b68f</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 12:36:12</sys_updated_on>
+    </sp_column>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</application>
+        <file_path/>
+        <instance_id>a620405ddb3e4c109df22f17d4961984</instance_id>
+        <instance_name>dev99360</instance_name>
+        <name>sp_column_dc572b9f2f549010f37fd0e62799b68f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column"><sp_column action="INSERT_OR_UPDATE"><class_name/><order>4</order><size>1</size><size_lg/><size_sm/><size_xs/><sp_row display_value="1">94a66b5f2f549010f37fd0e62799b617</sp_row><sys_class_name>sp_column</sys_class_name><sys_created_by>wrangu.james</sys_created_by><sys_created_on>2020-04-26 12:36:12</sys_created_on><sys_id>dc572b9f2f549010f37fd0e62799b68f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>4</sys_name><sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package><sys_policy/><sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope><sys_update_name>sp_column_dc572b9f2f549010f37fd0e62799b68f</sys_update_name><sys_updated_by>wrangu.james</sys_updated_by><sys_updated_on>2020-04-26 12:36:12</sys_updated_on></sp_column></record_update>]]></payload>
+        <payload_hash>1023937292</payload_hash>
+        <record_name>4</record_name>
+        <reverted_from/>
+        <source>d37550d72f585010f37fd0e62799b677</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 12:36:12</sys_created_on>
+        <sys_id>d4572b9f2f549010f37fd0e62799b691</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171b67cecb90000001</sys_recorded_at>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 12:36:12</sys_updated_on>
+        <type>Column</type>
+        <update_guid>10572b9f50549010729580c450f19191</update_guid>
+        <update_guid_history>10572b9f50549010729580c450f19191:1023937292</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="4">1d57a79f2f549010f37fd0e62799b6fb</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 12:36:16</sys_created_on>
+        <sys_db_object display_value="" name="sp_column">sp_column</sys_db_object>
+        <sys_id>0d900bdb02e84e528134a4d104ce1711</sys_id>
+        <sys_metadata>dc572b9f2f549010f37fd0e62799b68f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>4</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_scope_delete display_value="">0056bdd18f2f47208019a8d5fb3cc100</sys_scope_delete>
+        <sys_update_name>sp_column_dc572b9f2f549010f37fd0e62799b68f</sys_update_name>
+        <sys_update_version display_value="sp_column_dc572b9f2f549010f37fd0e62799b68f">d4572b9f2f549010f37fd0e62799b691</sys_update_version>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 12:36:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

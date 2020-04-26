@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>other</category>
+        <client_script><![CDATA[function($scope, $location, $timeout, spUtil, glideFormFactory, $rootScope,spAriaUtil, spAriaFocusManager) {
+
+	$timeout(function() {
+		$rootScope.$broadcast('sp.update.breadcrumbs', [
+			{label: $scope.data.communityBreadcrumb, url: '?id=mc_all_discussions'},
+			{label: $scope.page.title, url: '#'}
+		]);
+	});
+
+	//PRB1372459 : Primitive doesn't work in child scope, using referenced variable (dot access) to carry into child scope.
+	$scope.data.tagList = "";
+
+	$scope.update = function() {
+		var d = $scope.data;
+		//Must be wrapped in timeout - need to wait for tagList to be updated
+		//by the digest cycle before saving.
+		$timeout(function() {
+			if (d.f._fields.question.value === "") {
+				spUtil.addErrorMessage(d.mustSpecifyQuestionMsg);
+				spAriaUtil.sendLiveMessage(d.mustSpecifyQuestionErrorMsg + d.mustSpecifyQuestionMsg);
+				return;
+			}
+
+
+
+			var x = {};
+			x.method = "save";
+			x.table = d.table;
+			x.sys_id = d.sys_id;
+			x._fields = d.f._fields;
+			x._fields._attachmentGUID = d.f._attachmentGUID;
+			x.tagList = d.tagList;
+			$scope.status = $scope.data.postingMsg;
+			spUtil.get($scope, x).then(function(response) {
+				var newURL = $location.search({id: 'kb_article_mc', sys_id: response.data.sys_id});
+				spAriaFocusManager.navigateToLink(newURL.url());
+			});
+		});
+	}
+
+	var flatFields = [];
+	angular.forEach($scope.data.f._fields, function(field) {
+		flatFields.push(field);
+	});
+
+	var uiMessageHandler = function(g_form, type, message) {
+		switch (type) {
+			case 'addInfoMessage':
+				spUtil.addInfoMessage(message);
+				break;
+			case 'addErrorMessage':
+				spUtil.addErrorMessage(message);
+				break;
+			case 'clearMessages':
+				break;
+			default:
+		}
+	};
+
+	var g_form = glideFormFactory.create($scope, $scope.data.f.table, $scope.data.f.sys_id, flatFields, null, {uiMessageHandler: uiMessageHandler});
+
+	$scope.getGlideForm = function() {
+		return g_form;
+	}
+
+	var timeoutPromise;
+	$scope.$watch("data.f._fields.question.value", function(nv) {
+		if (!nv || nv.length < 5) {
+			$scope.data.questionSuggestions = [];
+			return;
+		}
+
+		$timeout.cancel(timeoutPromise);
+		timeoutPromise = $timeout(function() {
+			var x = {};
+			x.method = "search";
+			x.query = nv;
+			spUtil.get($scope, x).then(function(response) {
+				$scope.data.questionSuggestions = response.data.questionSuggestions;
+			});
+		}, 1000);
+	});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.suggested-question-container {
+  max-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+}
+
+.suggested-question-container &gt; .question-summary {
+  padding: 3px;
+}
+
+.hide-element {
+  visibility: hidden;
+}
+
+.mce-ico {
+  width: 14px;
+}
+
+.mc-panel {
+  margin-bottom: 20px;
+}
+
+.mc-panel-header {
+	word-wrap: break-word;
+  margin-top:15px; 
+  padding: 10px 15px; 
+  border-bottom: 1px solid transparent; 
+  border-color: #E6E8EA; 
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px;
+}
+
+.mc-panel-body {
+  padding: 5px 15px 15px;
+}
+
+.mc-panel-padding {
+  padding: 5px 15px 15px;
+}
+.mc-text-warning {
+	color: #f1c40f;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>mc-create-discussion</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>MediCast Create Discussion</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function($sp, input, data, gs, GlideRecord) {
+  "use strict";
+	data.typeTagNameMsg = gs.getMessage("Type tag name...");
+	data.mustSpecifyQuestionMsg = gs.getMessage("You must specify a question");
+	data.mustSpecifyQuestionErrorMsg= gs.getMessage("Error: Your question field is empty. ");
+	data.postingMsg = gs.getMessage("Posting");
+	data.communityBreadcrumb = gs.getMessage("Community");
+	data.questionSuggestions = [];
+	data.knowledgeBase = $sp.getPortalRecord().getValue("sqanda_knowledge_base") || gs.getProperty("glide.service_portal.sqanda.default_kb");
+	data.socialQAEnabled = gs.getProperty('glide.sp.socialqa.enabled') === 'true';
+	if (input && input.method === 'save') {
+		data.table = input.table;
+		data.sys_id = input.sys_id;
+		var result = {};
+		if (input._fields) {
+			result = $sp.saveRecord(input.table, input.sys_id, input._fields);
+			if (result.sys_id && input.tagList.length > 0) {
+				input.tagList.split(',').forEach(function(tagID) {
+					var labelEntryGR = new GlideRecord("sqanda_tag_entry");
+					labelEntryGR.initialize();
+					labelEntryGR.tag = tagID;
+					labelEntryGR.reference_name = "kb_social_qa_question";
+					labelEntryGR.reference_id = result.sys_id;
+					labelEntryGR.insert();
+				})
+			}
+		}
+
+		if (input.sys_id == '-1'){
+			data.sys_id = result.sys_id;
+			data.isNewRecord = true;
+		}
+	} else if (input && input.method === 'search') {
+		var questionGR = new GlideRecord("kb_social_qa_question");
+		questionGR.addActiveQuery();
+		questionGR.addQuery('123TEXTQUERY321', input.query);
+		questionGR.orderBy('votes');
+		questionGR.query();
+		while(questionGR.next()) {
+			if (!$sp.canReadRecord(questionGR))
+				continue;
+
+			var question = {};
+			question.title = questionGR.getValue("question");
+			question.sys_id = questionGR.getUniqueValue();
+
+			var answerGR = new GlideRecord("kb_social_qa_answer");
+			answerGR.addQuery("question", question.sys_id);
+			answerGR.addQuery("accepted", true);
+			answerGR.query();
+
+			question.acceptedAnswer = (answerGR.getRowCount() > 0);
+
+			data.questionSuggestions.push(question);
+		}
+
+		return data;
+	} else {
+		data.table = 'kb_social_qa_question';
+		data.sys_id = '-1';
+	}
+
+  data.f = $sp.getForm(data.table, data.sys_id, data.query);
+	data.f._fields.kb_knowledge_base.value = data.knowledgeBase;
+})($sp, input, data, gs, GlideRecord);]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>wrangu.james</sys_created_by>
+        <sys_created_on>2020-04-26 12:33:59</sys_created_on>
+        <sys_id>ffc6eb5f2f549010f37fd0e62799b658</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>MediCast Create Discussion</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_widget_ffc6eb5f2f549010f37fd0e62799b658</sys_update_name>
+        <sys_updated_by>wrangu.james</sys_updated_by>
+        <sys_updated_on>2020-04-26 16:29:10</sys_updated_on>
+        <template><![CDATA[<div class="row" ng-if="data.socialQAEnabled">
+  <div class="col-sm-3 hidden-xs">
+    <div class="mc-panel">
+      <div class="mc-panel-header">
+        <h3 class="m-n">
+          <i class="fa fa-exclamation-triangle mc-text-warning" aria-hidden="true"></i> ${Attention!}</h3>
+      </div>
+      <div class="mc-panel-body">
+        <p>${Do <strong>not</strong> share any patient details.}</p>
+        <p>${Give as much detail as possible}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+  	<div class="mc-panel">
+      <div class="mc-panel-header">
+        <h3 class="m-n">${New Discussion}</h3>
+    	</div>
+      <div class="mc-panel-body">
+       	<sp-form-field form-model="data.f" field="data.f._fields.question" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.question_details" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_symptom_tag" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_disease_tag" glide-form="getGlideForm()"></sp-form-field>
+        <sp-form-field form-model="data.f" field="data.f._fields.x_349606_vsvirus_treatment_tag" glide-form="getGlideForm()"></sp-form-field>
+        <!-- <sp-tag-list ng-model="data.tagList" type-tag-name-msg="data.typeTagNameMsg"></sp-tag-list> -->
+      </div>
+      <div class="mc-panel-padding">
+        <a ng-disabled="status"
+                name="submit"
+                ng-click="update()"
+           		href=""
+                class="btn btn-primary">
+          <span ng-show="status">{{status}}</span>
+          <span ng-show="!status">${Post question}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

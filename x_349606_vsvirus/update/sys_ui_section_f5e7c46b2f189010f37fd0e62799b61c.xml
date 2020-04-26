@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="f5e7c46b2f189010f37fd0e62799b61c" sys_domain="global" table="x_349606_vsvirus_q_a_treatment_protocol" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>question</element>
+            <position>0</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>22d581ab2f1c9010f37fd0e62799b656</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>question_details</element>
+            <position>1</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>aad581ab2f1c9010f37fd0e62799b656</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>2</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>22d581ab2f1c9010f37fd0e62799b657</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>kb_knowledge_base</element>
+            <position>3</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>a6d581ab2f1c9010f37fd0e62799b657</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>2ed581ab2f1c9010f37fd0e62799b657</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>kb_category</element>
+            <position>5</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>a2d581ab2f1c9010f37fd0e62799b658</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>6</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>2ad581ab2f1c9010f37fd0e62799b658</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>sn_kb_social_qa_kb_question_tags_insert.xml</element>
+            <position>7</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>aed581ab2f1c9010f37fd0e62799b658</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter display_value="Insert Tag in Question">3b07707cc34002006f333b0ac3d3ae9c</sys_ui_formatter>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>formatter</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>8</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>e6d581ab2f1c9010f37fd0e62799b659</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>last_activity</element>
+            <position>9</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>6ed581ab2f1c9010f37fd0e62799b659</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>10</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>e2d581ab2f1c9010f37fd0e62799b65a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_349606_vsvirus_symptom_tag</element>
+            <position>11</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>6ad581ab2f1c9010f37fd0e62799b65a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_349606_vsvirus_treatment_tag</element>
+            <position>12</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>eed581ab2f1c9010f37fd0e62799b65a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_349606_vsvirus_disease_tag</element>
+            <position>13</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>66d581ab2f1c9010f37fd0e62799b65b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>success_rate</element>
+            <position>14</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>ead581ab2f1c9010f37fd0e62799b65b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>updated_by</element>
+            <position>15</position>
+            <sys_created_by>wrangu.pier</sys_created_by>
+            <sys_created_on>2020-04-26 19:29:14</sys_created_on>
+            <sys_id>62d581ab2f1c9010f37fd0e62799b65c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_349606_vsvirus_q_a_treatment_protocol" sys_domain="global" view="Default view">f5e7c46b2f189010f37fd0e62799b61c</sys_ui_section>
+            <sys_updated_by>wrangu.pier</sys_updated_by>
+            <sys_updated_on>2020-04-26 19:29:14</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_349606_vsvirus_q_a_treatment_protocol</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>wrangu.lansford</sys_created_by>
+            <sys_created_on>2020-04-26 14:58:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f5e7c46b2f189010f37fd0e62799b61c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_349606_vsvirus_q_a_treatment_protocol</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+            <sys_update_name>sys_ui_section_f5e7c46b2f189010f37fd0e62799b61c</sys_update_name>
+            <sys_updated_by>wrangu.lansford</sys_updated_by>
+            <sys_updated_on>2020-04-26 14:58:34</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

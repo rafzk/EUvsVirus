@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css>@media (max-width: 767px) {&#13;
+  .wrapper-xl {&#13;
+    padding: 20px 15px !important;&#13;
+  }&#13;
+  .text-4x {&#13;
+    font-size: 3em;&#13;
+  }&#13;
+}</css>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">82a97e172f509010f37fd0e62799b6ad</sp_column>
+        <sp_widget display_value="HTML">8679ef89cb21120000f8d856634c9c4f</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>wrangu.pier</sys_created_by>
+        <sys_created_on>2020-04-26 09:16:42</sys_created_on>
+        <sys_id>4aa97e172f509010f37fd0e62799b6af</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Welcome to MediCast</sys_name>
+        <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
+        <sys_update_name>sp_instance_4aa97e172f509010f37fd0e62799b6af</sys_update_name>
+        <sys_updated_by>wrangu.pier</sys_updated_by>
+        <sys_updated_on>2020-04-26 09:46:47</sys_updated_on>
+        <title>Welcome to MediCast</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"html": {
+		"value": "<div class=\"wrapper-xl welcome\">\n<h1 class=\"text-white text-4x\" role=\"presentation\">${Welcome to MediCast}</h1>\n<h3 class=\"text-white\" role=\"presentation\">${Fast and trusted knowledge by and for medical professionals}</h3>\n</div>",
+		"displayValue": "<div class=\"wrapper-xl welcome\">\n<h1 class=\"text-white text-4x\" role=\"presentation\">${Welcome to<br /> MediCast}</h1>\n<h3 class=\"text-white\" role=\"presentation\">${Fast and trusted knowledge by and for medical professionals }</h3>\n</div>"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=4aa97e172f509010f37fd0e62799b6af"/>
+</record_update>
