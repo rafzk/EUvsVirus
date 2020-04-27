@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="x_349606_vsvirus_m2m_treatments_q&amp;a_treatmen" max_length="40" name="x_349606_vsvirus_m2m_treatments_q_a_treatmen" type="collection">
+    <element label="x_349606_vsvirus_m2m_treatments_q&amp;a_treatmen" max_length="40" name="x_349606_vsvirus_m2m_treatments_q_a_treatmen" sizeclass="0" type="collection">
         <element attributes="encode_utf8=false" label="Q&amp;A Treatment Protocol" max_length="32" name="q_a_treatment_protocol" reference="x_349606_vsvirus_q_a_treatment_protocol" type="reference"/>
         <element attributes="encode_utf8=false" label="Treatment" max_length="32" name="treatment" reference="x_349606_vsvirus_treatment" type="reference"/>
         <index name="index">

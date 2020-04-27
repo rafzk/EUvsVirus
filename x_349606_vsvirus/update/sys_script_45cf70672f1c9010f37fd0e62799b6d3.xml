@@ -54,7 +54,7 @@
 	}
 
 	var arr_tags = getArrDisplay('x_349606_vsvirus_symptom', 'x_349606_vsvirus_symptom_tag').concat(getArrDisplay('x_349606_vsvirus_disease', 'x_349606_vsvirus_disease_tag')).concat(getArrDisplay('x_349606_vsvirus_treatment', 'x_349606_vsvirus_treatment_tag'));
-	gs.info('WR - Fix tags | arr_tags: ' + JSON.stringify(arr_tags));
+// 	gs.info('WR - Fix tags | arr_tags: ' + JSON.stringify(arr_tags));
 
 	// Iterate through the tags
 	for (var j = 0; j < arr_tags.length; j++) {
@@ -64,7 +64,7 @@
 			continue;
 
 		var si_tag = '';
-
+		// Check the tag has already been created
 		var grSqandaTag = new GlideRecord('sqanda_tag');
 		grSqandaTag.addActiveQuery();
 		grSqandaTag.addQuery("name", name_tag);
@@ -95,6 +95,7 @@
 			labelEntryGR.insert();
 		}
 	}
+	// [...] code needs to be refactored to remove relationships as well as create them
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -103,7 +104,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45cf70672f1c9010f37fd0e62799b6d3</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>MC - Sync Tags</sys_name>
         <sys_overrides/>
         <sys_package display_value="MediCast" source="x_349606_vsvirus">98e08a3a2f581010f37fd0e62799b6cf</sys_package>
@@ -111,9 +112,9 @@
         <sys_scope display_value="MediCast">98e08a3a2f581010f37fd0e62799b6cf</sys_scope>
         <sys_update_name>sys_script_45cf70672f1c9010f37fd0e62799b6d3</sys_update_name>
         <sys_updated_by>wrangu.andre</sys_updated_by>
-        <sys_updated_on>2020-04-26 20:27:24</sys_updated_on>
+        <sys_updated_on>2020-04-27 07:58:09</sys_updated_on>
         <template/>
-        <when>before</when>
+        <when>after</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=45cf70672f1c9010f37fd0e62799b6d3"/>
 </record_update>

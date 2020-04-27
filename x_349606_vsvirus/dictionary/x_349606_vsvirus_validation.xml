@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Validation" max_length="40" name="x_349606_vsvirus_validation" sizeclass="7" type="collection">
+    <element label="Validation" max_length="40" name="x_349606_vsvirus_validation" sizeclass="6" type="collection">
         <element label="Gender" max_length="100" name="gender" type="string"/>
         <element label="Initials" max_length="100" name="initials" type="string"/>
         <element label="Lastname" max_length="150" name="lastname" type="string"/>

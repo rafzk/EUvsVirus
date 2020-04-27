@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="kb_social_qa_question" label="Q&amp;A Treatment Protocol" max_length="40" name="x_349606_vsvirus_q_a_treatment_protocol" type="collection">
+    <element extends="kb_social_qa_question" label="Q&amp;A Treatment Protocol" max_length="40" name="x_349606_vsvirus_q_a_treatment_protocol" sizeclass="37" type="collection">
         <element default="javascript: gs.getUserID()" label="Created by" max_length="32" name="created_by" read_only="true" reference="sys_user" type="reference"/>
         <element label="Success rate" max_length="15" name="success_rate" type="percent_complete"/>
         <element label="Updated by" max_length="32" name="updated_by" read_only="true" reference="sys_user" type="reference"/>

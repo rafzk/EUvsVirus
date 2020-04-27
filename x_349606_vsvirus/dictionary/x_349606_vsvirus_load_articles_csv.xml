@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="sys_import_set_row" label="Load Articles CSV" max_length="40" name="x_349606_vsvirus_load_articles_csv" type="collection">
+    <element extends="sys_import_set_row" label="Load Articles CSV" max_length="40" name="x_349606_vsvirus_load_articles_csv" sizeclass="21176" type="collection">
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Authors" label="Authors" max_length="957" name="u_authors" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Citation" label="Citation" max_length="140" name="u_citation" type="string"/>
         <element attributes="edge_encryption_enabled=true,import_attribute_name=Create Date" label="Create Date" max_length="40" name="u_create_date" type="string"/>
